@@ -40,10 +40,27 @@ th, td {
 
 .table-wrapper {
     overflow-x: scroll;
-    width: 95%;
-    margin-left: 90px;
+    width: 100%;
+    margin: auto;
 }
 
 .fixed-scrollbar {
     overflow: auto;
+}
+
+.body {
+    margin: 0;
+    background-image: url(../Img/space.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.jumbotron-opacity {
+    padding-top: 30px;
+    background: rgba(255,255,255,0.1);
 }
