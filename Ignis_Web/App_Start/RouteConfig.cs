@@ -18,6 +18,11 @@ namespace Ignis_Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Appka",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "FreqApp", action = "FreqAppka", id = UrlParameter.Optional }
+            );
         }
     }
 }

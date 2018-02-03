@@ -1,0 +1,945 @@
+﻿@model Ignis_Web.Models.appka
+
+@{
+    ViewBag.Title = "FreqAppka";
+}
+
+<h2>FreqAppka</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Nickname, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Full, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Pierwszy, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Drugi, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Trzeci, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Czwarty, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Piaty, htmlAttributes: new { @class = "menu-label" })
+        </div>
+    </div>
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.FirstNickname, new { htmlAttributes = new { @class = "form-control", @id = "txt_One" } })
+            @Html.ValidationMessageFor(model => model.FirstNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.FirstFull)
+                @Html.ValidationMessageFor(model => model.FirstFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.First1)
+                @Html.ValidationMessageFor(model => model.First1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.First2)
+                @Html.ValidationMessageFor(model => model.First2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.First3)
+                @Html.ValidationMessageFor(model => model.First3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.First4)
+                @Html.ValidationMessageFor(model => model.First4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.First5)
+                @Html.ValidationMessageFor(model => model.First5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SecondNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SecondNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.SecondFull)
+                @Html.ValidationMessageFor(model => model.SecondFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Second1)
+                @Html.ValidationMessageFor(model => model.Second1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Second2)
+                @Html.ValidationMessageFor(model => model.Second2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Second3)
+                @Html.ValidationMessageFor(model => model.Second3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Second4)
+                @Html.ValidationMessageFor(model => model.Second4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Second5)
+                @Html.ValidationMessageFor(model => model.Second5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.ThirdNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ThirdNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.ThirdFull)
+                @Html.ValidationMessageFor(model => model.ThirdFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Third1)
+                @Html.ValidationMessageFor(model => model.Third1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Third2)
+                @Html.ValidationMessageFor(model => model.Third2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Third3)
+                @Html.ValidationMessageFor(model => model.Third3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Third4)
+                @Html.ValidationMessageFor(model => model.Third4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Third5)
+                @Html.ValidationMessageFor(model => model.Third5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.FourthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FourthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.FourthFull)
+                @Html.ValidationMessageFor(model => model.FourthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fourth1)
+                @Html.ValidationMessageFor(model => model.Fourth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fourth2)
+                @Html.ValidationMessageFor(model => model.Fourth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fourth3)
+                @Html.ValidationMessageFor(model => model.Fourth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fourth4)
+                @Html.ValidationMessageFor(model => model.Fourth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fourth5)
+                @Html.ValidationMessageFor(model => model.Fourth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.FifthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FifthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.FifthFull)
+                @Html.ValidationMessageFor(model => model.FifthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fifth1)
+                @Html.ValidationMessageFor(model => model.Fifth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fifth2)
+                @Html.ValidationMessageFor(model => model.Fifth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fifth3)
+                @Html.ValidationMessageFor(model => model.Fifth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fifth4)
+                @Html.ValidationMessageFor(model => model.Fifth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Fifth5)
+                @Html.ValidationMessageFor(model => model.Fifth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SixthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SixthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.SixthFull)
+                @Html.ValidationMessageFor(model => model.SixthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sixth1)
+                @Html.ValidationMessageFor(model => model.Sixth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sixth2)
+                @Html.ValidationMessageFor(model => model.Sixth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sixth3)
+                @Html.ValidationMessageFor(model => model.Sixth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sixth4)
+                @Html.ValidationMessageFor(model => model.Sixth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sixth5)
+                @Html.ValidationMessageFor(model => model.Sixth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SeventhNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SeventhNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.SeventhFull)
+                @Html.ValidationMessageFor(model => model.SeventhFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Seventh1)
+                @Html.ValidationMessageFor(model => model.Seventh1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Seventh2)
+                @Html.ValidationMessageFor(model => model.Seventh2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Seventh3)
+                @Html.ValidationMessageFor(model => model.Seventh3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Seventh4)
+                @Html.ValidationMessageFor(model => model.Seventh4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Seventh5)
+                @Html.ValidationMessageFor(model => model.Seventh5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.EighthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EighthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.EighthFull)
+                @Html.ValidationMessageFor(model => model.EighthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eighth1)
+                @Html.ValidationMessageFor(model => model.Eighth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eighth2)
+                @Html.ValidationMessageFor(model => model.Eighth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eighth3)
+                @Html.ValidationMessageFor(model => model.Eighth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eighth4)
+                @Html.ValidationMessageFor(model => model.Eighth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eighth5)
+                @Html.ValidationMessageFor(model => model.Eighth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.NinthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NinthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.NinthFull)
+                @Html.ValidationMessageFor(model => model.NinthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Ninth1)
+                @Html.ValidationMessageFor(model => model.Ninth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Ninth2)
+                @Html.ValidationMessageFor(model => model.Ninth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Ninth3)
+                @Html.ValidationMessageFor(model => model.Ninth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Ninth4)
+                @Html.ValidationMessageFor(model => model.Ninth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Ninth5)
+                @Html.ValidationMessageFor(model => model.Ninth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.TenthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.TenthFull)
+                @Html.ValidationMessageFor(model => model.TenthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Tenth1)
+                @Html.ValidationMessageFor(model => model.Tenth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Tenth2)
+                @Html.ValidationMessageFor(model => model.Tenth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Tenth3)
+                @Html.ValidationMessageFor(model => model.Tenth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Tenth4)
+                @Html.ValidationMessageFor(model => model.Tenth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Tenth5)
+                @Html.ValidationMessageFor(model => model.Tenth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.EleventhNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EleventhNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.EleventhFull)
+                @Html.ValidationMessageFor(model => model.EleventhFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eleventh1)
+                @Html.ValidationMessageFor(model => model.Eleventh1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eleventh2)
+                @Html.ValidationMessageFor(model => model.Eleventh2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eleventh3)
+                @Html.ValidationMessageFor(model => model.Eleventh3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eleventh4)
+                @Html.ValidationMessageFor(model => model.Eleventh4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Eleventh5)
+                @Html.ValidationMessageFor(model => model.Eleventh5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.TwelfthNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TwelfthNickname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.TwelfthFull)
+                @Html.ValidationMessageFor(model => model.TwelfthFull, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Twelfth1)
+                @Html.ValidationMessageFor(model => model.Twelfth1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Twelfth2)
+                @Html.ValidationMessageFor(model => model.Twelfth2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Twelfth3)
+                @Html.ValidationMessageFor(model => model.Twelfth3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Twelfth4)
+                @Html.ValidationMessageFor(model => model.Twelfth4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Twelfth5)
+                @Html.ValidationMessageFor(model => model.Twelfth5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.Reserves, htmlAttributes: new { @class = "menu-label" })
+        </div>
+        <div class="col-md-1">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Reserves)
+                @Html.ValidationMessageFor(model => model.Reserves, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="reserves">
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.R_FirstNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.R_FirstNickname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_FirstFull)
+                    @Html.ValidationMessageFor(model => model.R_FirstFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_First1)
+                    @Html.ValidationMessageFor(model => model.R_First1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_First2)
+                    @Html.ValidationMessageFor(model => model.R_First2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_First3)
+                    @Html.ValidationMessageFor(model => model.R_First3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_First4)
+                    @Html.ValidationMessageFor(model => model.R_First4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_First5)
+                    @Html.ValidationMessageFor(model => model.R_First5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.R_SecondNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.R_SecondNickname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_SecondFull)
+                    @Html.ValidationMessageFor(model => model.R_SecondFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Second1)
+                    @Html.ValidationMessageFor(model => model.R_Second1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Second2)
+                    @Html.ValidationMessageFor(model => model.R_Second2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Second3)
+                    @Html.ValidationMessageFor(model => model.R_Second3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Second4)
+                    @Html.ValidationMessageFor(model => model.R_Second4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Second5)
+                    @Html.ValidationMessageFor(model => model.R_Second5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.R_ThirdNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.R_ThirdNickname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_ThirdFull)
+                    @Html.ValidationMessageFor(model => model.R_ThirdFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Third1)
+                    @Html.ValidationMessageFor(model => model.R_Third1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Third2)
+                    @Html.ValidationMessageFor(model => model.R_Third2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Third3)
+                    @Html.ValidationMessageFor(model => model.R_Third3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Third4)
+                    @Html.ValidationMessageFor(model => model.R_Third4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Third5)
+                    @Html.ValidationMessageFor(model => model.R_Third5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.R_FourthNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.R_FourthNickname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_FourthFull)
+                    @Html.ValidationMessageFor(model => model.R_FourthFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fourth1)
+                    @Html.ValidationMessageFor(model => model.R_Fourth1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fourth2)
+                    @Html.ValidationMessageFor(model => model.R_Fourth2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fourth3)
+                    @Html.ValidationMessageFor(model => model.R_Fourth3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fourth4)
+                    @Html.ValidationMessageFor(model => model.R_Fourth4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fourth5)
+                    @Html.ValidationMessageFor(model => model.R_Fourth5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.R_FifthNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.R_FifthNickname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_FifthFull)
+                    @Html.ValidationMessageFor(model => model.R_FifthFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fifth1)
+                    @Html.ValidationMessageFor(model => model.R_Fifth1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fifth2)
+                    @Html.ValidationMessageFor(model => model.R_Fifth2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fifth3)
+                    @Html.ValidationMessageFor(model => model.R_Fifth3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fifth4)
+                    @Html.ValidationMessageFor(model => model.R_Fifth4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.R_Fifth5)
+                    @Html.ValidationMessageFor(model => model.R_Fifth5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

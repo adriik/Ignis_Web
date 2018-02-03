@@ -21,6 +21,7 @@ input,
 select,
 textarea {
     max-width: 280px;
+    max-height: 25px;
 }
 
 container {
@@ -63,4 +64,8 @@ th, td {
 .jumbotron-opacity {
     padding-top: 30px;
     background: rgba(255,255,255,0.1);
+}
+
+.menu-label {
+    color: white;
 }
