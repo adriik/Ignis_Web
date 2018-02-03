@@ -16,7 +16,6 @@
     white-space: normal;
 }
 
-
 container {
     margin-left: 5px;
     margin-right: 5px;
@@ -57,4 +56,8 @@ th, td {
 .jumbotron-opacity {
     padding-top: 30px;
     background: rgba(255,255,255,0.1);
+}
+
+.menu-label {
+    color: white;
 }
