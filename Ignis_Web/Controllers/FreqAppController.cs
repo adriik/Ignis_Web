@@ -14,9 +14,20 @@ namespace Ignis_Web.Controllers
         // GET: FreqApp
         public ActionResult FreqAppka()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToRoute(new
+                {
+                    controller = "Account",
+                    action = "Login",
+                });
+            }
         }
 
-        
+
         }
 }
