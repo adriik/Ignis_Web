@@ -18,6 +18,8 @@ namespace Ignis_Web.Models
         public string Czwarty { get; set; }
         public string Piaty { get; set; }
         public string Kolor { get; set; }
+        public double Total { get; set; }
+        public static double TotalAll { get; set; }
 
         public Czlonek(string Nickname)
         {
@@ -30,7 +32,7 @@ namespace Ignis_Web.Models
             //s = s[0].ToUpper() + s.Substring(1);
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string QueryPeople = "SELECT \"First Boss\",\"Second Boss\",\"Third Boss\",\"Fourth Boss\",\"Fifth Boss\" FROM public.\"IBP\" WHERE \"Nickname\"=" + "'"+Nickname+"'";
+            string QueryPeople = "SELECT \"First Boss\",\"Second Boss\",\"Third Boss\",\"Fourth Boss\",\"Fifth Boss\",\"Total\" FROM public.\"IBP\" WHERE \"Nickname\"=" + "'"+Nickname+"'";
             using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -42,6 +44,8 @@ namespace Ignis_Web.Models
                         Trzeci = reader.GetString(2);
                         Czwarty = reader.GetString(3);
                         Piaty = reader.GetString(4);
+                        Total = Math.Round(reader.GetDouble(5),2);
+                        TotalAll += Total;
                     }
                 }
             }

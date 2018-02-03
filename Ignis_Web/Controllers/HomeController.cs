@@ -13,8 +13,6 @@ namespace Ignis_Web.Controllers
     {
         public ActionResult Index()
         {
-            //if (Session["user"]!= null)
-            //{
                 var lista = new List<Czlonek>();
                 NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
                 cn.Open();
@@ -30,18 +28,11 @@ namespace Ignis_Web.Controllers
                     }
                 }
                 ViewBag.People = lista;
+                ViewBag.TotalAll = Czlonek.TotalAll;
                 cn.Close();
 
                 return View();
-            //}
-            //else
-            //{
-            //    return RedirectToRoute(new
-            //    {
-            //        controller = "Account",
-            //        action = "Login",
-            //    });
-            //}
+
         }
 
         public ActionResult About()

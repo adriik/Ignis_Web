@@ -48,14 +48,31 @@
             }
             <tr>
                 <td class="first-col table-dark text-center table-striped table-hover">Suma</td>
-                <td>99999</td>
+                <td>@ViewBag.TotalAll</td>
+                    
                     @foreach (var czlonek in ViewBag.People)
                     {
-                        <td>coś</td>
+                        <td>@czlonek.Total</td>
                     }
             </tr>
 </tbody>
         </table>
+    </div>
+</div>
+
+<div class="jumbotron">
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+            @foreach (var item in ViewBag.People)
+            {
+            <a class="dropdown-item" href="#">
+                @item.Nickname</a>
+            }
+        </div>
     </div>
 </div>
 
