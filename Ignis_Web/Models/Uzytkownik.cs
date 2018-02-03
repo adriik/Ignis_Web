@@ -8,11 +8,11 @@ namespace Ignis_Web.Models
 {
     public class Uzytkownik
     {
-        [Required]
+        [Required(ErrorMessage = "Musisz podać nazwę użytkownika.")]
         [Display(Name = "Nazwa użytkownika")]
         public string UserName { get; set; }
         [Display(Name = "Hasło")]
-        [Required]
+        [Required(ErrorMessage = "Musisz podać hasło.")]
         public string Password { get; set; }
     }
 }
