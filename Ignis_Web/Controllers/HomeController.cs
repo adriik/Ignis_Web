@@ -13,24 +13,35 @@ namespace Ignis_Web.Controllers
     {
         public ActionResult Index()
         {
-            var lista = new List<Czlonek>();
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
+            //if (Session["user"]!= null)
+            //{
+                var lista = new List<Czlonek>();
+                NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+                cn.Open();
+                string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
+                using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
                 {
-                    while (reader.Read())
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        lista.Add(new Czlonek(reader.GetString(0)));
+                        while (reader.Read())
+                        {
+                            lista.Add(new Czlonek(reader.GetString(0)));
+                        }
                     }
                 }
-            }
-            ViewBag.People = lista;
-            cn.Close();
+                ViewBag.People = lista;
+                cn.Close();
 
-            return View();
+                return View();
+            //}
+            //else
+            //{
+            //    return RedirectToRoute(new
+            //    {
+            //        controller = "Account",
+            //        action = "Login",
+            //    });
+            //}
         }
 
         public ActionResult About()
