@@ -75,6 +75,13 @@
             }
         </div>
     </div>
+
+    <select class="selectpicker dropup" data-dropup-auto="false" data-size="10" data-live-search="true" title="Wybierz gracza" data-style="btn-secondary">
+        @foreach (var item in ViewBag.People)
+        {
+        <option value="@item.Nickname">@item.Nickname</option>
+        }
+    </select>
 </div>
 
 @section Scripts {
@@ -153,5 +160,6 @@
             $(window).scroll(onscroll);
             $(window).resize(onscroll);
         });
+
     </script>
 }
