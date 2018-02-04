@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Ignis_Web.Models
 {
@@ -159,5 +160,6 @@ namespace Ignis_Web.Models
         public bool R_Fifth3 { get; set; }
         public bool R_Fifth4 { get; set; }
         public bool R_Fifth5 { get; set; }
+
     }
 }

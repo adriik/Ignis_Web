@@ -29,6 +29,10 @@ namespace Ignis_Web.Controllers
                 }
                 ViewBag.People = lista;
                 ViewBag.TotalAll = Czlonek.TotalAll;
+                ViewBag.ParameterValueList = lista.ToSelectList(x => x.Nickname, false);
+            //ViewBag.LocationList = allLocations.ToSelectList(x => x.Key, x => x.Value, myLocations /* selectedValues */);
+
+
                 cn.Close();
 
                 return View();
