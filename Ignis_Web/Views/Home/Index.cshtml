@@ -55,6 +55,231 @@
                         <td>@czlonek.Total</td>
                     }
             </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Wypłacono</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.GoldIncome</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Set</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Set == true)
+                    {
+                        <td><i class="fas fa-check text-success"></i></td>
+                    }
+                    else
+                    {
+                        <td><i class="fas fa-times text-danger"></i></td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Rękawice</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Gloves > 100)
+                    {
+                        <td class="text-success">@czlonek.Gloves</td>
+                    }else
+	                {
+                        <td>@czlonek.Gloves</td>
+	                }
+                    
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Pas</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Belt > 100)
+                    {
+                        <td class="text-success">@czlonek.Belt</td>
+                    }
+                    else
+                    {
+                        <td>@czlonek.Belt</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Peleryna</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Cloak > 100)
+                    {
+                        <td class="text-success">@czlonek.Cloak</td>
+                    }
+                    else
+                    {
+                        <td>@czlonek.Cloak</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Spodnie</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Pants > 100)
+                    {
+                        <td class="text-success">@czlonek.Pants</td>
+                    }
+                    else
+                    {
+                        <td>@czlonek.Pants</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Broń</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Weapon > 100)
+                    {
+                        <td class="text-success">@czlonek.Weapon</td>
+                    }
+                    else
+                    {
+                        <td>@czlonek.Weapon</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">Tarcza</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    if (czlonek.Shield > 100)
+                    {
+                        <td class="text-success">@czlonek.Shield</td>
+                    }
+                    else
+                    {
+                        <td>@czlonek.Shield</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">sta/hp 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat1</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat1Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">sta/wis 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat2</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat2Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">sta/patt 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat3</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat3Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">str/patt 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat4</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat4Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">dex/patt 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat5</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat5Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">int/matt 251</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat6</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat6Rank</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">int/matt</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat7</td>
+                }
+            </tr>
+            <tr>
+                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                <td> </td>
+                @foreach (var czlonek in ViewBag.People)
+                {
+                    <td>@czlonek.Stat7Rank</td>
+                }
+            </tr>
 </tbody>
         </table>
     </div>

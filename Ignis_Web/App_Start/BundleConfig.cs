@@ -23,7 +23,8 @@ namespace Ignis_Web
                       "~/Scripts/bootstrap.bundle.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/bootstrap-select.js",
-                      "~/Scripts/i18n/defaults-pl_PL.js"));
+                      "~/Scripts/i18n/defaults-pl_PL.js",
+                      "~/Scripts/fontawesome-all.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
