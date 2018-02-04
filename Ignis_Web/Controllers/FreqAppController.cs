@@ -16,8 +16,7 @@ namespace Ignis_Web.Controllers
         {
             if (Session["user"] != null)
             {
-
-                var lista = new List<Appka>();
+                var lista = new List<appka>();
                 //s = s[0].ToUpper() + s.Substring(1);
                 NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
                 cn.Open();
@@ -28,15 +27,13 @@ namespace Ignis_Web.Controllers
                     {
                         while (reader.Read())
                         {
-                            lista.Add(new Appka(reader.GetString(0)));
+                            lista.Add(new appka(reader.GetString(0)));
                         }
                     }
                 }
-                System.Diagnostics.Debug.WriteLine("Wlazłem do zwyklego ladowania strony");
-                ViewBag.ListaLudzi = lista.ToSelectList(x => x.FirstNicknamee, false);
+                ViewBag.ListaLudzi = lista.ToSelectList(x => x.Nickname, false);
 
                 cn.Close();
-                System.Diagnostics.Debug.WriteLine("Wlazłem do zwyklego ladowania strony");
                 return View();
             }
             else
@@ -48,9 +45,8 @@ namespace Ignis_Web.Controllers
                 });
             }
         }
-
         [HttpPost]
-        public ActionResult FreqAppka(Appka username)
+        public ActionResult FreqAppka(appka username)
         {
             var checkfirst = username.FirstNickname;
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
@@ -61,11 +57,12 @@ namespace Ignis_Web.Controllers
             temp = temp + 1;
             NpgsqlCommand update_FirstBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"First Boss\" = " + temp + " Where \"Nickname\" ='" + checkfirst + "' ");
             update_FirstBoss.Connection = cn;
-            //update_FirstBoss.ExecuteNonQuery();
-
-            System.Diagnostics.Debug.WriteLine("Uwaga dostalem: " + checkfirst);
+            update_FirstBoss.ExecuteNonQuery();
             cn.Close();
+            //return RedirectToAction("FreqApp", checkfirst);
+            //return View();
             return RedirectToAction("FreqAppka", "FreqApp");
         }
+
     }
 }

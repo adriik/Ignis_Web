@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ignis_Web.Models;
+using Npgsql;
 
 namespace Ignis_Web.Models
 {
-    public class Appka
+    public class appka
     {
         public string Nickname { get; set; }
         public string Full { get; set; }
@@ -23,7 +26,7 @@ namespace Ignis_Web.Models
         public string Receiver { get; set; }
 
 
-
+        public string FirstNickname { get; set; }
         public bool FirstFull { get; set; }
         public bool First1 { get; set; }
         public bool First2 { get; set; }
@@ -161,17 +164,17 @@ namespace Ignis_Web.Models
         public bool R_Fifth4 { get; set; }
         public bool R_Fifth5 { get; set; }
 
-        
-        public string FirstNickname { get; set; }
-        public string FirstNicknamee { get; set; }
-        public Appka(string FirstNicknamee)
-        {
-            this.FirstNicknamee = FirstNicknamee;//[0].ToString().ToUpper() + Nickname.Substring(1);
-        }
-
-        public Appka()
+        public appka()
         {
 
         }
+        public appka(string Nickname)
+        {
+            this.Nickname = Nickname;//[0].ToString().ToUpper() + Nickname.Substring(1);
+        }
+
+
     }
+
+
 }
