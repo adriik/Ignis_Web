@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Ignis_Web.Models
 {
-    public class appka
+    public class Appka
     {
         public string Nickname { get; set; }
         public string Full { get; set; }
@@ -23,7 +23,7 @@ namespace Ignis_Web.Models
         public string Receiver { get; set; }
 
 
-        public string FirstNickname { get; set; }
+
         public bool FirstFull { get; set; }
         public bool First1 { get; set; }
         public bool First2 { get; set; }
@@ -161,5 +161,17 @@ namespace Ignis_Web.Models
         public bool R_Fifth4 { get; set; }
         public bool R_Fifth5 { get; set; }
 
+        
+        public string FirstNickname { get; set; }
+        public string FirstNicknamee { get; set; }
+        public Appka(string FirstNicknamee)
+        {
+            this.FirstNicknamee = FirstNicknamee;//[0].ToString().ToUpper() + Nickname.Substring(1);
+        }
+
+        public Appka()
+        {
+
+        }
     }
 }

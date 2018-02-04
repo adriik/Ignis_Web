@@ -16,6 +16,27 @@ namespace Ignis_Web.Controllers
         {
             if (Session["user"] != null)
             {
+
+                var lista = new List<Appka>();
+                //s = s[0].ToUpper() + s.Substring(1);
+                NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+                cn.Open();
+                string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
+                using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Appka(reader.GetString(0)));
+                        }
+                    }
+                }
+                System.Diagnostics.Debug.WriteLine("Wlazłem do zwyklego ladowania strony");
+                ViewBag.ListaLudzi = lista.ToSelectList(x => x.FirstNicknamee, false);
+
+                cn.Close();
+                System.Diagnostics.Debug.WriteLine("Wlazłem do zwyklego ladowania strony");
                 return View();
             }
             else
@@ -28,6 +49,23 @@ namespace Ignis_Web.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult FreqAppka(Appka username)
+        {
+            var checkfirst = username.FirstNickname;
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + checkfirst + "'";
+            NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
+            int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
+            temp = temp + 1;
+            NpgsqlCommand update_FirstBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"First Boss\" = " + temp + " Where \"Nickname\" ='" + checkfirst + "' ");
+            update_FirstBoss.Connection = cn;
+            //update_FirstBoss.ExecuteNonQuery();
 
+            System.Diagnostics.Debug.WriteLine("Uwaga dostalem: " + checkfirst);
+            cn.Close();
+            return RedirectToAction("FreqAppka", "FreqApp");
         }
+    }
 }

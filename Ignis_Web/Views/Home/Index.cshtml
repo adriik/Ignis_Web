@@ -284,7 +284,7 @@
         </table>
     </div>
 </div>
-@model Ignis_Web.Models.Test
+
 <div class="jumbotron">
 
     <div class="dropdown">
@@ -300,27 +300,6 @@
             }
         </div>
     </div>
-
-    <select class="selectpicker dropup" data-dropup-auto="false" data-size="10" data-live-search="true" title="Wybierz gracza" data-style="btn-secondary">
-        @foreach (var item in ViewBag.People)
-        {
-            <option value="@item.Nickname">@item.Nickname</option>
-        }
-    </select>
-
-
-    @Html.DropDownListFor(model => model.UserName,
-      ViewBag.ParameterValueList as IEnumerable<SelectListItem>,
-       new
-       {
-           data_placeholder = "Select Options ",
-           data_dropup_auto = "false",
-           data_size = "10",
-           data_live_search = "true",
-           title = "Wybierz gracza",
-           data_style = "btn-secondary",
-           @class = "selectpicker dropup"
-       })
 </div>
 
 @section Scripts {
