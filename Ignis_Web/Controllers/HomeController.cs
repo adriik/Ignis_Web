@@ -36,7 +36,8 @@ namespace Ignis_Web.Controllers
             //    System.Diagnostics.Debug.WriteLine("Uzytkownik: " + item.Nickname + "Rank: " + item.Stat1Rank);
 
             //}
-            lista.Sort((emp1, emp2) => emp1.Class.CompareTo(emp2.Class));
+            //lista.Sort((emp1, emp2) => emp1.Nickname.CompareTo(emp2.Nickname));
+            //lista.Sort((emp1, emp2) => emp1.Class.CompareTo(emp2.Class));
 
             List<Czlonek>listSortByClass = new List<Czlonek>();
             
