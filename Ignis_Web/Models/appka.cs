@@ -19,6 +19,12 @@ namespace Ignis_Web.Models
         public string Czwarty { get; set; }
         public string Piaty { get; set; }
 
+        public string Instancje { get; set; }
+        public string  IBP { get; set; }
+        public string SToES { get; set; }
+        public bool checkIBP { get; set; }
+        public bool checkSToES { get; set; }
+
         public string Drop { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
