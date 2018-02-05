@@ -27,8 +27,12 @@ th, td {
 
 .first-col {
     position: absolute;
-    width: 5em;
-    margin-left: -5em;
+    width: 7em;
+    margin-left: -7em;
+}
+
+.header-col {
+
 }
 
 .table-wrapper {
@@ -68,3 +72,59 @@ th, td {
     overflow-x: hidden;
 }
 
+.color-stat-rank {
+    background-color: rgba(255, 235, 59, 0.1);
+}
+
+.color-stat {
+    background-color: rgba(255, 152, 0, 0.1);
+}
+
+.color-stat-rank-select {
+    background-color: yellowgreen;
+    color: black;
+}
+
+.color-set {
+    background-color:yellowgreen;
+}
+
+.color-druid {
+    color: green;
+}
+
+.color-priest {
+    color: green;
+}
+
+.color-knight {
+    color: yellow;
+}
+
+.color-scout {
+    color: forestgreen;
+}
+
+.color-rouge {
+    color: deepskyblue;
+}
+
+.color-warden {
+    color: rebeccapurple;
+}
+
+.color-champion {
+    color: royalblue;
+}
+
+.color-mage {
+    color: darkorange;
+}
+
+.color-warlock {
+    color: saddlebrown;
+}
+
+.font-size {
+    font-size:10px;
+}

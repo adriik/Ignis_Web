@@ -21,6 +21,7 @@ namespace Ignis_Web.Models
         public string Kolor { get; set; }
         public double Total { get; set; }
         public static double TotalAll { get; set; }
+        public static int GoldTotalAll { get; set; }
         public int GoldIncome { get; set; }
         public bool Set { get; set; }
         public int Gloves { get; set; }
@@ -31,31 +32,42 @@ namespace Ignis_Web.Models
         public int Shield { get; set; }
         public int Stat1 { get; set; }
         public double Stat1Rank { get; set; }
+        public bool Stat1Select { get; set; } = false;
+        public double Stat1PercentRank { get; set; }
         public int Stat2 { get; set; }
         public double Stat2Rank { get; set; }
+        public bool Stat2Select { get; set; } = false;
+        public double Stat2PercentRank { get; set; }
         public int Stat3 { get; set; }
         public double Stat3Rank { get; set; }
+        public bool Stat3Select { get; set; } = false;
+        public double Stat3PercentRank { get; set; }
         public int Stat4 { get; set; }
         public double Stat4Rank { get; set; }
+        public bool Stat4Select { get; set; } = false;
+        public double Stat4PercentRank { get; set; }
         public int Stat5 { get; set; }
         public double Stat5Rank { get; set; }
+        public bool Stat5Select { get; set; } = false;
+        public double Stat5PercentRank { get; set; }
         public int Stat6 { get; set; }
         public double Stat6Rank { get; set; }
+        public bool Stat6Select { get; set; } = false;
+        public double Stat6PercentRank { get; set; }
         public int Stat7 { get; set; }
         public double Stat7Rank { get; set; }
+        public bool Stat7Select { get; set; } = false;
+        public double Stat7PercentRank { get; set; }
 
         public Czlonek(string Nickname)
         {
             this.Nickname = Nickname;//[0].ToString().ToUpper() + Nickname.Substring(1);
-            if(Nickname == "Etze")
-            {
-                this.Kolor = "background-color: coral;";
-            }
-            
+
+            //Stat1Select = false;
             //s = s[0].ToUpper() + s.Substring(1);
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string QueryPeople = "SELECT * FROM public.\"IBP\" WHERE \"Nickname\"=" + "'"+Nickname+"'";
+            string QueryPeople = "SELECT * FROM public.\"IBP\",public.\"People\" WHERE \"IBP\".\"Nickname\"=" + "'"+Nickname+ "' AND \"People\".\"Nickname\"=" + "'" +Nickname+"'";
             using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -70,6 +82,7 @@ namespace Ignis_Web.Models
                         Total = Math.Round(reader.GetDouble(6),2);
                         TotalAll += Total;
                         GoldIncome = reader.GetInt32(9);
+                        GoldTotalAll += GoldIncome;
                         Set = reader.GetBoolean(10);
                         Gloves = reader.GetInt32(11);
                         Belt = reader.GetInt32(12);
@@ -97,6 +110,8 @@ namespace Ignis_Web.Models
 
                         Stat7 = reader.GetInt32(29);
                         Stat7Rank = Math.Round(reader.GetDouble(30),3);
+
+                        Class = reader.GetString(32);
                     }
                 }
             }
