@@ -105,37 +105,37 @@ namespace Ignis_Web.Models
                         Weapon = reader.GetInt32(15);
                         Shield = reader.GetInt32(16);
                         Stat1 = reader.GetInt32(17);
-                        Stat1Rank = Math.Round(reader.GetDouble(18),3);
+                        Stat1Rank = Math.Round(reader.GetDouble(18),2);
                         Stat1Total += Stat1;
                         Stat1TotalRank += Stat1Rank;
 
                         Stat2 = reader.GetInt32(19);
-                        Stat2Rank = Math.Round(reader.GetDouble(20),3);
+                        Stat2Rank = Math.Round(reader.GetDouble(20),2);
                         Stat2Total += Stat2;
                         Stat2TotalRank += Stat2Rank;
 
                         Stat3 = reader.GetInt32(21);
-                        Stat3Rank = Math.Round(reader.GetDouble(22),3);
+                        Stat3Rank = Math.Round(reader.GetDouble(22),2);
                         Stat3Total += Stat3;
                         Stat3TotalRank += Stat3Rank;
 
                         Stat4 = reader.GetInt32(23);
-                        Stat4Rank = Math.Round(reader.GetDouble(24),3);
+                        Stat4Rank = Math.Round(reader.GetDouble(24),2);
                         Stat4Total += Stat4;
                         Stat4TotalRank += Stat4Rank;
 
                         Stat5 = reader.GetInt32(25);
-                        Stat5Rank = Math.Round(reader.GetDouble(26),3);
+                        Stat5Rank = Math.Round(reader.GetDouble(26),2);
                         Stat5Total += Stat5;
                         Stat5TotalRank += Stat5Rank;
 
                         Stat6 = reader.GetInt32(27);
-                        Stat6Rank = Math.Round(reader.GetDouble(28),3);
+                        Stat6Rank = Math.Round(reader.GetDouble(28),2);
                         Stat6Total += Stat6;
                         Stat6TotalRank += Stat6Rank;
 
                         Stat7 = reader.GetInt32(29);
-                        Stat7Rank = Math.Round(reader.GetDouble(30),3);
+                        Stat7Rank = Math.Round(reader.GetDouble(30),2);
                         Stat7Total += Stat7;
                         Stat7TotalRank += Stat7Rank;
 
