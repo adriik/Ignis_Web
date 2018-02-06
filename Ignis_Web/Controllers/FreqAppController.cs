@@ -75,6 +75,25 @@ namespace Ignis_Web.Controllers
                 TempData["FreqVal"] = false;
                 return RedirectToAction("FreqAppka");
             }
+            //Instancje
+            var IBP_Dungeon = username.checkIBP;
+            var SToES_Dungeon = username.checkSToES;
+            string Dungeon = "";
+            //Sprawdzenie czy instancja zostala wybrana i jaka zostala wybrana.
+            if(IBP_Dungeon == false && SToES_Dungeon == false)
+            {
+                TempData["Dung"] = false;
+                return RedirectToAction("FreqAppka");
+            }
+            if(IBP_Dungeon == true)
+            {
+                Dungeon = "IBP";
+            }
+            if(SToES_Dungeon == true)
+            {
+                Dungeon = "STOES";
+            }
+
             //Frekwencja na kazdym bossie
             int FirstFreqNo1 = 0; int FirstFreqNo2 = 0; int FirstFreqNo3 = 0; int FirstFreqNo4 = 0; int FirstFreqNo5 = 0;
             int SecondFreqNo1 = 0; int SecondFreqNo2 = 0; int SecondFreqNo3 = 0; int SecondFreqNo4 = 0; int SecondFreqNo5 = 0;
@@ -766,92 +785,142 @@ namespace Ignis_Web.Controllers
             }
 
             //Sprawdzenie czy pkt frekwencji nie zostana dodane do pustych(string = "") graczy
-            if(string.IsNullOrEmpty(FirstMember) && checkFull1 == true || checkSecond1 == true || checkSecond2 == true || checkSecond3 == true || checkSecond4 == true || checkSecond5 == true)
+            if(string.IsNullOrEmpty(FirstMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if(checkFull1 == true || checkFirst1 == true || checkFirst2 == true || checkFirst3 == true || checkFirst4 == true || checkFirst5 == true){
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(SecondMember) && checkFull2 == true || checkSecond1 == true || checkSecond2 == true || checkSecond3 == true || checkSecond4 == true || checkSecond5 == true)
+            if (string.IsNullOrEmpty(SecondMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull2 == true || checkSecond1 == true || checkSecond2 == true || checkSecond3 == true || checkSecond4 == true || checkSecond5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(ThirdMember) && checkFull3 == true || checkThird1 == true || checkThird2 == true || checkThird3 == true || checkThird4 == true || checkThird5 == true)
+            if (string.IsNullOrEmpty(ThirdMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull3 == true || checkThird1 == true || checkThird2 == true || checkThird3 == true || checkThird4 == true || checkThird5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(FourthMember) && checkFull4 == true || checkFourth1 == true || checkFourth2 == true || checkFourth3 == true || checkFourth4 == true || checkFourth5 == true)
+            if (string.IsNullOrEmpty(FourthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull4 == true || checkFourth1 == true || checkFourth2 == true || checkFourth3 == true || checkFourth4 == true || checkFourth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(FifthMember) && checkFull5 == true || checkFifth1 == true || checkFifth2 == true || checkFifth3 == true || checkFifth4 == true || checkFifth5 == true)
+            if (string.IsNullOrEmpty(FifthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull5 == true || checkFifth1 == true || checkFifth2 == true || checkFifth3 == true || checkFifth4 == true || checkFifth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(SixthMember) && checkFull6 == true || checkSixth1 == true || checkSixth2 == true || checkSixth3 == true || checkSixth4 == true || checkSixth5 == true)
+            if (string.IsNullOrEmpty(SixthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull6 == true || checkSixth1 == true || checkSixth2 == true || checkSixth3 == true || checkSixth4 == true || checkSixth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(SeventhMember) && checkFull7 == true || checkSeventh1 == true || checkSeventh2 == true || checkSeventh3 == true || checkSeventh4 == true || checkSeventh5 == true)
+            if (string.IsNullOrEmpty(SeventhMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull7 == true || checkSeventh1 == true || checkSeventh2 == true || checkSeventh3 == true || checkSeventh4 == true || checkSeventh5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(EighthMember) && checkFull8 == true || checkEighth1 == true || checkEighth2 == true || checkEighth3 == true || checkEighth4 == true || checkEighth5 == true)
+            if (string.IsNullOrEmpty(EighthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull8 == true || checkEighth1 == true || checkEighth2 == true || checkEighth3 == true || checkEighth4 == true || checkEighth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(NinthMember) && checkFull9 == true || checkNinth1 == true || checkNinth2 == true || checkNinth3 == true || checkNinth4 == true || checkNinth5 == true)
+            if (string.IsNullOrEmpty(NinthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull9 == true || checkNinth1 == true || checkNinth2 == true || checkNinth3 == true || checkNinth4 == true || checkNinth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(TenthMember) && checkFull10 == true || checkTenth1 == true || checkTenth2 == true || checkTenth3 == true || checkTenth4 == true || checkTenth5 == true)
+            if (string.IsNullOrEmpty(TenthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull10 == true || checkTenth1 == true || checkTenth2 == true || checkTenth3 == true || checkTenth4 == true || checkTenth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(EleventhMember) && checkFull11 == true || checkEleventh1 == true || checkEleventh2 == true || checkEleventh3 == true || checkEleventh4 == true || checkEleventh5 == true)
+            if (string.IsNullOrEmpty(EleventhMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull11 == true || checkEleventh1 == true || checkEleventh2 == true || checkEleventh3 == true || checkEleventh4 == true || checkEleventh5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(TwelfthMember) && checkFull12 == true || checkTwelfth1 == true || checkTwelfth2 == true || checkTwelfth3 == true || checkTwelfth4 == true || checkTwelfth5 == true)
+            if (string.IsNullOrEmpty(TwelfthMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFull12 == true || checkTwelfth1 == true || checkTwelfth2 == true || checkTwelfth3 == true || checkTwelfth4 == true || checkTwelfth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(FirstReserveMember) && checkFullR1 == true || checkR_First1 == true || checkR_First2 == true || checkR_First3 == true || checkR_First4 == true || checkR_First5 == true)
+            if (string.IsNullOrEmpty(FirstReserveMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFullR1 == true || checkR_First1 == true || checkR_First2 == true || checkR_First3 == true || checkR_First4 == true || checkR_First5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(SecondReserveMember) && checkFullR2 == true || checkR_Second1 == true || checkR_Second2 == true || checkR_Second3 == true || checkR_Second4 == true || checkR_Second5 == true)
+            if (string.IsNullOrEmpty(SecondReserveMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFullR2 == true || checkR_Second1 == true || checkR_Second2 == true || checkR_Second3 == true || checkR_Second4 == true || checkR_Second5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(ThirdReserveMember) && checkFullR3 == true || checkR_Third1 == true || checkR_Third2 == true || checkR_Third3 == true || checkR_Third4 == true || checkR_Third5 == true)
+            if (string.IsNullOrEmpty(ThirdReserveMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFullR3 == true || checkR_Third1 == true || checkR_Third2 == true || checkR_Third3 == true || checkR_Third4 == true || checkR_Third5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(FourthReserveMember) && checkFullR4 == true || checkR_Fourth1 == true || checkR_Fourth2 == true || checkR_Fourth3 == true || checkR_Fourth4 == true || checkR_Fourth5 == true)
+            if (string.IsNullOrEmpty(FourthReserveMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFullR4 == true || checkR_Fourth1 == true || checkR_Fourth2 == true || checkR_Fourth3 == true || checkR_Fourth4 == true || checkR_Fourth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            if (string.IsNullOrEmpty(FifthReserveMember) && checkFullR5 == true || checkR_Fifth1 == true || checkR_Fifth2 == true || checkR_Fifth3 == true || checkR_Fifth4 == true || checkR_Fifth5 == true)
+            if (string.IsNullOrEmpty(FifthReserveMember))
             {
-                TempData["Pusty"] = false;
-                return RedirectToAction("FreqAppka");
+                if (checkFullR5 == true || checkR_Fifth1 == true || checkR_Fifth2 == true || checkR_Fifth3 == true || checkR_Fifth4 == true || checkR_Fifth5 == true)
+                {
+                    TempData["Pusty"] = false;
+                    return RedirectToAction("FreqAppka");
+                }
             }
-            
+
             //Lista Frekwencji 1 bossa
             List<String> FirstBossLists = new List<String>();
             FirstBossLists.Add(FirstFreqNo1.ToString());
@@ -875,7 +944,7 @@ namespace Ignis_Web.Controllers
 
             //Lista Frekwencji 2 bossa
             List<String> SecondBossLists = new List<String>();
-            SecondBossLists.Add(SecondFreqNo2.ToString());
+            SecondBossLists.Add(FirstFreqNo2.ToString());
             SecondBossLists.Add(SecondFreqNo2.ToString());
             SecondBossLists.Add(ThirdFreqNo2.ToString());
             SecondBossLists.Add(FourthFreqNo2.ToString());
@@ -887,17 +956,17 @@ namespace Ignis_Web.Controllers
             SecondBossLists.Add(TenthFreqNo2.ToString());
             SecondBossLists.Add(EleventhFreqNo2.ToString());
             SecondBossLists.Add(TwelfthFreqNo2.ToString());
-            SecondBossLists.Add(SecondResFreqNo2.ToString());
+            SecondBossLists.Add(FirstResFreqNo2.ToString());
             SecondBossLists.Add(SecondResFreqNo2.ToString());
             SecondBossLists.Add(ThirdResFreqNo2.ToString());
             SecondBossLists.Add(FourthResFreqNo2.ToString());
             SecondBossLists.Add(FifthResFreqNo2.ToString());
-            SecondBossLists = FirstBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
+            SecondBossLists = SecondBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
 
             //Lista Frekwencji 3 bossa
             List<String> ThirdBossLists = new List<String>();
-            ThirdBossLists.Add(ThirdFreqNo3.ToString());
-            ThirdBossLists.Add(ThirdFreqNo3.ToString());
+            ThirdBossLists.Add(FirstFreqNo3.ToString());
+            ThirdBossLists.Add(SecondFreqNo3.ToString());
             ThirdBossLists.Add(ThirdFreqNo3.ToString());
             ThirdBossLists.Add(FourthFreqNo3.ToString());
             ThirdBossLists.Add(FifthFreqNo3.ToString());
@@ -908,18 +977,18 @@ namespace Ignis_Web.Controllers
             ThirdBossLists.Add(TenthFreqNo3.ToString());
             ThirdBossLists.Add(EleventhFreqNo3.ToString());
             ThirdBossLists.Add(TwelfthFreqNo3.ToString());
-            ThirdBossLists.Add(ThirdResFreqNo3.ToString());
-            ThirdBossLists.Add(ThirdResFreqNo3.ToString());
+            ThirdBossLists.Add(FirstResFreqNo3.ToString());
+            ThirdBossLists.Add(SecondResFreqNo3.ToString());
             ThirdBossLists.Add(ThirdResFreqNo3.ToString());
             ThirdBossLists.Add(FourthResFreqNo3.ToString());
             ThirdBossLists.Add(FifthResFreqNo3.ToString());
-            ThirdBossLists = FirstBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
+            ThirdBossLists = ThirdBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
 
             //Lista Frekwencji 4 bossa
             List<String> FourthBossLists = new List<String>();
-            FourthBossLists.Add(FourthFreqNo4.ToString());
-            FourthBossLists.Add(FourthFreqNo4.ToString());
-            FourthBossLists.Add(FourthFreqNo4.ToString());
+            FourthBossLists.Add(FirstFreqNo4.ToString());
+            FourthBossLists.Add(SecondFreqNo4.ToString());
+            FourthBossLists.Add(ThirdFreqNo4.ToString());
             FourthBossLists.Add(FourthFreqNo4.ToString());
             FourthBossLists.Add(FifthFreqNo4.ToString());
             FourthBossLists.Add(SixthFreqNo4.ToString());
@@ -929,19 +998,19 @@ namespace Ignis_Web.Controllers
             FourthBossLists.Add(TenthFreqNo4.ToString());
             FourthBossLists.Add(EleventhFreqNo4.ToString());
             FourthBossLists.Add(TwelfthFreqNo4.ToString());
-            FourthBossLists.Add(FourthResFreqNo4.ToString());
-            FourthBossLists.Add(FourthResFreqNo4.ToString());
-            FourthBossLists.Add(FourthResFreqNo4.ToString());
+            FourthBossLists.Add(FirstResFreqNo4.ToString());
+            FourthBossLists.Add(SecondResFreqNo4.ToString());
+            FourthBossLists.Add(ThirdResFreqNo4.ToString());
             FourthBossLists.Add(FourthResFreqNo4.ToString());
             FourthBossLists.Add(FifthResFreqNo4.ToString());
-            FourthBossLists = FirstBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
+            FourthBossLists = FourthBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
 
             //Lista Frekwencji 5 bossa
             List<String> FifthBossLists = new List<String>();
-            FifthBossLists.Add(FifthFreqNo5.ToString());
-            FifthBossLists.Add(FifthFreqNo5.ToString());
-            FifthBossLists.Add(FifthFreqNo5.ToString());
-            FifthBossLists.Add(FifthFreqNo5.ToString());
+            FifthBossLists.Add(FirstFreqNo5.ToString());
+            FifthBossLists.Add(SecondFreqNo5.ToString());
+            FifthBossLists.Add(ThirdFreqNo5.ToString());
+            FifthBossLists.Add(FourthFreqNo5.ToString());
             FifthBossLists.Add(FifthFreqNo5.ToString());
             FifthBossLists.Add(SixthFreqNo5.ToString());
             FifthBossLists.Add(SeventhFreqNo5.ToString());
@@ -950,14 +1019,80 @@ namespace Ignis_Web.Controllers
             FifthBossLists.Add(TenthFreqNo5.ToString());
             FifthBossLists.Add(EleventhFreqNo5.ToString());
             FifthBossLists.Add(TwelfthFreqNo5.ToString());
+            FifthBossLists.Add(FirstResFreqNo5.ToString());
+            FifthBossLists.Add(SecondResFreqNo5.ToString());
+            FifthBossLists.Add(ThirdResFreqNo5.ToString());
+            FifthBossLists.Add(FourthResFreqNo5.ToString());
             FifthBossLists.Add(FifthResFreqNo5.ToString());
-            FifthBossLists.Add(FifthResFreqNo5.ToString());
-            FifthBossLists.Add(FifthResFreqNo5.ToString());
-            FifthBossLists.Add(FifthResFreqNo5.ToString());
-            FifthBossLists.Add(FifthResFreqNo5.ToString());
-            FifthBossLists = FirstBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
+            FifthBossLists = FifthBossLists.Where(s1 => !string.IsNullOrWhiteSpace(s1)).ToList();
 
-            return RedirectToAction("FreqAppka", "FreqApp");
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            for (var i = 0; i < ListaGraczy.Count; i++)
+            {
+                if (FirstBossLists[i].ToString() == "1")
+                {
+                    cn.Open();
+                    string queryStr = "Select \"First Boss\" from  public.\"" + Dungeon + "\" Where \"Nickname\" = '" + ListaGraczy[i] + "'";
+                    NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
+                    int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
+                    temp = temp + 1;
+                    NpgsqlCommand update_FirstBoss = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"First Boss\" = " + temp + " Where \"Nickname\" ='" + ListaGraczy[i] + "' ");
+                    update_FirstBoss.Connection = cn;
+                    update_FirstBoss.ExecuteNonQuery();
+                    cn.Close();
+
+
+                }
+                if (SecondBossLists[i].ToString() == "1")
+                {
+                    cn.Open();
+                    string queryStr2 = "Select \"Second Boss\" from  public.\"" + Dungeon + "\" Where \"Nickname\" = '" + ListaGraczy[i] + "'";
+                    NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
+                    int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
+                    temp2 = temp2 + 1;
+                    NpgsqlCommand update_SecondBoss = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Second Boss\" = " + temp2 + " Where \"Nickname\" ='" + ListaGraczy[i] + "' ");
+                    update_SecondBoss.Connection = cn;
+                    update_SecondBoss.ExecuteNonQuery();
+                    cn.Close();
+                }
+                if (ThirdBossLists[i].ToString() == "1")
+                {
+                    cn.Open();
+                    string queryStr3 = "Select \"Third Boss\" from  public.\"" + Dungeon + "\" Where \"Nickname\" = '" + ListaGraczy[i] + "'";
+                    NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
+                    int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
+                    temp3 = temp3 + 1;
+                    NpgsqlCommand update_thirdBoss = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Third Boss\" = " + temp3 + " Where \"Nickname\" ='" + ListaGraczy[i] + "' ");
+                    update_thirdBoss.Connection = cn;
+                    update_thirdBoss.ExecuteNonQuery();
+                    cn.Close();
+                }
+                if (FourthBossLists[i].ToString() == "1")
+                {
+                    cn.Open();
+                    string queryStr4 = "Select \"Fourth Boss\" from  public.\"" + Dungeon + "\" Where \"Nickname\" = '" + ListaGraczy[i] + "'";
+                    NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
+                    int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
+                    temp4 = temp4 + 1;
+                    NpgsqlCommand update_FourthBoss = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Fourth Boss\" = " + temp4 + " Where \"Nickname\" ='" + ListaGraczy[i] + "' ");
+                    update_FourthBoss.Connection = cn;
+                    update_FourthBoss.ExecuteNonQuery();
+                    cn.Close();
+                }
+                if (FifthBossLists[i].ToString() == "1")
+                {
+                    cn.Open();
+                    string queryStr5 = "Select \"Fifth Boss\" from  public.\"" + Dungeon + "\" Where \"Nickname\" = '" + ListaGraczy[i] + "'";
+                    NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
+                    int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
+                    temp5 = temp5 + 1;
+                    NpgsqlCommand update_FifthBoss = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Fifth Boss\" = " + temp5 + " Where \"Nickname\" ='" + ListaGraczy[i] + "' ");
+                    update_FifthBoss.Connection = cn;
+                    update_FifthBoss.ExecuteNonQuery();
+                    cn.Close();
+                }
+            }
+                return RedirectToAction("FreqAppka", "FreqApp");
 
         }
 

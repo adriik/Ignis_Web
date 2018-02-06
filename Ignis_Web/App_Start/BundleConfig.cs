@@ -10,7 +10,8 @@ namespace Ignis_Web
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/hide.js"));
+                        "~/Scripts/hide.js",
+                        "~/Scripts/dungeon-select.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
