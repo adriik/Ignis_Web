@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "FreqAppka";
 }
-
 <h2>FreqAppka</h2>
 <div class="jumbotron jumbotron-opacity">
     @using (Html.BeginForm())
@@ -24,6 +23,10 @@
         {
             @Html.ValidationSummary(false, "Powietrze dostało punkty frekwencji.", new { @class = "bg-danger text-center" })
         }
+        if (TempData["Dung"] != null)
+        {
+            @Html.ValidationSummary(false, "Na której instancji ta grupa się bawiła?", new { @class = "bg-danger text-center" })
+        }
         <div class="row">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
@@ -37,17 +40,17 @@
         </div>
         <div class="row">
             <div class="col-md-1">
-
+                
             </div>
             <div class="col-md-1">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.checkIBP)
-                    @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.checkIBP, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-1">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.checkSToES)
+                    @Html.EditorFor(model => model.checkSToES, new { @class = "checkbox" })
                     @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
                 </div>
             </div>
