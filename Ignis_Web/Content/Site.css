@@ -94,7 +94,7 @@ th, td {
 }
 
 .color-priest {
-    color: green;
+    color: cornflowerblue;
 }
 
 .color-knight {
@@ -127,4 +127,18 @@ th, td {
 
 .font-size {
     font-size:10px;
+    font-weight:bold;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(206, 65, 31);
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.icon-mirror {
+    transform: scale(-1, 1);
 }

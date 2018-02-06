@@ -1,448 +1,561 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<h1><img src="~/Img/bully-minion.svg" alt="Frekwencja" class="icon" />Frekwencja<img src="~/Img/bully-minion.svg" alt="Frekwencja" class="icon icon-mirror"/></h1> 
 <div class="jumbotron jumbotron-opacity">
     <div class="table-wrapper fixed-scrollbar font-size">
         <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 7em; margin-left: +7em;">
             <thead>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
-                <td>WSP</td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Class == "Druid")
-                    {
-                        <td class="color-druid">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Priest")
-                    {
-                        <td class="color-priest">@czlonek.Nickname</td>
-                    }else if (czlonek.Class == "Knight")
-                    {
-                        <td class="color-knight">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Warden")
-                    {
-                        <td class="color-warden">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Champion")
-                    {
-                        <td class="color-champion">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Rouge")
-                    {
-                        <td class="color-rouge">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Scout")
-                    {
-                        <td class="color-scout">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Mage")
-                    {
-                        <td class="color-mage">@czlonek.Nickname</td>
-                    }
-                    else if (czlonek.Class == "Warlock")
-                    {
-                        <td class="color-warlock">@czlonek.Nickname</td>
-                    }
-                }
-            </tr>
-                </thead>
-            <tbody>
-            @for (int i = 1; i <= 5; i++)
-            {
                 <tr>
-                    <td class="first-col table-dark text-center table-striped table-hover">Boss @i</td>
-                    <td> </td>
+                    <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                    <td>WSP</td>
                     @foreach (var czlonek in ViewBag.People)
                     {
-                        switch (i)
+                        if (czlonek.Class == "Druid")
                         {
-                            case 1:
-                                <td>@czlonek.Pierwszy</td>
-                                break;
-                            case 2:
-                                <td>@czlonek.Drugi</td>
-                                break;
-                            case 3:
-                                <td>@czlonek.Trzeci</td>
-                                break;
-                            case 4:
-                                <td>@czlonek.Czwarty</td>
-                                break;
-                            case 5:
-                                <td>@czlonek.Piaty</td>
-                                break;
+                            <td class="color-druid">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            <td class="color-priest">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Knight")
+                        {
+                            <td class="color-knight">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warden")
+                        {
+                            <td class="color-warden">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            <td class="color-champion">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            <td class="color-rouge">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            <td class="color-scout">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Mage")
+                        {
+                            <td class="color-mage">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            <td class="color-warlock">@czlonek.Nickname</td>
                         }
                     }
                 </tr>
-            }
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Suma</td>
-                <td>@ViewBag.TotalAll</td>
-                    
+            </thead>
+            <tbody>
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Boss @i</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            switch (i)
+                            {
+                                case 1:
+                                    <td style="@czlonek.Kolor">@czlonek.Pierwszy</td>
+                                    break;
+                                case 2:
+                                    <td style="@czlonek.Kolor">@czlonek.Drugi</td>
+                                    break;
+                                case 3:
+                                    <td style="@czlonek.Kolor">@czlonek.Trzeci</td>
+                                    break;
+                                case 4:
+                                    <td style="@czlonek.Kolor">@czlonek.Czwarty</td>
+                                    break;
+                                case 5:
+                                    <td style="@czlonek.Kolor">@czlonek.Piaty</td>
+                                    break;
+                            }
+                        }
+                    </tr>
+                }
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Suma</td>
+                    <td>@ViewBag.TotalAll</td>
+
                     @foreach (var czlonek in ViewBag.People)
                     {
-                        <td>@czlonek.Total</td>
+                        <td style="@czlonek.Kolor">@czlonek.Total</td>
                     }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Wypłacono</td>
-                <td> @ViewBag.GoldTotalAll</td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td>@czlonek.GoldIncome</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Set</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Set == true)
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Wypłacono</td>
+                    <td> @ViewBag.GoldTotalAll</td>
+                    @foreach (var czlonek in ViewBag.People)
                     {
-                        <td class="color-set"><i class="fas fa-check text-success"></i></td>
+                        <td style="@czlonek.Kolor">@czlonek.GoldIncome</td>
                     }
-                    else
-                    {
-                        <td class="color-set"><i class="fas fa-times text-danger"></i></td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Rękawice</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Gloves > 100)
-                    {
-                        <td class="text-success">@czlonek.Gloves</td>
-                    }else
-	                {
-                        <td>@czlonek.Gloves</td>
-	                }
-                    
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Pas</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Belt > 100)
-                    {
-                        <td class="text-success">@czlonek.Belt</td>
-                    }
-                    else
-                    {
-                        <td>@czlonek.Belt</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Peleryna</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Cloak > 100)
-                    {
-                        <td class="text-success">@czlonek.Cloak</td>
-                    }
-                    else
-                    {
-                        <td>@czlonek.Cloak</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Spodnie</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Pants > 100)
-                    {
-                        <td class="text-success">@czlonek.Pants</td>
-                    }
-                    else
-                    {
-                        <td>@czlonek.Pants</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Broń</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Weapon > 100)
-                    {
-                        <td class="text-success">@czlonek.Weapon</td>
-                    }
-                    else
-                    {
-                        <td>@czlonek.Weapon</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">Tarcza</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Shield > 100)
-                    {
-                        <td class="text-success">@czlonek.Shield</td>
-                    }
-                    else
-                    {
-                        <td>@czlonek.Shield</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">sta/hp 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat1</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat1Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat1Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat1Rank</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">sta/wis 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat2</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat2Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat2Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat2Rank</td>
-                    }
-                    
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">sta/patt 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat3</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat3Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat3Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat3Rank</td>
-                    }
-                    
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">str/patt 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat4</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat4Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat4Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat4Rank</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">dex/patt 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat5</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat5Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat5Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat5Rank</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">int/matt 251</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat6</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    if (czlonek.Stat6Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat6Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat6Rank</td>
-                    }
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">int/matt</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                    <td class="color-stat">@czlonek.Stat7</td>
-                }
-            </tr>
-            <tr>
-                <td class="first-col table-dark text-center table-striped table-hover">rank</td>
-                <td> </td>
-                @foreach (var czlonek in ViewBag.People)
-                {
-                     if (czlonek.Stat7Select)
-                    {
-                        <td class="color-stat-rank-select">@czlonek.Stat7Rank</td>
-                    }
-                    else
-                    {
-                        <td class="color-stat-rank">@czlonek.Stat7Rank</td>
-                    }
-                }
-            </tr>
-</tbody>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
+    <h1><img src="~/Img/two-handed-sword.svg" alt="Frekwencja" class="icon" />Sety<img src="~/Img/two-handed-sword.svg" alt="Frekwencja" class="icon icon-mirror" /></h1>
+    <div class="jumbotron jumbotron-opacity">
+        <div class="table-wrapper fixed-scrollbar font-size">
+            <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 7em; margin-left: +7em;">
+                <thead>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                        <td>WSP</td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Class == "Druid")
+                            {
+                                <td class="color-druid">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Priest")
+                            {
+                                <td class="color-priest">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Knight")
+                            {
+                                <td class="color-knight">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Warden")
+                            {
+                                <td class="color-warden">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Champion")
+                            {
+                                <td class="color-champion">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Rouge")
+                            {
+                                <td class="color-rouge">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Scout")
+                            {
+                                <td class="color-scout">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Mage")
+                            {
+                                <td class="color-mage">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Warlock")
+                            {
+                                <td class="color-warlock">@czlonek.Nickname</td>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Set</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Set == true)
+                            {
+                                <td class="color-set" style="@czlonek.Kolor"><i class="fas fa-check text-success"></i></td>
+                            }
+                            else
+                            {
+                                <td class="color-set" style="@czlonek.Kolor"><i class="fas fa-times text-danger"></i></td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Rękawice</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Gloves > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Gloves</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Gloves</td>
+                            }
 
-@section Scripts {
-    <script type="text/javascript">
-        $(function ($) {
-            var scrollbar = $('<div id="fixed-scrollbar"><div></div></div>').appendTo($(document.body));
-            scrollbar.hide().css({
-                overflowX: 'auto',
-                position: 'fixed',
-                width: '100%',
-                bottom: 0
-            });
-            var fakecontent = scrollbar.find('div');
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Pas</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Belt > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Belt</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Belt</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Peleryna</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Cloak > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Cloak</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Cloak</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Spodnie</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Pants > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Pants</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Pants</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Broń</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Weapon > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Weapon</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Weapon</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Tarcza</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Shield > 100)
+                            {
+                                <td class="text-success" style="@czlonek.Kolor">@czlonek.Shield</td>
+                            }
+                            else
+                            {
+                                <td style="@czlonek.Kolor">@czlonek.Shield</td>
+                            }
+                        }
+                    </tr>
+                </tbody>
 
-            function top(e) {
-                return e.offset().top;
-            }
+            </table>
+        </div>
+    </div>
+    <h1><img src="~/Img/dragon-head.svg" alt="Frekwencja" class="icon" />Staty<img src="~/Img/dragon-head.svg" alt="Frekwencja" class="icon icon-mirror" /></h1>
+    <div class="jumbotron jumbotron-opacity">
+        <div class="table-wrapper fixed-scrollbar font-size">
+            <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 7em; margin-left: +7em;">
+                <thead>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                        <td>WSP</td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Class == "Druid")
+                            {
+                                <td class="color-druid">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Priest")
+                            {
+                                <td class="color-priest">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Knight")
+                            {
+                                <td class="color-knight">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Warden")
+                            {
+                                <td class="color-warden">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Champion")
+                            {
+                                <td class="color-champion">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Rouge")
+                            {
+                                <td class="color-rouge">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Scout")
+                            {
+                                <td class="color-scout">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Mage")
+                            {
+                                <td class="color-mage">@czlonek.Nickname</td>
+                            }
+                            else if (czlonek.Class == "Warlock")
+                            {
+                                <td class="color-warlock">@czlonek.Nickname</td>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">sta/hp 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat1</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat1Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat1Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat1Rank</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">sta/wis 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat2</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat2Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat2Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat2Rank</td>
+                            }
 
-            function bottom(e) {
-                return e.offset().top + e.height();
-            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">sta/patt 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat3</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat3Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat3Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat3Rank</td>
+                            }
 
-            var active = $([]);
-            function find_active() {
-                scrollbar.show();
-                var active = $([]);
-                $('.fixed-scrollbar').each(function () {
-                    if (top($(this)) < top(scrollbar) && bottom($(this)) > bottom(scrollbar)) {
-                        fakecontent.width($(this).get(0).scrollWidth);
-                        fakecontent.height(1);
-                        active = $(this);
-                    }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">str/patt 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat4</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat4Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat4Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat4Rank</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">dex/patt 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat5</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat5Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat5Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat5Rank</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">int/matt 251</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat6</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat6Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat6Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat6Rank</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">int/matt</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat7</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            if (czlonek.Stat7Select)
+                            {
+                                <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat7Rank</td>
+                            }
+                            else
+                            {
+                                <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat7Rank</td>
+                            }
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script type="text/javascript">
+            $(function ($) {
+                var scrollbar = $('<div id="fixed-scrollbar"><div></div></div>').appendTo($(document.body));
+                scrollbar.hide().css({
+                    overflowX: 'auto',
+                    position: 'fixed',
+                    width: '100%',
+                    bottom: 0
                 });
-                fit(active);
-                return active;
-            }
+                var fakecontent = scrollbar.find('div');
 
-            function fit(active) {
-                if (!active.length) return scrollbar.hide();
-                scrollbar.css({ left: active.offset().left, width: active.width() });
-                fakecontent.width($(this).get(0).scrollWidth);
-                fakecontent.height(1);
-                delete lastScroll;
-            }
-
-            function onscroll() {
-                var oldactive = active;
-                active = find_active();
-                if (oldactive.not(active).length) {
-                    oldactive.unbind('scroll', update);
+                function top(e) {
+                    return e.offset().top;
                 }
-                if (active.not(oldactive).length) {
-                    active.scroll(update);
+
+                function bottom(e) {
+                    return e.offset().top + e.height();
                 }
-                update();
-            }
 
-            var lastScroll;
-            function scroll() {
-                if (!active.length) return;
-                if (scrollbar.scrollLeft() === lastScroll) return;
-                lastScroll = scrollbar.scrollLeft();
-                active.scrollLeft(lastScroll);
-            }
+                var active = $([]);
+                function find_active() {
+                    scrollbar.show();
+                    var active = $([]);
+                    $('.fixed-scrollbar').each(function () {
+                        if (top($(this)) < top(scrollbar) && bottom($(this)) > bottom(scrollbar)) {
+                            fakecontent.width($(this).get(0).scrollWidth);
+                            fakecontent.height(1);
+                            active = $(this);
+                        }
+                    });
+                    fit(active);
+                    return active;
+                }
 
-            function update() {
-                if (!active.length) return;
-                if (active.scrollLeft() === lastScroll) return;
-                lastScroll = active.scrollLeft();
-                scrollbar.scrollLeft(lastScroll);
-            }
+                function fit(active) {
+                    if (!active.length) return scrollbar.hide();
+                    scrollbar.css({ left: active.offset().left, width: active.width() });
+                    fakecontent.width($(this).get(0).scrollWidth);
+                    fakecontent.height(1);
+                    delete lastScroll;
+                }
 
-            scrollbar.scroll(scroll);
+                function onscroll() {
+                    var oldactive = active;
+                    active = find_active();
+                    if (oldactive.not(active).length) {
+                        oldactive.unbind('scroll', update);
+                    }
+                    if (active.not(oldactive).length) {
+                        active.scroll(update);
+                    }
+                    update();
+                }
 
-            onscroll();
-            $(window).scroll(onscroll);
-            $(window).resize(onscroll);
-        });
-    </script>
-}
+                var lastScroll;
+                function scroll() {
+                    if (!active.length) return;
+                    if (scrollbar.scrollLeft() === lastScroll) return;
+                    lastScroll = scrollbar.scrollLeft();
+                    active.scrollLeft(lastScroll);
+                }
+
+                function update() {
+                    if (!active.length) return;
+                    if (active.scrollLeft() === lastScroll) return;
+                    lastScroll = active.scrollLeft();
+                    scrollbar.scrollLeft(lastScroll);
+                }
+
+                scrollbar.scroll(scroll);
+
+                onscroll();
+                $(window).scroll(onscroll);
+                $(window).resize(onscroll);
+            });
+        </script>
+
+
+    }
