@@ -34,30 +34,44 @@ namespace Ignis_Web.Models
         public double Stat1Rank { get; set; }
         public bool Stat1Select { get; set; } = false;
         public double Stat1PercentRank { get; set; }
+        public static int Stat1Total { get; set; }
+        public static double Stat1TotalRank { get; set; }
         public int Stat2 { get; set; }
         public double Stat2Rank { get; set; }
         public bool Stat2Select { get; set; } = false;
         public double Stat2PercentRank { get; set; }
+        public static int Stat2Total { get; set; }
+        public static double Stat2TotalRank { get; set; }
         public int Stat3 { get; set; }
         public double Stat3Rank { get; set; }
         public bool Stat3Select { get; set; } = false;
         public double Stat3PercentRank { get; set; }
+        public static int Stat3Total { get; set; }
+        public static double Stat3TotalRank { get; set; }
         public int Stat4 { get; set; }
         public double Stat4Rank { get; set; }
         public bool Stat4Select { get; set; } = false;
         public double Stat4PercentRank { get; set; }
+        public static int Stat4Total { get; set; }
+        public static double Stat4TotalRank { get; set; }
         public int Stat5 { get; set; }
         public double Stat5Rank { get; set; }
         public bool Stat5Select { get; set; } = false;
         public double Stat5PercentRank { get; set; }
+        public static int Stat5Total { get; set; }
+        public static double Stat5TotalRank { get; set; }
         public int Stat6 { get; set; }
         public double Stat6Rank { get; set; }
         public bool Stat6Select { get; set; } = false;
         public double Stat6PercentRank { get; set; }
+        public static int Stat6Total { get; set; }
+        public static double Stat6TotalRank { get; set; }
         public int Stat7 { get; set; }
         public double Stat7Rank { get; set; }
         public bool Stat7Select { get; set; } = false;
         public double Stat7PercentRank { get; set; }
+        public static int Stat7Total { get; set; }
+        public static double Stat7TotalRank { get; set; }
 
         public Czlonek(string Nickname)
         {
@@ -92,24 +106,38 @@ namespace Ignis_Web.Models
                         Shield = reader.GetInt32(16);
                         Stat1 = reader.GetInt32(17);
                         Stat1Rank = Math.Round(reader.GetDouble(18),3);
+                        Stat1Total += Stat1;
+                        Stat1TotalRank += Stat1Rank;
 
                         Stat2 = reader.GetInt32(19);
                         Stat2Rank = Math.Round(reader.GetDouble(20),3);
+                        Stat2Total += Stat2;
+                        Stat2TotalRank += Stat2Rank;
 
                         Stat3 = reader.GetInt32(21);
                         Stat3Rank = Math.Round(reader.GetDouble(22),3);
+                        Stat3Total += Stat3;
+                        Stat3TotalRank += Stat3Rank;
 
                         Stat4 = reader.GetInt32(23);
                         Stat4Rank = Math.Round(reader.GetDouble(24),3);
+                        Stat4Total += Stat4;
+                        Stat4TotalRank += Stat4Rank;
 
                         Stat5 = reader.GetInt32(25);
                         Stat5Rank = Math.Round(reader.GetDouble(26),3);
+                        Stat5Total += Stat5;
+                        Stat5TotalRank += Stat5Rank;
 
                         Stat6 = reader.GetInt32(27);
                         Stat6Rank = Math.Round(reader.GetDouble(28),3);
+                        Stat6Total += Stat6;
+                        Stat6TotalRank += Stat6Rank;
 
                         Stat7 = reader.GetInt32(29);
                         Stat7Rank = Math.Round(reader.GetDouble(30),3);
+                        Stat7Total += Stat7;
+                        Stat7TotalRank += Stat7Rank;
 
                         Class = reader.GetString(32);
                     }

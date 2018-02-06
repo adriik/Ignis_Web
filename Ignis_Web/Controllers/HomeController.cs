@@ -216,6 +216,28 @@ namespace Ignis_Web.Controllers
             ViewBag.People = listSortByClass;
             ViewBag.TotalAll = Czlonek.TotalAll;
             ViewBag.GoldTotalAll = Czlonek.GoldTotalAll;
+
+            ViewBag.Stat1Total = Czlonek.Stat1Total;
+            ViewBag.Stat1TotalRank = Czlonek.Stat1TotalRank;
+
+            ViewBag.Stat2Total = Czlonek.Stat2Total;
+            ViewBag.Stat2TotalRank = Czlonek.Stat2TotalRank;
+
+            ViewBag.Stat3Total = Czlonek.Stat3Total;
+            ViewBag.Stat3TotalRank = Czlonek.Stat3TotalRank;
+
+            ViewBag.Stat4Total = Czlonek.Stat4Total;
+            ViewBag.Stat4TotalRank = Czlonek.Stat4TotalRank;
+
+            ViewBag.Stat5Total = Czlonek.Stat5Total;
+            ViewBag.Stat5TotalRank = Czlonek.Stat5TotalRank;
+
+            ViewBag.Stat6Total = Czlonek.Stat6Total;
+            ViewBag.Stat6TotalRank = Czlonek.Stat6TotalRank;
+
+            ViewBag.Stat7Total = Czlonek.Stat7Total;
+            ViewBag.Stat7TotalRank = Czlonek.Stat7TotalRank;
+
             ViewBag.ParameterValueList = listSortByClass.ToSelectList(x => x.Nickname, false);
             //ViewBag.LocationList = allLocations.ToSelectList(x => x.Key, x => x.Value, myLocations /* selectedValues */);
 
