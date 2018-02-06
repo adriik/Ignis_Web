@@ -46,6 +46,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Druid")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid green;";
                 }
             }
 
@@ -54,6 +55,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Priest")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid cornflowerblue;";
                 }
             }
 
@@ -62,6 +64,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Knight")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid yellow;";
                 }
             }
 
@@ -70,6 +73,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Warden")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid rebeccapurple;";
                 }
             }
 
@@ -78,6 +82,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Champion")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid royalblue;";
                 }
             }
 
@@ -86,6 +91,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Rouge")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid deepskyblue;";
                 }
             }
 
@@ -94,6 +100,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Scout")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid forestgreen;";
                 }
             }
 
@@ -102,6 +109,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Mage")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid darkorange;";
                 }
             }
 
@@ -110,6 +118,7 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Warlock")
                 {
                     listSortByClass.Add(item);
+                    item.Kolor = "border-left: solid saddlebrown;";
                 }
             }
 
