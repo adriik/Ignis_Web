@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using Ignis_Web.Models;
@@ -1092,9 +1094,1112 @@ namespace Ignis_Web.Controllers
                     cn.Close();
                 }
             }
-                return RedirectToAction("FreqAppka", "FreqApp");
+            TempData["Wybrana_Instancja"] = Dungeon;
+            return RedirectToAction("Przeliczenia_Coquina", "FreqApp");
 
         }
 
-    }
+        public ActionResult Przeliczenia_Coquina(appka username)
+        {
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            double FirstCoquinn;
+            double SecondCoquinn;
+            double ThirdCoquinn;
+            double FourthCoquinn;
+            double FifthCoquinn;
+            var IBP_Dungeon = username.checkIBP;
+            var SToES_Dungeon = username.checkSToES;
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            cn.Open();
+            string FirstVax = "Select \"First Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Vaxin'";
+            NpgsqlCommand checkFirstBoss1 = new NpgsqlCommand(FirstVax, cn);
+            int Boss1_Vax = Convert.ToInt32(checkFirstBoss1.ExecuteScalar().ToString());
+            string SecondVax = "Select \"Second Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Vaxin'";
+            NpgsqlCommand checkSecondBoss1 = new NpgsqlCommand(SecondVax, cn);
+            int Boss2_Vax = Convert.ToInt32(checkSecondBoss1.ExecuteScalar().ToString());
+            string ThirdVax = "Select \"Third Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Vaxin'";
+            NpgsqlCommand checkThirdBoss1 = new NpgsqlCommand(ThirdVax, cn);
+            int Boss3_Vax = Convert.ToInt32(checkThirdBoss1.ExecuteScalar().ToString());
+            string FourthVax = "Select \"Fourth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Vaxin'";
+            NpgsqlCommand checkFourthBoss1 = new NpgsqlCommand(FourthVax, cn);
+            int Boss4_Vax = Convert.ToInt32(checkFourthBoss1.ExecuteScalar().ToString());
+            string FifthVax = "Select \"Fifth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Vaxin'";
+            NpgsqlCommand checkFifthBoss1 = new NpgsqlCommand(FifthVax, cn);
+            int Boss5_Vax = Convert.ToInt32(checkFifthBoss1.ExecuteScalar().ToString());
+
+            string FirstSou = "Select \"First Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Souris'";
+            NpgsqlCommand checkFirstBoss2 = new NpgsqlCommand(FirstSou, cn);
+            int Boss1_Sou = Convert.ToInt32(checkFirstBoss2.ExecuteScalar().ToString());
+            string SecondSou = "Select \"Second Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Souris'";
+            NpgsqlCommand checkSecondBoss2 = new NpgsqlCommand(SecondSou, cn);
+            int Boss2_Sou = Convert.ToInt32(checkSecondBoss2.ExecuteScalar().ToString());
+            string ThirdSou = "Select \"Third Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Souris'";
+            NpgsqlCommand checkThirdBoss2 = new NpgsqlCommand(ThirdSou, cn);
+            int Boss3_Sou = Convert.ToInt32(checkThirdBoss2.ExecuteScalar().ToString());
+            string FourthSou = "Select \"Fourth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Souris'";
+            NpgsqlCommand checkFourthBoss2 = new NpgsqlCommand(FourthSou, cn);
+            int Boss4_Sou = Convert.ToInt32(checkFourthBoss2.ExecuteScalar().ToString());
+            string FifthSou = "Select \"Fifth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Souris'";
+            NpgsqlCommand checkFifthBoss2 = new NpgsqlCommand(FifthSou, cn);
+            int Boss5_Sou = Convert.ToInt32(checkFifthBoss2.ExecuteScalar().ToString());
+
+            FirstCoquinn = ((double)Boss1_Sou + (double)Boss1_Vax) / (double)2;
+            SecondCoquinn = ((double)Boss2_Sou + (double)Boss2_Vax) / (double)2;
+            ThirdCoquinn = ((double)Boss3_Sou + (double)Boss3_Vax) / (double)2;
+            FourthCoquinn = ((double)Boss4_Sou + (double)Boss4_Vax) / (double)2;
+            FifthCoquinn = ((double)Boss5_Sou + (double)Boss5_Vax) / (double)2;
+            int FirstCoquinn1 = Convert.ToInt32(Math.Round(FirstCoquinn, MidpointRounding.AwayFromZero));
+            int SecondCoquinn1 = Convert.ToInt32(Math.Round(SecondCoquinn, MidpointRounding.AwayFromZero));
+            int ThirdCoquinn1 = Convert.ToInt32(Math.Round(ThirdCoquinn, MidpointRounding.AwayFromZero));
+            int FourthCoquinn1 = Convert.ToInt32(Math.Round(FourthCoquinn, MidpointRounding.AwayFromZero));
+            int FifthCoquinn1 = Convert.ToInt32(Math.Round(FifthCoquinn, MidpointRounding.AwayFromZero));
+
+            NpgsqlCommand cmd1 = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"First Boss\" = " + FirstCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            cmd1.Connection = cn;
+            cmd1.ExecuteNonQuery();
+
+            NpgsqlCommand cmd2 = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Second Boss\" = " + SecondCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            cmd2.Connection = cn;
+            cmd2.ExecuteNonQuery();
+
+            NpgsqlCommand cmd3 = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Third Boss\" = " + ThirdCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            cmd3.Connection = cn;
+            cmd3.ExecuteNonQuery();
+
+            NpgsqlCommand cmd4 = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Fourth Boss\" = " + FourthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            cmd4.Connection = cn;
+            cmd4.ExecuteNonQuery();
+
+            NpgsqlCommand cmd5 = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Fifth Boss\" = " + FifthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            cmd5.Connection = cn;
+            cmd5.ExecuteNonQuery();
+            cn.Close();
+            
+            return RedirectToAction("Przeliczenia_TotalFreq", "FreqApp");
+        }
+        public ActionResult Przeliczenia_TotalFreq(appka username)
+        {
+            List<String> columnData = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if(dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if(dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string query = "SELECT \"Nickname\" FROM public.\"" + dungeonName + "\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        columnData.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+
+            columnData = columnData.Select(t => Regex.Replace(t, @"\s+", "")).ToList();
+            for (var i = 0; i < columnData.Count; i++)
+            {
+                cn.Open();
+                string queryStr = "Select \"First Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + columnData[i] + "'";
+                NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
+                int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
+
+                string queryStr2 = "Select \"Second Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + columnData[i] + "'";
+                NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
+                int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
+
+                string queryStr3 = "Select \"Third Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + columnData[i] + "'";
+                NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
+                int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
+
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + columnData[i] + "'";
+                NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
+                int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
+
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + columnData[i] + "'";
+                NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
+                int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
+
+                string queryA1Field = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'A1'";
+                NpgsqlCommand checkA1Field = new NpgsqlCommand(queryA1Field, cn);
+                int A1 = Convert.ToInt32(checkA1Field.ExecuteScalar().ToString());
+
+                string Boss1 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Boss1_Multi'";
+                NpgsqlCommand Multi1 = new NpgsqlCommand(Boss1, cn);
+                double BossMulti1 = Convert.ToDouble(Multi1.ExecuteScalar().ToString());
+
+                string Boss2 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Boss2_Multi'";
+                NpgsqlCommand Multi2 = new NpgsqlCommand(Boss2, cn);
+                double BossMulti2 = Convert.ToDouble(Multi2.ExecuteScalar().ToString());
+
+                string Boss3 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Boss3_Multi'";
+                NpgsqlCommand Multi3 = new NpgsqlCommand(Boss3, cn);
+                double BossMulti3 = Convert.ToDouble(Multi3.ExecuteScalar().ToString());
+
+                string Boss4 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Boss4_Multi'";
+                NpgsqlCommand Multi4 = new NpgsqlCommand(Boss4, cn);
+                double BossMulti4 = Convert.ToDouble(Multi4.ExecuteScalar().ToString());
+
+                string Boss5 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Boss5_Multi'";
+                NpgsqlCommand Multi5 = new NpgsqlCommand(Boss5, cn);
+                double BossMulti5 = Convert.ToDouble(Multi5.ExecuteScalar().ToString());
+
+                double totalFreq = (BossMulti1 * temp) + (BossMulti2 * temp2) + (BossMulti3 * temp3) + (BossMulti4 * temp4) + (BossMulti5 * temp5);
+                string dotTotalFrew = totalFreq.ToString().Replace(",", ".");
+                double goldLog = A1 * Math.Log10((totalFreq + A1) / A1);
+                goldLog = Math.Round(goldLog, 2);
+                string dotGoldLog = goldLog.ToString().Replace(",", ".");
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+                string dotStatLog = statLog.ToString().Replace(",", ".");
+                NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Total\" = '" + dotTotalFrew + "' Where \"Nickname\" ='" + columnData[i] + "' ");
+                cmd.Connection = cn;
+                cmd.ExecuteNonQuery();
+
+                NpgsqlCommand update_LogGold = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Gold-Logarithm\" = '" + dotGoldLog + "' Where \"Nickname\" ='" + columnData[i] + "' ");
+                update_LogGold.Connection = cn;
+                update_LogGold.ExecuteNonQuery();
+
+                NpgsqlCommand update_LogStat = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"Stat-Logarithm\" = '" + dotStatLog + "' Where \"Nickname\" ='" + columnData[i] + "' ");
+                update_LogStat.Connection = cn;
+                update_LogStat.ExecuteNonQuery();
+
+                cn.Close();
+
+            }
+            return RedirectToAction("Przeliczenia_Wszystkich_Stat", "FreqApp");
+        }
+        public ActionResult Przeliczenia_Wszystkich_Stat(appka username)
+        {
+            List<int> Total_StaHp251 = new List<int>();
+            List<int> Total_StaWis251 = new List<int>();
+            List<int> Total_StaPatt251 = new List<int>();
+            List<int> Total_StrPatt251 = new List<int>();
+            List<int> Total_DexPatt251 = new List<int>();
+            List<int> Total_IntMatt251 = new List<int>();
+            List<int> Total_IntMatt = new List<int>();
+
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+
+            int totalStat_StaHp251 = 0;
+            int totalStat_StaWis51 = 0;
+            int totalStat_StaPatt251 = 0;
+            int totalStat_StrPatt251 = 0;
+            int totalStat_DexPatt251 = 0;
+            int totalStat_IntMatt251 = 0;
+            int totalStat_IntMatt = 0;
+
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            //Query to calculate Total sta/hp 251 stats
+            string Total_StaHp251_Query = "SELECT \"sta/hp 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_StaHp251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_StaHp251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_StaHp251.Count; c++)
+            {
+
+                totalStat_StaHp251 = totalStat_StaHp251 + Total_StaHp251[c];
+            }
+            NpgsqlCommand Update_Total_StaHp251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_StaHp251 + " Where \"WSP_Name\" ='sta/hp 251'");
+            Update_Total_StaHp251.Connection = cn;
+            Update_Total_StaHp251.ExecuteNonQuery();
+
+            //Query to calculate Total sta/wis 251 stats
+            string Total_StaWis251_Query = "SELECT \"sta/wis 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_StaWis251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_StaWis251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_StaWis251.Count; c++)
+            {
+
+                totalStat_StaWis51 = totalStat_StaWis51 + Total_StaWis251[c];
+            }
+            NpgsqlCommand Update_Total_StaWis251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_StaWis51 + " Where \"WSP_Name\" ='sta/wis 251'");
+            Update_Total_StaWis251.Connection = cn;
+            Update_Total_StaWis251.ExecuteNonQuery();
+
+            //Query to calculate Total sta/patt 251 stats
+            string Total_StaPatt251_Query = "SELECT \"sta/patt 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_StaPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_StaPatt251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_StaPatt251.Count; c++)
+            {
+
+                totalStat_StaPatt251 = totalStat_StaPatt251 + Total_StaPatt251[c];
+            }
+            NpgsqlCommand Update_Total_StaPatt251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_StaPatt251 + " Where \"WSP_Name\" ='sta/patt 251'");
+            Update_Total_StaPatt251.Connection = cn;
+            Update_Total_StaPatt251.ExecuteNonQuery();
+
+            //Query to calculate Total str/patt 251 stats
+            string Total_StrPatt251_Query = "SELECT \"str/patt 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_StrPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_StrPatt251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_StrPatt251.Count; c++)
+            {
+
+                totalStat_StrPatt251 = totalStat_StrPatt251 + Total_StrPatt251[c];
+            }
+            NpgsqlCommand Update_Total_StrPatt251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_StrPatt251 + " Where \"WSP_Name\" ='str/patt 251'");
+            Update_Total_StrPatt251.Connection = cn;
+            Update_Total_StrPatt251.ExecuteNonQuery();
+
+            //Query to calculate Total dex/patt 251 stats
+            string Total_DexPatt251_Query = "SELECT \"dex/patt 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_DexPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_DexPatt251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_DexPatt251.Count; c++)
+            {
+
+                totalStat_DexPatt251 = totalStat_DexPatt251 + Total_DexPatt251[c];
+            }
+            NpgsqlCommand Update_Total_DexPatt251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_DexPatt251 + " Where \"WSP_Name\" ='dex/patt 251'");
+            Update_Total_DexPatt251.Connection = cn;
+            Update_Total_DexPatt251.ExecuteNonQuery();
+
+            //Query to calculate Total int/matt 251 stats
+            string Total_IntMatt251_Query = "SELECT \"int/matt 251\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_IntMatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_IntMatt251.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_IntMatt251.Count; c++)
+            {
+
+                totalStat_IntMatt251 = totalStat_IntMatt251 + Total_IntMatt251[c];
+            }
+            NpgsqlCommand Update_Total_IntMatt251 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_IntMatt251 + " Where \"WSP_Name\" ='int/matt 251'");
+            Update_Total_IntMatt251.Connection = cn;
+            Update_Total_IntMatt251.ExecuteNonQuery();
+
+            //Query to calculate Total int/matt stats
+            string Total_IntMatt_Query = "SELECT \"int/matt\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Total_IntMatt_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Total_IntMatt.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Total_IntMatt.Count; c++)
+            {
+
+                totalStat_IntMatt = totalStat_IntMatt + Total_IntMatt[c];
+            }
+            NpgsqlCommand Update_Total_IntMatt = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + totalStat_IntMatt + " Where \"WSP_Name\" ='int/matt'");
+            Update_Total_IntMatt.Connection = cn;
+            Update_Total_IntMatt.ExecuteNonQuery();
+
+            cn.Close();
+            return RedirectToAction("Przeliczenia_WSP", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_WSP(appka username)
+        {
+            List<float> WSP_Data = new List<float>();
+            List<float> LogGold_Data = new List<float>();
+            List<float> LogStat_Data = new List<float>();
+
+            List<float> Rank_StaHp251 = new List<float>();
+            List<float> Rank_StaWis251 = new List<float>();
+            List<float> Rank_StaPatt251 = new List<float>();
+            List<float> Rank_StrPatt251 = new List<float>();
+            List<float> Rank_DexPatt251 = new List<float>();
+            List<float> Rank_IntMatt251 = new List<float>();
+            List<float> Rank_IntMatt = new List<float>();
+            float total_WSP = 0;
+            float total_Gold = 0;
+            float total_Stat = 0;
+
+            float getRank_StaHp251 = 0;
+            float getRank_StaWis251 = 0;
+            float getRank_StaPatt251 = 0;
+            float getRank_StrPatt251 = 0;
+            float getRank_DexPatt251 = 0;
+            float getRank_IntMatt251 = 0;
+            float getRank_IntMatt = 0;
+
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+
+            //Query to calculate Total Guild Frequency
+            string WSP_Query = "SELECT \"Total\" FROM public.\"" + dungeonName + "\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(WSP_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        WSP_Data.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < WSP_Data.Count; c++)
+            {
+
+                total_WSP = total_WSP + WSP_Data[c];
+            }
+            string CoqTotal = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Coquinn'";
+            NpgsqlCommand getCoqTotal = new NpgsqlCommand(CoqTotal, cn);
+            float TotalCoq = float.Parse(getCoqTotal.ExecuteScalar().ToString());
+            total_WSP = total_WSP - TotalCoq;
+            NpgsqlCommand cmd1 = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + total_WSP + " Where \"WSP_Name\" ='WSP'");
+            cmd1.Connection = cn;
+            cmd1.ExecuteNonQuery();
+
+            //Query to calculate Total Gold_Logarithm
+            string LogGold_Query = "SELECT \"Gold-Logarithm\" FROM public.\"" + dungeonName + "\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(LogGold_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LogGold_Data.Add(reader.GetFloat(0));
+
+                    }
+                }
+            }
+            for (var c = 0; c < LogGold_Data.Count; c++)
+            {
+
+                total_Gold = total_Gold + LogGold_Data[c];
+            }
+            string CoqGold = "Select \"Gold-Logarithm\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Coquinn'";
+            NpgsqlCommand getCoqGold = new NpgsqlCommand(CoqGold, cn);
+            float GoldCoq = float.Parse(getCoqGold.ExecuteScalar().ToString());
+            total_Gold = total_Gold - GoldCoq;
+            NpgsqlCommand Update_GoldLogarithm = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + total_Gold + " Where \"WSP_Name\" ='LogGold'");
+            Update_GoldLogarithm.Connection = cn;
+            Update_GoldLogarithm.ExecuteNonQuery();
+
+            //Query to calculate Total Stat_Logarithm
+            string LogStat_Query = "SELECT \"Stat-Logarithm\" FROM public.\"" + dungeonName + "\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(LogStat_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LogStat_Data.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < LogStat_Data.Count; c++)
+            {
+
+                total_Stat = total_Stat + LogStat_Data[c];
+            }
+            string CoqStat = "Select \"Stat-Logarithm\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = 'Coquinn'";
+            NpgsqlCommand getCoqStat = new NpgsqlCommand(CoqStat, cn);
+            float StatCoq = float.Parse(getCoqStat.ExecuteScalar().ToString());
+            total_Stat = total_Stat - StatCoq;
+            NpgsqlCommand Update_StatLogarithm = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + total_Stat + " Where \"WSP_Name\" ='LogStat'");
+            Update_StatLogarithm.Connection = cn;
+            Update_StatLogarithm.ExecuteNonQuery();
+
+
+
+            //Query to calculate Total Logarithm for sta/hp 251 stats
+            string Rank_StaHp251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaHp251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_StaHp251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_StaHp251.Count; c++)
+            {
+                getRank_StaHp251 = getRank_StaHp251 + Rank_StaHp251[c];
+            }
+            NpgsqlCommand Update_Total_StaHp251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_StaHp251 + " Where \"WSP_Name\" ='Log_sta/hp 251'");
+            Update_Total_StaHp251_Log.Connection = cn;
+            Update_Total_StaHp251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for sta/wis 251 stats
+            string Rank_StaWis251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaWis251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_StaWis251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_StaWis251.Count; c++)
+            {
+                getRank_StaWis251 = getRank_StaWis251 + Rank_StaWis251[c];
+            }
+            NpgsqlCommand Update_Total_StaWis251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_StaWis251 + " Where \"WSP_Name\" ='Log_sta/wis 251'");
+            Update_Total_StaWis251_Log.Connection = cn;
+            Update_Total_StaWis251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for sta/patt 251 stats
+            string Rank_StaPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_StaPatt251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_StaPatt251.Count; c++)
+            {
+                getRank_StaPatt251 = getRank_StaPatt251 + Rank_StaPatt251[c];
+            }
+            NpgsqlCommand Update_Total_StaPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_StaPatt251 + " Where \"WSP_Name\" ='Log_sta/patt 251'");
+            Update_Total_StaPatt251_Log.Connection = cn;
+            Update_Total_StaPatt251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for str/patt 251 stats
+            string Rank_StrPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_StrPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_StrPatt251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_StrPatt251.Count; c++)
+            {
+                getRank_StrPatt251 = getRank_StrPatt251 + Rank_StrPatt251[c];
+            }
+            NpgsqlCommand Update_Total_StrPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_StrPatt251 + " Where \"WSP_Name\" ='Log_str/patt 251'");
+            Update_Total_StrPatt251_Log.Connection = cn;
+            Update_Total_StrPatt251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for dex/patt 251 stats
+            string Rank_DexPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Rouge','Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_DexPatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_DexPatt251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_DexPatt251.Count; c++)
+            {
+                getRank_DexPatt251 = getRank_DexPatt251 + Rank_DexPatt251[c];
+            }
+            NpgsqlCommand Update_Total_DexPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_DexPatt251 + " Where \"WSP_Name\" ='Log_dex/patt 251'");
+            Update_Total_DexPatt251_Log.Connection = cn;
+            Update_Total_DexPatt251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for int/matt 251 stats
+            string Rank_IntMatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_IntMatt251_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_IntMatt251.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_IntMatt251.Count; c++)
+            {
+                getRank_IntMatt251 = getRank_IntMatt251 + Rank_IntMatt251[c];
+            }
+            NpgsqlCommand Update_Total_IntMatt251_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_IntMatt251 + " Where \"WSP_Name\" ='Log_int/matt 251'");
+            Update_Total_IntMatt251_Log.Connection = cn;
+            Update_Total_IntMatt251_Log.ExecuteNonQuery();
+
+            //Query to calculate Total Logarithm for int/matt stats
+            string Rank_IntMatt_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(Rank_IntMatt_Query, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rank_IntMatt.Add(reader.GetFloat(0));
+                    }
+                }
+            }
+            for (var c = 0; c < Rank_IntMatt.Count; c++)
+            {
+                getRank_IntMatt = getRank_IntMatt + Rank_IntMatt[c];
+            }
+            NpgsqlCommand Update_Total_IntMatt_Log = new NpgsqlCommand("UPDATE public.\"" + WSP + "\" SET \"WSP\" = " + getRank_IntMatt + " Where \"WSP_Name\" ='Log_int/matt'");
+            Update_Total_IntMatt_Log.Connection = cn;
+            Update_Total_IntMatt_Log.ExecuteNonQuery();
+
+            cn.Close();
+            return RedirectToAction("Przeliczenia_Rank_StaHp251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_StaHp251(appka username)
+        {
+            List<String> PeopleForStaHP251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForStaHP = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaHP, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForStaHP251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForStaHP251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_StaHp251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'sta/hp 251'";
+                NpgsqlCommand Total_StaHp251 = new NpgsqlCommand(getTotal_StaHp251, cn);
+                decimal total1 = Convert.ToDecimal(Total_StaHp251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_StaHp251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_sta/hp 251'";
+                NpgsqlCommand Total_Log_StaHp251 = new NpgsqlCommand(getTotal_Log_StaHp251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_StaHp251.ExecuteScalar().ToString());
+
+                string getUser_StaHp251 = "SELECT \"sta/hp 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                NpgsqlCommand user_StaHP251 = new NpgsqlCommand(getUser_StaHp251, cn);
+                int user_StaHp251No = Convert.ToInt32(user_StaHP251.ExecuteScalar().ToString());
+
+                decimal newRank_StaHp251;
+                if (total_Log1 == 0)
+                {
+                    newRank_StaHp251 = 0;
+                }
+                else
+                {
+                    newRank_StaHp251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StaHp251No;
+                }
+
+
+                NpgsqlCommand update_UserStaHp251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank1\" = " + newRank_StaHp251 + " Where \"Nickname\" ='" + PeopleForStaHP251[i] + "' ");
+                update_UserStaHp251_Log.Connection = cn;
+                update_UserStaHp251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_StaWis251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_StaWis251(appka username)
+        {
+            List<String> PeopleForStaWis251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForStaWis = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaWis, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForStaWis251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForStaWis251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_StaWis251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'sta/wis 251'";
+                NpgsqlCommand Total_StaWis251 = new NpgsqlCommand(getTotal_StaWis251, cn);
+                decimal total1 = Convert.ToDecimal(Total_StaWis251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_StaWis251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_sta/wis 251'";
+                NpgsqlCommand Total_Log_StaWis251 = new NpgsqlCommand(getTotal_Log_StaWis251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_StaWis251.ExecuteScalar().ToString());
+
+                string getUser_StaWis251 = "SELECT \"sta/wis 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                NpgsqlCommand user_StaWis251 = new NpgsqlCommand(getUser_StaWis251, cn);
+                int user_StaWis251No = Convert.ToInt32(user_StaWis251.ExecuteScalar().ToString());
+
+                decimal newRank_StaWis251;
+                if (total_Log1 == 0)
+                {
+                    newRank_StaWis251 = 0;
+                }
+                else
+                {
+                    newRank_StaWis251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StaWis251No;
+                }
+
+
+                NpgsqlCommand update_UserStaWis251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank2\" = " + newRank_StaWis251 + " Where \"Nickname\" ='" + PeopleForStaWis251[i] + "' ");
+                update_UserStaWis251_Log.Connection = cn;
+                update_UserStaWis251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_StaPatt251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_StaPatt251(appka username)
+        {
+            List<String> PeopleForStaPatt251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForStaPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaPatt, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForStaPatt251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForStaPatt251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_StaPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'sta/patt 251'";
+                NpgsqlCommand Total_StaPatt251 = new NpgsqlCommand(getTotal_StaPatt251, cn);
+                decimal total1 = Convert.ToDecimal(Total_StaPatt251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_StaPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_sta/patt 251'";
+                NpgsqlCommand Total_Log_StaPatt251 = new NpgsqlCommand(getTotal_Log_StaPatt251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_StaPatt251.ExecuteScalar().ToString());
+
+                string getUser_StaPatt251 = "SELECT \"sta/patt 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                NpgsqlCommand user_StaPatt251 = new NpgsqlCommand(getUser_StaPatt251, cn);
+                int user_StaPatt251No = Convert.ToInt32(user_StaPatt251.ExecuteScalar().ToString());
+
+                decimal newRank_StaPatt251;
+                if (total_Log1 == 0)
+                {
+                    newRank_StaPatt251 = 0;
+                }
+                else
+                {
+                    newRank_StaPatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StaPatt251No;
+                }
+
+                NpgsqlCommand update_UserStaPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank3\" = " + newRank_StaPatt251 + " Where \"Nickname\" ='" + PeopleForStaPatt251[i] + "' ");
+                update_UserStaPatt251_Log.Connection = cn;
+                update_UserStaPatt251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_StrPatt251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_StrPatt251(appka username)
+        {
+            List<String> PeopleForStrPatt251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForStrPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStrPatt, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForStrPatt251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForStrPatt251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_StrPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'str/patt 251'";
+                NpgsqlCommand Total_StrPatt251 = new NpgsqlCommand(getTotal_StrPatt251, cn);
+                decimal total1 = Convert.ToDecimal(Total_StrPatt251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_StrPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_str/patt 251'";
+                NpgsqlCommand Total_Log_StrPatt251 = new NpgsqlCommand(getTotal_Log_StrPatt251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_StrPatt251.ExecuteScalar().ToString());
+
+                string getUser_StrPatt251 = "SELECT \"str/patt 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                NpgsqlCommand user_StrPatt251 = new NpgsqlCommand(getUser_StrPatt251, cn);
+                int user_StrPatt251No = Convert.ToInt32(user_StrPatt251.ExecuteScalar().ToString());
+
+                decimal newRank_StrPatt251;
+                if (total_Log1 == 0)
+                {
+                    newRank_StrPatt251 = 0;
+                }
+                else
+                {
+                    newRank_StrPatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StrPatt251No;
+                }
+
+                NpgsqlCommand update_UserStrPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank4\" = " + newRank_StrPatt251 + " Where \"Nickname\" ='" + PeopleForStrPatt251[i] + "' ");
+                update_UserStrPatt251_Log.Connection = cn;
+                update_UserStrPatt251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_DexPatt251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_DexPatt251(appka username)
+        {
+            List<String> PeopleForDexPatt251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForDexPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForDexPatt, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForDexPatt251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForDexPatt251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_DexPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'dex/patt 251'";
+                NpgsqlCommand Total_DexPatt251 = new NpgsqlCommand(getTotal_DexPatt251, cn);
+                decimal total1 = Convert.ToDecimal(Total_DexPatt251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_DexPatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_dex/patt 251'";
+                NpgsqlCommand Total_Log_DexPatt251 = new NpgsqlCommand(getTotal_Log_DexPatt251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_DexPatt251.ExecuteScalar().ToString());
+
+                string getUser_DexPatt251 = "SELECT \"dex/patt 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                NpgsqlCommand user_DexPatt251 = new NpgsqlCommand(getUser_DexPatt251, cn);
+                int user_DexPatt251No = Convert.ToInt32(user_DexPatt251.ExecuteScalar().ToString());
+
+                decimal newRank_DexPatt251;
+                if (total_Log1 == 0)
+                {
+                    newRank_DexPatt251 = 0;
+                }
+                else
+                {
+                    newRank_DexPatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_DexPatt251No;
+                }
+
+
+                NpgsqlCommand update_UserDexPatt251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank5\" = " + newRank_DexPatt251 + " Where \"Nickname\" ='" + PeopleForDexPatt251[i] + "' ");
+                update_UserDexPatt251_Log.Connection = cn;
+                update_UserDexPatt251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_IntMatt251", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_IntMatt251(appka username)
+        {
+            List<String> PeopleForIntMatt251 = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForIntMatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForIntMatt, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForIntMatt251.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForIntMatt251.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_IntMatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'int/matt 251'";
+                NpgsqlCommand Total_IntMatt251 = new NpgsqlCommand(getTotal_IntMatt251, cn);
+                decimal total1 = Convert.ToDecimal(Total_IntMatt251.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_IntMatt251 = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_int/matt 251'";
+                NpgsqlCommand Total_Log_IntMatt251 = new NpgsqlCommand(getTotal_Log_IntMatt251, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_IntMatt251.ExecuteScalar().ToString());
+
+                string getUser_IntMatt251 = "SELECT \"int/matt 251\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                NpgsqlCommand user_IntMatt251 = new NpgsqlCommand(getUser_IntMatt251, cn);
+                int user_IntMatt251No = Convert.ToInt32(user_IntMatt251.ExecuteScalar().ToString());
+
+                decimal newRank_IntMatt251;
+                if (total_Log1 == 0)
+                {
+                    newRank_IntMatt251 = 0;
+                }
+                else
+                {
+                    newRank_IntMatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_IntMatt251No;
+                }
+
+
+                NpgsqlCommand update_UserIntMatt251_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank6\" = " + newRank_IntMatt251 + " Where \"Nickname\" ='" + PeopleForIntMatt251[i] + "' ");
+                update_UserIntMatt251_Log.Connection = cn;
+                update_UserIntMatt251_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("Przeliczenia_Rank_IntMatt", "FreqApp");
+        }
+
+        public ActionResult Przeliczenia_Rank_IntMatt(appka username)
+        {
+            List<String> PeopleForIntMatt = new List<String>();
+            string dungeonName = TempData["Wybrana_Instancja"].ToString();
+            string WSP = "";
+            if (dungeonName == "IBP")
+            {
+                WSP = "WSP_IBP";
+            }
+            if (dungeonName == "SToES")
+            {
+                WSP = "WSP_SToES";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string getPeopleForIntMatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForIntMatt, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PeopleForIntMatt.Add(reader.GetString(0));
+                    }
+                }
+            }
+            cn.Close();
+            for (var i = 0; i < PeopleForIntMatt.Count; i++)
+            {
+                cn.Open();
+                string get_TotalFreq = "Select \"Total\" from  public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                NpgsqlCommand TotalFreq = new NpgsqlCommand(get_TotalFreq, cn);
+                double totalFreq = Convert.ToDouble(TotalFreq.ExecuteScalar().ToString());
+
+                double statLog = Math.Log10(totalFreq + 1);
+                statLog = Math.Round(statLog, 2);
+
+
+                string getTotal_IntMatt = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'int/matt'";
+                NpgsqlCommand Total_IntMatt = new NpgsqlCommand(getTotal_IntMatt, cn);
+                decimal total1 = Convert.ToDecimal(Total_IntMatt.ExecuteScalar().ToString());
+                Convert.ToInt32(total1);
+                string getTotal_Log_IntMatt = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_int/matt'";
+                NpgsqlCommand Total_Log_IntMatt = new NpgsqlCommand(getTotal_Log_IntMatt, cn);
+                decimal total_Log1 = Convert.ToDecimal(Total_Log_IntMatt.ExecuteScalar().ToString());
+
+                string getUser_IntMatt = "SELECT \"int/matt\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                NpgsqlCommand user_IntMatt = new NpgsqlCommand(getUser_IntMatt, cn);
+                int user_IntMattNo = Convert.ToInt32(user_IntMatt.ExecuteScalar().ToString());
+
+                decimal newRank_IntMatt;
+                if (total_Log1 == 0)
+                {
+                    newRank_IntMatt = 0;
+                }
+                else
+                {
+                    newRank_IntMatt = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_IntMattNo;
+                }
+
+
+                NpgsqlCommand update_UserIntMatt_Log = new NpgsqlCommand("UPDATE public.\"" + dungeonName + "\" SET \"rank7\" = " + newRank_IntMatt + " Where \"Nickname\" ='" + PeopleForIntMatt[i] + "' ");
+                update_UserIntMatt_Log.Connection = cn;
+                update_UserIntMatt_Log.ExecuteNonQuery();
+                cn.Close();
+            }
+            return RedirectToAction("FreqAppka", "FreqApp");
+        }
+
+        }
 }
