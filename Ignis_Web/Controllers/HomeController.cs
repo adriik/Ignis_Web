@@ -13,6 +13,7 @@ namespace Ignis_Web.Controllers
     {
         public ActionResult Index()
         {
+            Clear();
             var lista = new List<Czlonek>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
@@ -287,6 +288,33 @@ namespace Ignis_Web.Controllers
             }
 
             throw new Exception("Out of bounds");
+        }
+
+        private void Clear()
+        {
+            Czlonek.TotalAll = 0;
+            Czlonek.GoldTotalAll = 0;
+
+            Czlonek.Stat1Total = 0;
+            Czlonek.Stat1TotalRank = 0;
+
+            Czlonek.Stat2Total = 0;
+            Czlonek.Stat2TotalRank = 0;
+
+            Czlonek.Stat3Total = 0;
+            Czlonek.Stat3TotalRank = 0;
+
+            Czlonek.Stat4Total = 0;
+            Czlonek.Stat4TotalRank = 0;
+
+            Czlonek.Stat5Total = 0;
+            Czlonek.Stat5TotalRank = 0;
+
+            Czlonek.Stat6Total = 0;
+            Czlonek.Stat6TotalRank = 0;
+
+            Czlonek.Stat7Total = 0;
+            Czlonek.Stat7TotalRank = 0;
         }
     }
 }
