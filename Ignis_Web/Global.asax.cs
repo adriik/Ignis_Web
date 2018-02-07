@@ -19,12 +19,5 @@ namespace Ignis_Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            CultureInfo culture = new CultureInfo("pl-PL");
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-        }
     }
 }
