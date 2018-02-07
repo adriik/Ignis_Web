@@ -212,7 +212,7 @@ namespace Ignis_Web.Controllers
                     item.Stat7Select = true;
                 }
             }
-
+            UpdateRank();
             //list.Sort( (emp1,emp2)=>emp1.FirstName.CompareTo(emp2.FirstName) );
             ViewBag.People = listSortByClass;
             ViewBag.TotalAll = Czlonek.TotalAll;
@@ -315,6 +315,49 @@ namespace Ignis_Web.Controllers
 
             Czlonek.Stat7Total = 0;
             Czlonek.Stat7TotalRank = 0;
+        }
+
+        private void UpdateRank()
+        {
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string QueryRank = "SELECT * FROM public.\"WSP\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(QueryRank, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    int i = 0;
+                    while (reader.Read())
+                    {
+                        switch (i)
+                        {
+                            case 11:
+                                Czlonek.Stat1TotalRank = Math.Round(reader.GetDouble(1),2);
+                                break;
+                            case 12:
+                                Czlonek.Stat2TotalRank = Math.Round(reader.GetDouble(1),2);
+                                break;
+                            case 13:
+                                Czlonek.Stat3TotalRank = Math.Round(reader.GetDouble(1), 2);
+                                break;
+                            case 14:
+                                Czlonek.Stat4TotalRank = Math.Round(reader.GetDouble(1), 2);
+                                break;
+                            case 15:
+                                Czlonek.Stat5TotalRank = Math.Round(reader.GetDouble(1), 2);
+                                break;
+                            case 16:
+                                Czlonek.Stat6TotalRank = Math.Round(reader.GetDouble(1), 2);
+                                break;
+                            case 17:
+                                Czlonek.Stat7TotalRank = Math.Round(reader.GetDouble(1), 2);
+                                break;
+                        }
+                        i++;
+                    }
+                }
+            }
+            cn.Close();
         }
     }
 }
