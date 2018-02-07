@@ -321,7 +321,7 @@ namespace Ignis_Web.Controllers
         {
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string QueryRank = "SELECT * FROM public.\"WSP\"";
+            string QueryRank = "SELECT * FROM public.\"WSP_IBP\"";
             using (NpgsqlCommand command = new NpgsqlCommand(QueryRank, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
