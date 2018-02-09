@@ -1,4 +1,4 @@
-﻿@model Ignis_Web.Models.appka
+﻿@model Ignis_Web.Models.item
 
 @{
     ViewBag.Title = "FreqAppka";
@@ -27,6 +27,10 @@
         {
             @Html.ValidationSummary(false, "Na której instancji ta grupa się bawiła?", new { @class = "bg-danger text-center" })
         }
+        if (TempData["FreqSucc"] != null)
+        {
+            @Html.ValidationSummary(false, "Frekwencja została zapisana.", new { @class = "bg-success text-center" })
+        }
         <div class="row">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
@@ -40,12 +44,12 @@
         </div>
         <div class="row">
             <div class="col-md-1">
-                
+
             </div>
             <div class="col-md-1">
                 <div class="checkbox">
-                        @Html.EditorFor(model => model.checkIBP, new { @class = "checkbox" })
-                        @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.checkIBP, new { @class = "checkbox" })
+                    @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-1">
@@ -54,6 +58,7 @@
                     @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
                 </div>
             </div>
+
         </div>
         <br />
         <br />
