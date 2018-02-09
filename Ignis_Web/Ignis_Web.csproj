@@ -185,6 +185,7 @@
     <Content Include="Img\dragon-head.svg" />
     <Content Include="Img\if_fire_173014.ico" />
     <Content Include="Img\space.jpg" />
+    <Content Include="Img\space6.jpg" />
     <Content Include="Img\two-handed-sword.svg" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
