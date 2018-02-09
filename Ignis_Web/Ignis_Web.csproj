@@ -155,6 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddItemController.cs" />
     <Compile Include="Controllers\FreqAppController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -164,6 +165,8 @@
     <Compile Include="Models\Appka.cs" />
     <Compile Include="Models\Czlonek.cs" />
     <Compile Include="Models\Helpers.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\NazwyDropu.cs" />
     <Compile Include="Models\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -336,6 +339,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\FreqApp\FreqAppka.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\AddItem\AddItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

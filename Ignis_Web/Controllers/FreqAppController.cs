@@ -18,7 +18,7 @@ namespace Ignis_Web.Controllers
         {
             if (Session["user"] != null)
             {
-                var lista = new List<appka>();
+                var lista = new List<item>();
                 //s = s[0].ToUpper() + s.Substring(1);
                 NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
                 cn.Open();
@@ -29,7 +29,7 @@ namespace Ignis_Web.Controllers
                     {
                         while (reader.Read())
                         {
-                            lista.Add(new appka(reader.GetString(0)));
+                            lista.Add(new item(reader.GetString(0)));
                         }
                     }
                 }
@@ -48,8 +48,9 @@ namespace Ignis_Web.Controllers
             }
         }
         [HttpPost]
-        public ActionResult FreqAppka(appka username)
+        public ActionResult FreqAppka(item username)
         {
+            TempData.Remove("FreqSucc");
             //Nicki Graczy obecnych na instancji
             var FirstMember = username.FirstNickname;           var SecondMember = username.SecondNickname;
             var ThirdMember = username.ThirdNickname;           var FourthMember = username.FourthNickname;
@@ -1095,11 +1096,12 @@ namespace Ignis_Web.Controllers
                 }
             }
             TempData["Wybrana_Instancja"] = Dungeon;
+            TempData["FreqSucc"] = false;
             return RedirectToAction("Przeliczenia_Coquina", "FreqApp");
 
         }
 
-        public ActionResult Przeliczenia_Coquina(appka username)
+        public ActionResult Przeliczenia_Coquina(item username)
         {
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             double FirstCoquinn;
@@ -1177,7 +1179,7 @@ namespace Ignis_Web.Controllers
             
             return RedirectToAction("Przeliczenia_TotalFreq", "FreqApp");
         }
-        public ActionResult Przeliczenia_TotalFreq(appka username)
+        public ActionResult Przeliczenia_TotalFreq(item username)
         {
             List<String> columnData = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -1278,7 +1280,7 @@ namespace Ignis_Web.Controllers
             }
             return RedirectToAction("Przeliczenia_Wszystkich_Stat", "FreqApp");
         }
-        public ActionResult Przeliczenia_Wszystkich_Stat(appka username)
+        public ActionResult Przeliczenia_Wszystkich_Stat(item username)
         {
             List<int> Total_StaHp251 = new List<int>();
             List<int> Total_StaWis251 = new List<int>();
@@ -1460,7 +1462,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_WSP", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_WSP(appka username)
+        public ActionResult Przeliczenia_WSP(item username)
         {
             List<float> WSP_Data = new List<float>();
             List<float> LogGold_Data = new List<float>();
@@ -1720,7 +1722,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_StaHp251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_StaHp251(appka username)
+        public ActionResult Przeliczenia_Rank_StaHp251(item username)
         {
             List<String> PeopleForStaHP251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -1789,7 +1791,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_StaWis251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_StaWis251(appka username)
+        public ActionResult Przeliczenia_Rank_StaWis251(item username)
         {
             List<String> PeopleForStaWis251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -1858,7 +1860,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_StaPatt251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_StaPatt251(appka username)
+        public ActionResult Przeliczenia_Rank_StaPatt251(item username)
         {
             List<String> PeopleForStaPatt251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -1926,7 +1928,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_StrPatt251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_StrPatt251(appka username)
+        public ActionResult Przeliczenia_Rank_StrPatt251(item username)
         {
             List<String> PeopleForStrPatt251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -1994,7 +1996,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_DexPatt251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_DexPatt251(appka username)
+        public ActionResult Przeliczenia_Rank_DexPatt251(item username)
         {
             List<String> PeopleForDexPatt251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -2063,7 +2065,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_IntMatt251", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_IntMatt251(appka username)
+        public ActionResult Przeliczenia_Rank_IntMatt251(item username)
         {
             List<String> PeopleForIntMatt251 = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();
@@ -2132,7 +2134,7 @@ namespace Ignis_Web.Controllers
             return RedirectToAction("Przeliczenia_Rank_IntMatt", "FreqApp");
         }
 
-        public ActionResult Przeliczenia_Rank_IntMatt(appka username)
+        public ActionResult Przeliczenia_Rank_IntMatt(item username)
         {
             List<String> PeopleForIntMatt = new List<String>();
             string dungeonName = TempData["Wybrana_Instancja"].ToString();

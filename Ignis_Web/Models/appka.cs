@@ -9,7 +9,7 @@ using Npgsql;
 
 namespace Ignis_Web.Models
 {
-    public class appka
+    public class item
     {
         public string Nickname { get; set; }
         public string Full { get; set; }
@@ -26,6 +26,7 @@ namespace Ignis_Web.Models
         public bool checkSToES { get; set; }
 
         public string Drop { get; set; }
+        public bool DropCheck { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
         public string Dura { get; set; }
@@ -170,11 +171,11 @@ namespace Ignis_Web.Models
         public bool R_Fifth4 { get; set; }
         public bool R_Fifth5 { get; set; }
 
-        public appka()
+        public item()
         {
 
         }
-        public appka(string Nickname)
+        public item(string Nickname)
         {
             this.Nickname = Nickname;//[0].ToString().ToUpper() + Nickname.Substring(1);
         }
