@@ -326,34 +326,36 @@ namespace Ignis_Web.Controllers
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
-                    int i = 0;
                     while (reader.Read())
                     {
-                        switch (i)
+                        if (reader.GetString(0) == "Log_sta/hp 251")
                         {
-                            case 11:
-                                Czlonek.Stat1TotalRank = Math.Round(reader.GetDouble(1),2);
-                                break;
-                            case 12:
-                                Czlonek.Stat2TotalRank = Math.Round(reader.GetDouble(1),2);
-                                break;
-                            case 13:
-                                Czlonek.Stat3TotalRank = Math.Round(reader.GetDouble(1), 2);
-                                break;
-                            case 14:
-                                Czlonek.Stat4TotalRank = Math.Round(reader.GetDouble(1), 2);
-                                break;
-                            case 15:
-                                Czlonek.Stat5TotalRank = Math.Round(reader.GetDouble(1), 2);
-                                break;
-                            case 16:
-                                Czlonek.Stat6TotalRank = Math.Round(reader.GetDouble(1), 2);
-                                break;
-                            case 17:
-                                Czlonek.Stat7TotalRank = Math.Round(reader.GetDouble(1), 2);
-                                break;
+                            Czlonek.Stat1TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        i++;
+                        else if (reader.GetString(0) == "Log_sta/wis 251")
+                        {
+                            Czlonek.Stat2TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_sta/patt 251")
+                        {
+                            Czlonek.Stat3TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_str/patt 251")
+                        {
+                            Czlonek.Stat4TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_dex/patt 251")
+                        {
+                            Czlonek.Stat5TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_int/matt 251")
+                        {
+                            Czlonek.Stat6TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_int/matt")
+                        {
+                            Czlonek.Stat7TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
                     }
                 }
             }
