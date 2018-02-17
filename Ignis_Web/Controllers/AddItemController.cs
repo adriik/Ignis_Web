@@ -14,40 +14,51 @@ namespace Ignis_Web.Controllers
         // GET: AddItem
         public ActionResult AddItem()
         {
-            var TypyItemów = new List<Itemki>();
-            //s = s[0].ToUpper() + s.Substring(1);
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryTyp = "SELECT public.\"DropType\".\"Typ\" FROM public.\"DropType\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryTyp, cn))
+            if (Session["user"] != null)
             {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
+                var TypyItemów = new List<Itemki>();
+                //s = s[0].ToUpper() + s.Substring(1);
+                NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+                cn.Open();
+                string QueryTyp = "SELECT public.\"DropType\".\"Typ\" FROM public.\"DropType\"";
+                using (NpgsqlCommand command = new NpgsqlCommand(QueryTyp, cn))
                 {
-                    while (reader.Read())
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        TypyItemów.Add(new Itemki(reader.GetString(0)));
+                        while (reader.Read())
+                        {
+                            TypyItemów.Add(new Itemki(reader.GetString(0)));
+                        }
                     }
                 }
-            }
 
-            var lista = new List<item>();
-            //s = s[0].ToUpper() + s.Substring(1);
-            string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
+                var lista = new List<item>();
+                //s = s[0].ToUpper() + s.Substring(1);
+                string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
+                using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
                 {
-                    while (reader.Read())
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        lista.Add(new item(reader.GetString(0)));
+                        while (reader.Read())
+                        {
+                            lista.Add(new item(reader.GetString(0)));
+                        }
                     }
                 }
+                ViewBag.ListaLudzi = lista.ToSelectList(x => x.Nickname, false);
+                ViewBag.Typy = TypyItemów.ToSelectList(x => x.typyDropu, false);
+                cn.Close();
+                ViewBag.ItemList = GetItemsSelectList();
+                return View();
             }
-            ViewBag.ListaLudzi = lista.ToSelectList(x => x.Nickname, false);
-            ViewBag.Typy = TypyItemów.ToSelectList(x => x.typyDropu, false);
-            cn.Close();
-            ViewBag.ItemList = GetItemsSelectList();
-            return View();
+            else
+            {
+                return RedirectToRoute(new
+                {
+                    controller = "Account",
+                    action = "Login",
+                });
+            }
         }
         public SelectList GetItemsSelectList()
         {
