@@ -10,11 +10,65 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <br />
+    <br />
+    if (TempData["Dungeon"] != null)
+    {
+        @Html.ValidationSummary(false, "Z jakiej instancji został wydropiony ten item/stat?", new { @class = "bg-danger text-center" })
+    }
+    if (TempData["ItemType"] != null)
+    {
+        @Html.ValidationSummary(false, "Proszę wybrać typ dropu.", new { @class = "bg-danger text-center" })
+    }
+    if (TempData["ItemName"] != null)
+    {
+        @Html.ValidationSummary(false, "Proszę zaznaczyć co wypadło.", new { @class = "bg-danger text-center" })
+    }
+    if (TempData["ItemDura"] != null)
+    {
+        @Html.ValidationSummary(false, "Proszę wpisać durę itemu.", new { @class = "bg-danger text-center" })
+    }
+    if (TempData["ItemReceiver"] != null)
+    {
+        @Html.ValidationSummary(false, "Proszę wybrać kto otrzymał item/stat.", new { @class = "bg-danger text-center" })
+    }
+    if (TempData["FreqSucc"] != null)
+    {
+        @Html.ValidationSummary(false, "Drop został zapisany.", new { @class = "bg-success text-center" })
+    }
     <div class="form-horizontal">
         <h4>Item</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.IBP, htmlAttributes: new { @class = "menu-label" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.SToES, htmlAttributes: new { @class = "menu-label" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.checkIBP, new { @class = "checkbox" })
+                    @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.checkSToES, new { @class = "checkbox" })
+                    @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <br />
         <div class="row">
             <div class="col-md-2">
                 @Html.LabelFor(model => model.Typ, htmlAttributes: new { @class = "menu-label" })
@@ -62,8 +116,7 @@
                 @Html.ValidationMessageFor(model => model.Item_Drop1, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-1">
-                @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @width = "50px" })
-                @Html.ValidationMessageFor(model => model.Item_Dura1)
+                @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @Value = "0", @width = "50px" })
             </div>
             <div class="col-md-2">
                 <div class="form-group">

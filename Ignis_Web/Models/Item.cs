@@ -16,6 +16,12 @@ namespace Ignis_Web.Models
         public string Set { get; set; }
 
         //
+        public string Instancje { get; set; }
+        public string IBP { get; set; }
+        public string SToES { get; set; }
+        public bool checkIBP { get; set; }
+        public bool checkSToES { get; set; }
+        //
         public string item { get; set; }
         public string stat { get; set; }
         public string typyDropu { get; set; }
