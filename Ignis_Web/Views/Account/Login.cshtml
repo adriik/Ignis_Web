@@ -1,43 +1,47 @@
-﻿@model Ignis_Web.Models.Uzytkownik
+﻿@{
+    ViewBag.Title = "Logowanie";
+}
+
+@model Ignis_Web.Models.Uzytkownik
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="jumbotron jumbotron-opacity">
-    <h1>Logowanie</h1>
-    <hr />
-    @if (TempData["Walidator"] != null)
-    {
-        @Html.ValidationSummary(false, "Niepoprawne dane logowania", new { @class = "bg-danger text-center" })
-    }
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col text-center">
-                <label for="UserName">Nazwa użytkownika:</label>
-                <div class="form-group">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control text-center", @id = "UserName", @style = "width: 40%; display: initial;" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "bg-danger", @style = "position: absolute; margin-left: 20px;margin-top: 10px;" })
-                </div>
-                <label for="Password">Hasło:</label>
-                <div class="form-group">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control text-center", @type = "password", @id = "Password", @style = "width: 40%; display: initial;" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "bg-danger", @style = "position: absolute; margin-left: 20px;margin-top: 10px;" })
-                </div>
+    <div class="jumbotron jumbotron-opacity">
+        <h1>Logowanie</h1>
+        <hr />
+        @if (TempData["Walidator"] != null)
+        {
+            @Html.ValidationSummary(false, "Niepoprawne dane logowania", new { @class = "bg-danger text-center" })
+        }
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">Zaloguj</button>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-center">
+                    <label for="UserName">Nazwa użytkownika:</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control text-center", @id = "UserName", @style = "width: 40%; display: initial;" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "bg-danger", @style = "position: absolute; margin-left: 20px;margin-top: 10px;" })
+                    </div>
+                    <label for="Password">Hasło:</label>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control text-center", @type = "password", @id = "Password", @style = "width: 40%; display: initial;" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "bg-danger", @style = "position: absolute; margin-left: 20px;margin-top: 10px;" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Zaloguj</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
-
-
-
-
-
-</div>
 }
 
 @section Scripts {

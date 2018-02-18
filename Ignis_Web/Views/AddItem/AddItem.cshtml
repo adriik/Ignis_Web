@@ -4,154 +4,150 @@
     ViewBag.Title = "AddItem";
 }
 
-<h2>AddItem</h2>
+<h2>Raport - Itemy</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <br />
-    <br />
-    if (TempData["Dungeon"] != null)
-    {
+    <div class="jumbotron jumbotron-opacity">
+        @if (TempData["Dungeon"] != null)
+        {
         @Html.ValidationSummary(false, "Z jakiej instancji został wydropiony ten item/stat?", new { @class = "bg-danger text-center" })
-    }
-    if (TempData["ItemType"] != null)
-    {
+        }
+        @if (TempData["ItemType"] != null)
+        {
         @Html.ValidationSummary(false, "Proszę wybrać typ dropu.", new { @class = "bg-danger text-center" })
-    }
-    if (TempData["ItemName"] != null)
-    {
+        }
+        @if (TempData["ItemName"] != null)
+        {
         @Html.ValidationSummary(false, "Proszę zaznaczyć co wypadło.", new { @class = "bg-danger text-center" })
-    }
-    if (TempData["ItemDura"] != null)
-    {
+        }
+        @if (TempData["ItemDura"] != null)
+        {
         @Html.ValidationSummary(false, "Proszę wpisać durę itemu.", new { @class = "bg-danger text-center" })
-    }
-    if (TempData["ItemReceiver"] != null)
-    {
+        }
+        @if (TempData["ItemReceiver"] != null)
+        {
         @Html.ValidationSummary(false, "Proszę wybrać kto otrzymał item/stat.", new { @class = "bg-danger text-center" })
-    }
-    if (TempData["FreqSucc"] != null)
-    {
+        }
+        @if (TempData["FreqSucc"] != null)
+        {
         @Html.ValidationSummary(false, "Drop został zapisany.", new { @class = "bg-success text-center" })
-    }
-    <div class="form-horizontal">
-        <h4>Item</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
+        }
+        <div class="form-horizontal">
+            <h4>Item</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.IBP, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.SToES, htmlAttributes: new { @class = "menu-label" })
+                </div>
             </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.IBP, htmlAttributes: new { @class = "menu-label" })
-            </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.SToES, htmlAttributes: new { @class = "menu-label" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.checkIBP, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                        @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.checkSToES, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                        @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
             </div>
-            <div class="col-md-1">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.checkIBP, new { @class = "checkbox" })
-                    @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Typ, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Nazwa, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.Dura, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Dostał, htmlAttributes: new { @class = "menu-label" })
+                </div>
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.Set, htmlAttributes: new { @class = "menu-label" })
                 </div>
             </div>
-            <div class="col-md-1">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.checkSToES, new { @class = "checkbox" })
-                    @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Drop_Type1, ViewBag.Typy as IEnumerable<SelectListItem>, new
+                        {
+                            data_placeholder = "Select Options",
+                            data_dropup_auto = "true",
+                            data_size = "2",
+                            data_live_search = "true",
+                            title = "Wybierz typ dropu",
+                            data_style = "btn-secondary",
+                            @class = "selectpicker dropup"
+                        })
+                        @Html.ValidationMessageFor(model => model.Drop_Type1, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Typ, htmlAttributes: new { @class = "menu-label" })
-            </div>
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Nazwa, htmlAttributes: new { @class = "menu-label" })
-            </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.Dura, htmlAttributes: new { @class = "menu-label" })
-            </div>
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Dostał, htmlAttributes: new { @class = "menu-label" })
-            </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.Set, htmlAttributes: new { @class = "menu-label" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    @Html.DropDownListFor(model => model.Drop_Type1, ViewBag.Typy as IEnumerable<SelectListItem>, new
-                    {
-                        data_placeholder = "Select Options",
-                        data_dropup_auto = "true",
-                        data_size = "2",
-                        data_live_search = "true",
-                        title = "Wybierz typ dropu",
-                        data_style = "btn-secondary",
-                        @class = "selectpicker dropup"
-                    })
-                    @Html.ValidationMessageFor(model => model.Drop_Type1, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="col-md-2">
-                @Html.DropDownListFor(model => model.Item_Drop1, ViewBag.ItemList as IEnumerable<SelectListItem>, new
-                {
-                    data_placeholder = "Select Options",
-                    data_dropup_auto = "true",
-                    data_size = "10",
-                    data_live_search = "true",
-                    title = "Wybierz Item",
-                    data_style = "btn-secondary",
-                    @class = "selectpicker dropup"
-                })
-                @Html.ValidationMessageFor(model => model.Item_Drop1, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-md-1">
-                @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @Value = "0", @width = "50px" })
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    @Html.DropDownListFor(model => model.Drop_Receiver1, ViewBag.ListaLudzi as IEnumerable<SelectListItem>, new
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.Item_Drop1, ViewBag.ItemList as IEnumerable<SelectListItem>, new
                     {
                         data_placeholder = "Select Options",
                         data_dropup_auto = "true",
                         data_size = "10",
                         data_live_search = "true",
-                        title = "Wybierz gracza",
+                        title = "Wybierz Item",
                         data_style = "btn-secondary",
                         @class = "selectpicker dropup"
                     })
-                    @Html.ValidationMessageFor(model => model.Drop_Receiver1, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Item_Drop1, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @Value = "0", @width = "50px" })
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Drop_Receiver1, ViewBag.ListaLudzi as IEnumerable<SelectListItem>, new
+                        {
+                            data_placeholder = "Select Options",
+                            data_dropup_auto = "true",
+                            data_size = "10",
+                            data_live_search = "true",
+                            title = "Wybierz gracza",
+                            data_style = "btn-secondary",
+                            @class = "selectpicker dropup"
+                        })
+                        @Html.ValidationMessageFor(model => model.Drop_Receiver1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Item_Set1, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                        @Html.ValidationMessageFor(model => model.Item_Set1, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
-            <div class="col-md-1">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Item_Set1)
-                    @Html.ValidationMessageFor(model => model.Item_Set1, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Click</button>
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-default">Click</button>
-            </div>
         </div>
-    </div>
-}
+        }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
