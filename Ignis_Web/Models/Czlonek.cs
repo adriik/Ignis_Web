@@ -25,11 +25,17 @@ namespace Ignis_Web.Models
         public int GoldIncome { get; set; }
         public bool Set { get; set; }
         public int Gloves { get; set; }
+        public string GlovesHd { get; set; }
         public int Belt { get; set; }
+        public string BeltHd { get; set; }
         public int Cloak { get; set; }
+        public string CloakHd { get; set; }
         public int Pants { get; set; }
+        public string PantsHd { get; set; }
         public int Weapon { get; set; }
+        public string WeaponHd { get; set; }
         public int Shield { get; set; }
+        public string ShieldHd { get; set; }
         public int Stat1 { get; set; }
         public double Stat1Rank { get; set; }
         public bool Stat1Select { get; set; } = false;
@@ -137,7 +143,12 @@ namespace Ignis_Web.Models
                 }
             }
             cn.Close();
-            
+            if (Gloves > 100) { GlovesHd = "color-hd";}
+            if (Pants > 100) { PantsHd = "color-hd"; }
+            if (Belt > 100) { BeltHd = "color-hd"; }
+            if (Cloak > 100) { CloakHd = "color-hd"; }
+            if (Weapon > 100) { WeaponHd = "color-hd"; }
+            if (Shield > 100) { ShieldHd = "color-hd"; }
         }
     }
 }

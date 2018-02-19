@@ -81,7 +81,7 @@ th, td {
 }
 
 .color-stat-rank-select {
-    background-color: yellowgreen;
+    background-color: rgba(154, 205, 50, 0.2);
     color: black;
 }
 
@@ -90,7 +90,7 @@ th, td {
 }
 
 .color-druid {
-    color: green;
+    color: lawngreen;
 }
 
 .color-priest {
@@ -110,7 +110,7 @@ th, td {
 }
 
 .color-warden {
-    color: rebeccapurple;
+    color: mediumpurple;
 }
 
 .color-champion {
@@ -122,7 +122,7 @@ th, td {
 }
 
 .color-warlock {
-    color: saddlebrown;
+    color: rosybrown;
 }
 
 .font-size {
@@ -152,4 +152,15 @@ th, td {
     height: 30px;
 }
 
+.table-max-width {
+    max-width: 14.27%;
+    font-size: 13px;
+}
 
+.color-set-negative {
+    background-color: rgba(255,0,0,0.4);
+}
+
+.color-hd {
+    background-color: rgba(0,255,0,0.4);
+}

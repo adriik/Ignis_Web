@@ -26,13 +26,13 @@ namespace Ignis_Web
                       "~/Scripts/respond.js",
                       "~/Scripts/bootstrap-select.js",
                       "~/Scripts/i18n/defaults-pl_PL.js",
-                      "~/Scripts/bootstrap-table.js",
+                      "~/Scripts/footable.js",
                       "~/Scripts/fontawesome-all.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-select.css",
-                      "~/Content/bootstrap-table.css",
+                      "~/Content/footable.bootstrap.css",
                       "~/Content/site.css"));
         }
     }
