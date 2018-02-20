@@ -167,6 +167,7 @@
     <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\NazwyDropu.cs" />
+    <Compile Include="Models\SetReq.cs" />
     <Compile Include="Models\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -349,6 +350,7 @@
     <Content Include="Views\FreqApp\FreqAppka.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\AddItem\AddItem.cshtml" />
+    <Content Include="Views\FreqApp\Set.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

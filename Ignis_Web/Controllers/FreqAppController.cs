@@ -2202,6 +2202,38 @@ namespace Ignis_Web.Controllers
             }
             return RedirectToAction("FreqAppka", "FreqApp");
         }
+        public ActionResult Set()
+        {
+            if (Session["user"] != null)
+            {
+                var lista = new List<item>();
+                //s = s[0].ToUpper() + s.Substring(1);
+                NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+                cn.Open();
+                string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
+                using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new item(reader.GetString(0)));
+                        }
+                    }
+                }
+                ViewBag.ListaLudzi = lista.ToSelectList(x => x.Nickname, false);
 
+                cn.Close();
+                return View();
+            }
+            else
+            {
+                return RedirectToRoute(new
+                {
+                    controller = "Account",
+                    action = "Login",
+                });
+            }
         }
+    }
 }
