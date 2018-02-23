@@ -297,20 +297,17 @@ namespace Ignis_Web.Controllers
 
             foreach (var person in listDrop)
             {
-                System.Diagnostics.Debug.WriteLine("Pierwszy for \n");
                 foreach (var item in person.ItemList)
                 {
-                    System.Diagnostics.Debug.WriteLine("bylem tu 2\n: " + item.Type);
                     if (item.Type == "Plytowe")
                     {
-                        System.Diagnostics.Debug.WriteLine("bylem tu \n");
                         listPlate.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
                     else if (item.Type == "Kolcze")
                     {
                         listChain.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
-                    else if (item.Type == "Ubranie")
+                    else if (item.Type == "Magowe")
                     {
                         listCloth.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
@@ -318,7 +315,7 @@ namespace Ignis_Web.Controllers
                     {
                         listLeather.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
-                    else if (item.Type == "Leczykowe")
+                    else if (item.Type == "Healowe")
                     {
                         listHeal.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
