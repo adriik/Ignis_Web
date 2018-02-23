@@ -78,8 +78,20 @@ namespace Ignis_Web.Models
         public double Stat7PercentRank { get; set; }
         public static int Stat7Total { get; set; }
         public static double Stat7TotalRank { get; set; }
+        public int Stat8 { get; set; }
+        public double Stat8Rank { get; set; }
+        public bool Stat8Select { get; set; } = false;
+        public double Stat8PercentRank { get; set; }
+        public static int Stat8Total { get; set; }
+        public static double Stat8TotalRank { get; set; }
+        public int Stat9 { get; set; }
+        public double Stat9Rank { get; set; }
+        public bool Stat9Select { get; set; } = false;
+        public double Stat9PercentRank { get; set; }
+        public static int Stat9Total { get; set; }
+        public static double Stat9TotalRank { get; set; }
 
-        public Czlonek(string Nickname)
+        public Czlonek(string Nickname, string Dungeon)
         {
             this.Nickname = Nickname;//[0].ToString().ToUpper() + Nickname.Substring(1);
 
@@ -87,7 +99,7 @@ namespace Ignis_Web.Models
             //s = s[0].ToUpper() + s.Substring(1);
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string QueryPeople = "SELECT * FROM public.\"IBP\",public.\"People\" WHERE \"IBP\".\"Nickname\"=" + "'"+Nickname+ "' AND \"People\".\"Nickname\"=" + "'" +Nickname+"'";
+            string QueryPeople = "SELECT * FROM public.\"" + Dungeon + "\",public.\"People\" WHERE \"" + Dungeon + "\".\"Nickname\"=" + "'"+Nickname+ "' AND \"People\".\"Nickname\"=" + "'" +Nickname+"'";
             using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -138,7 +150,15 @@ namespace Ignis_Web.Models
                         Stat7Rank = Math.Round(reader.GetDouble(30),2);
                         Stat7Total += Stat7;
 
-                        Class = reader.GetString(32);
+                        Stat8 = reader.GetInt32(29);
+                        Stat8Rank = Math.Round(reader.GetDouble(32), 2);
+                        Stat8Total += Stat8;
+
+                        Stat9 = reader.GetInt32(29);
+                        Stat9Rank = Math.Round(reader.GetDouble(34), 2);
+                        Stat9Total += Stat9;
+
+                        Class = reader.GetString(36);
                     }
                 }
             }

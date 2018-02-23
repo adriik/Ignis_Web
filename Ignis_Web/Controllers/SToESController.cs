@@ -9,9 +9,10 @@ using System.Web.Mvc;
 
 namespace Ignis_Web.Controllers
 {
-    public class HomeController : Controller
+    public class SToESController : Controller
     {
-        public ActionResult Index()
+        static string dungeon = "SToES";
+        public ActionResult Frequency()
         {
             Clear();
             var lista = new List<Czlonek>();
@@ -24,7 +25,7 @@ namespace Ignis_Web.Controllers
                 {
                     while (reader.Read())
                     {
-                        lista.Add(new Czlonek(reader.GetString(0)));
+                        lista.Add(new Czlonek(reader.GetString(0), dungeon));
                     }
                 }
             }
@@ -40,8 +41,8 @@ namespace Ignis_Web.Controllers
             //lista.Sort((emp1, emp2) => emp1.Nickname.CompareTo(emp2.Nickname));
             //lista.Sort((emp1, emp2) => emp1.Class.CompareTo(emp2.Class));
 
-            List<Czlonek>listSortByClass = new List<Czlonek>();
-            
+            List<Czlonek> listSortByClass = new List<Czlonek>();
+
             foreach (var item in lista)
             {
                 if (item.Class == "Druid")
@@ -138,6 +139,8 @@ namespace Ignis_Web.Controllers
             List<double> percentRank5 = new List<double>();
             List<double> percentRank6 = new List<double>();
             List<double> percentRank7 = new List<double>();
+            List<double> percentRank8 = new List<double>();
+            List<double> percentRank9 = new List<double>();
 
             foreach (var item in listSortByClass)
             {
@@ -160,11 +163,13 @@ namespace Ignis_Web.Controllers
                 if (item.Class == "Warden" || item.Class == "Rouge" || item.Class == "Scout" || item.Class == "Warrior" || item.Class == "Champion")
                 {
                     percentRank4.Add(item.Stat4Rank);
+                    percentRank8.Add(item.Stat8Rank);
                 }
 
                 if (item.Class == "Rouge" || item.Class == "Scout")
                 {
                     percentRank5.Add(item.Stat5Rank);
+                    percentRank9.Add(item.Stat9Rank);
                 }
 
                 if (item.Class == "Warlock" || item.Class == "Mage")
@@ -176,7 +181,7 @@ namespace Ignis_Web.Controllers
 
             foreach (var item in listSortByClass)
             {
-                if(PercentRank(percentRank1, item.Stat1Rank) > 0.7)
+                if (PercentRank(percentRank1, item.Stat1Rank) > 0.7)
                 {
                     item.Stat1Select = true;
                 }
@@ -204,12 +209,22 @@ namespace Ignis_Web.Controllers
                 if (PercentRank(percentRank6, item.Stat6Rank) > 0.70)
                 {
                     item.Stat6Select = true;
-                    
+
                 }
 
                 if (PercentRank(percentRank7, item.Stat7Rank) > 0.7)
                 {
                     item.Stat7Select = true;
+                }
+
+                if (PercentRank(percentRank7, item.Stat7Rank) > 0.75)
+                {
+                    item.Stat8Select = true;
+                }
+
+                if (PercentRank(percentRank7, item.Stat7Rank) > 0.75)
+                {
+                    item.Stat9Select = true;
                 }
             }
             UpdateRank();
@@ -239,6 +254,12 @@ namespace Ignis_Web.Controllers
             ViewBag.Stat7Total = Czlonek.Stat7Total;
             ViewBag.Stat7TotalRank = Czlonek.Stat7TotalRank;
 
+            ViewBag.Stat8Total = Czlonek.Stat8Total;
+            ViewBag.Stat8TotalRank = Czlonek.Stat8TotalRank;
+
+            ViewBag.Stat9Total = Czlonek.Stat9Total;
+            ViewBag.Stat9TotalRank = Czlonek.Stat9TotalRank;
+
             ViewBag.ParameterValueList = listSortByClass.ToSelectList(x => x.Nickname, false);
             //ViewBag.LocationList = allLocations.ToSelectList(x => x.Key, x => x.Value, myLocations /* selectedValues */);
 
@@ -249,10 +270,23 @@ namespace Ignis_Web.Controllers
 
         }
 
-        public ActionResult About()
+        public ActionResult Items()
         {
-            ViewBag.Message = "Your application description page.";
-
+            List<Drop> listDrop = new List<Drop>();
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            string QueryDrop = "SELECT DISTINCT \"Receiver\" FROM public.\"" + dungeon + "_Items\"";
+            using (NpgsqlCommand command = new NpgsqlCommand(QueryDrop, cn))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listDrop.Add(new Drop(reader.GetString(0)));
+                    }
+                }
+            }
+            ViewBag.listDrop = listDrop;
             return View();
         }
 
@@ -315,46 +349,60 @@ namespace Ignis_Web.Controllers
 
             Czlonek.Stat7Total = 0;
             Czlonek.Stat7TotalRank = 0;
+
+            Czlonek.Stat8Total = 0;
+            Czlonek.Stat8TotalRank = 0;
+
+            Czlonek.Stat9Total = 0;
+            Czlonek.Stat9TotalRank = 0;
         }
 
         private void UpdateRank()
         {
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string QueryRank = "SELECT * FROM public.\"WSP_IBP\"";
+            string QueryRank = "SELECT * FROM public.\"WSP_" + dungeon + "\"";
             using (NpgsqlCommand command = new NpgsqlCommand(QueryRank, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        if (reader.GetString(0) == "Log_sta/hp 251")
+                        if (reader.GetString(0) == "Log_sta/hp red")
                         {
                             Czlonek.Stat1TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_sta/wis 251")
+                        else if (reader.GetString(0) == "Log_sta/wis red")
                         {
                             Czlonek.Stat2TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_sta/patt 251")
+                        else if (reader.GetString(0) == "Log_sta/patt red")
                         {
                             Czlonek.Stat3TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_str/patt 251")
+                        else if (reader.GetString(0) == "Log_str/patt red")
                         {
                             Czlonek.Stat4TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_dex/patt 251")
+                        else if (reader.GetString(0) == "Log_dex/patt red")
                         {
                             Czlonek.Stat5TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_int/matt 251")
+                        else if (reader.GetString(0) == "Log_int/matt red")
                         {
                             Czlonek.Stat6TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
-                        else if (reader.GetString(0) == "Log_int/matt")
+                        else if (reader.GetString(0) == "Log_int/matt yellow")
                         {
                             Czlonek.Stat7TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_str/patt yellow")
+                        {
+                            Czlonek.Stat8TotalRank = Math.Round(reader.GetDouble(1), 2);
+                        }
+                        else if (reader.GetString(0) == "Log_dex/patt yellow")
+                        {
+                            Czlonek.Stat9TotalRank = Math.Round(reader.GetDouble(1), 2);
                         }
                     }
                 }

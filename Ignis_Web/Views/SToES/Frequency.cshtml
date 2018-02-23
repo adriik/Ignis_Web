@@ -1,0 +1,1518 @@
+﻿@{
+    ViewBag.Title = "Frekwencja";
+}
+
+<h1><img src="~/Img/bully-minion.svg" alt="Frekwencja" class="icon" />Frekwencja<img src="~/Img/bully-minion.svg" alt="Frekwencja" class="icon icon-mirror" /></h1>
+<div class="jumbotron jumbotron-opacity">
+    <div class="table-wrapper fixed-scrollbar font-size">
+        <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 8em; margin-left: +8em;">
+            <thead>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                    <td>WSP</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Class == "Druid")
+                        {
+                            <td class="color-druid">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            <td class="color-priest">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Knight")
+                        {
+                            <td class="color-knight">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warden")
+                        {
+                            <td class="color-warden">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            <td class="color-champion">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            <td class="color-rouge">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            <td class="color-scout">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Mage")
+                        {
+                            <td class="color-mage">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            <td class="color-warlock">@czlonek.Nickname</td>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <tr>
+                        <td class="first-col table-dark text-center table-striped table-hover">Boss @i</td>
+                        <td> </td>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+                            switch (i)
+                            {
+                                case 1:
+                                    <td style="@czlonek.Kolor">@czlonek.Pierwszy</td>
+                                    break;
+                                case 2:
+                                    <td style="@czlonek.Kolor">@czlonek.Drugi</td>
+                                    break;
+                                case 3:
+                                    <td style="@czlonek.Kolor">@czlonek.Trzeci</td>
+                                    break;
+                                case 4:
+                                    <td style="@czlonek.Kolor">@czlonek.Czwarty</td>
+                                    break;
+                                case 5:
+                                    <td style="@czlonek.Kolor">@czlonek.Piaty</td>
+                                    break;
+                            }
+                        }
+                    </tr>
+                }
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Suma</td>
+                    <td>@ViewBag.TotalAll</td>
+
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td style="@czlonek.Kolor">@czlonek.Total</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Wypłacono</td>
+                    <td> @ViewBag.GoldTotalAll</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td style="@czlonek.Kolor">@czlonek.GoldIncome</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<h1><img src="~/Img/two-handed-sword.svg" alt="Frekwencja" class="icon" />Sety<img src="~/Img/two-handed-sword.svg" alt="Frekwencja" class="icon icon-mirror" /></h1>
+<div class="jumbotron jumbotron-opacity">
+    <div class="table-wrapper fixed-scrollbar font-size">
+        <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 8em; margin-left: +8em;">
+            <thead>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                    <td>WSP</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Class == "Druid")
+                        {
+                            <td class="color-druid">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            <td class="color-priest">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Knight")
+                        {
+                            <td class="color-knight">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warden")
+                        {
+                            <td class="color-warden">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            <td class="color-champion">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            <td class="color-rouge">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            <td class="color-scout">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Mage")
+                        {
+                            <td class="color-mage">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            <td class="color-warlock">@czlonek.Nickname</td>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Set</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Set == true)
+                        {
+                            <td class="color-set" style="@czlonek.Kolor"><i class="fas fa-check text-success"></i></td>
+                        }
+                        else
+                        {
+                            <td class="color-set" style="@czlonek.Kolor"><i class="fas fa-times text-danger"></i></td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Hełm</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Gloves > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Gloves</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Gloves</td>
+                        }
+
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Buty</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Belt > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Belt</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Belt</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Naramienniki</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Cloak > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Cloak</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Cloak</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Klata</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Pants > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Pants</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Pants</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Broń</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Weapon > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Weapon</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Weapon</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">Tarcza</td>
+                    <td> </td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Shield > 100)
+                        {
+                            <td class="text-success" style="@czlonek.Kolor">@czlonek.Shield</td>
+                        }
+                        else
+                        {
+                            <td style="@czlonek.Kolor">@czlonek.Shield</td>
+                        }
+                    }
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<h1><img src="~/Img/dragon-head.svg" alt="Frekwencja" class="icon" />Staty<img src="~/Img/dragon-head.svg" alt="Frekwencja" class="icon icon-mirror" /></h1>
+<div class="jumbotron jumbotron-opacity">
+    <div class="table-wrapper fixed-scrollbar font-size">
+        <table id="table" class="table table-dark text-center table-striped table-hover table-bordered" style="width: 8em; margin-left: +8em;">
+            <thead>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">XXXXX</td>
+                    <td>WSP</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Class == "Druid")
+                        {
+                            <td class="color-druid">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            <td class="color-priest">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Knight")
+                        {
+                            <td class="color-knight">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warden")
+                        {
+                            <td class="color-warden">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            <td class="color-champion">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            <td class="color-rouge">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            <td class="color-scout">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Mage")
+                        {
+                            <td class="color-mage">@czlonek.Nickname</td>
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            <td class="color-warlock">@czlonek.Nickname</td>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">sta/hp 284</td>
+                    <td> @ViewBag.Stat1Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat1</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat1TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat1Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat1Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat1Rank</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">sta/wis 284</td>
+                    <td> @ViewBag.Stat2Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat2</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat2TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat2Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat2Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat2Rank</td>
+                        }
+
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">sta/patt 284</td>
+                    <td> @ViewBag.Stat3Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat3</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat3TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat3Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat3Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat3Rank</td>
+                        }
+
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">str/patt 284</td>
+                    <td> @ViewBag.Stat4Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat4</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat4TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat4Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat4Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat4Rank</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">dex/patt 284</td>
+                    <td> @ViewBag.Stat5Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat5</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat5TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat5Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat5Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat5Rank</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">int/matt 284</td>
+                    <td> @ViewBag.Stat6Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat6</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat6TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat6Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat6Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat6Rank</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">int/matt</td>
+                    <td> @ViewBag.Stat7Total</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        <td class="color-stat" style="@czlonek.Kolor">@czlonek.Stat7</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="first-col table-dark text-center table-striped table-hover">rank</td>
+                    <td> @ViewBag.Stat7TotalRank</td>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+                        if (czlonek.Stat7Select)
+                        {
+                            <td class="color-stat-rank-select" style="@czlonek.Kolor">@czlonek.Stat7Rank</td>
+                        }
+                        else
+                        {
+                            <td class="color-stat-rank" style="@czlonek.Kolor">@czlonek.Stat7Rank</td>
+                        }
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h1>Staty</h1>
+<div class="jumbotron jumbotron-opacity">
+    <div class="row">
+        <div class="col">
+            <h1>sta/hp 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Druid")
+                        {
+                            if (czlonek.Stat1Select)
+                            {
+                                <tr>
+                                    <td class="color-druid color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-druid color-stat-rank-select text-center">@czlonek.Stat1</td>
+
+                                    <td class="color-druid color-stat-rank-select text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-druid">@czlonek.Nickname</td>
+                                    <td class="color-druid text-center">@czlonek.Stat1</td>
+                                    <td class="color-druid text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            if (czlonek.Stat1Select)
+                            {
+                                <tr>
+                                    <td class="color-priest color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-priest color-stat-rank-select text-center">@czlonek.Stat1</td>
+
+                                    <td class="color-priest color-stat-rank-select text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-priest">@czlonek.Nickname</td>
+
+                                    <td class="color-priest text-center">@czlonek.Stat1</td>
+
+                                    <td class="color-priest text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+                        }
+                        else if (czlonek.Class == "Knight")
+                        {
+                            if (czlonek.Stat1Select)
+                            {
+                                <tr>
+                                    <td class="color-knight color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-knight color-stat-rank-select text-center">@czlonek.Stat1</td>
+
+                                    <td class="color-knight color-stat-rank-select text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-knight">@czlonek.Nickname</td>
+
+                                    <td class="color-knight text-center">@czlonek.Stat1</td>
+
+                                    <td class="color-knight text-right">@czlonek.Stat1Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>sta/wis 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Druid")
+                        {
+                            if (czlonek.Stat2Select)
+                            {
+                                <tr>
+                                    <td class="color-druid color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-druid color-stat-rank-select text-center">@czlonek.Stat2</td>
+
+                                    <td class="color-druid color-stat-rank-select text-right">@czlonek.Stat2Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-druid">@czlonek.Nickname</td>
+                                    <td class="color-druid text-center">@czlonek.Stat2</td>
+                                    <td class="color-druid text-right">@czlonek.Stat2Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Priest")
+                        {
+                            if (czlonek.Stat2Select)
+                            {
+                                <tr>
+                                    <td class="color-priest color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-priest color-stat-rank-select text-center">@czlonek.Stat2</td>
+
+                                    <td class="color-priest color-stat-rank-select text-right">@czlonek.Stat2Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-priest">@czlonek.Nickname</td>
+
+                                    <td class="color-priest text-center">@czlonek.Stat2</td>
+
+                                    <td class="color-priest text-right">@czlonek.Stat2Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>sta/patt 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Knight")
+                        {
+                            if (czlonek.Stat3Select)
+                            {
+                                <tr>
+                                    <td class="color-knight color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-knight color-stat-rank-select text-center">@czlonek.Stat3</td>
+
+                                    <td class="color-knight color-stat-rank-select text-right">@czlonek.Stat3Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-knight">@czlonek.Nickname</td>
+                                    <td class="color-knight text-center">@czlonek.Stat3</td>
+                                    <td class="color-knight text-right">@czlonek.Stat3Rank</td>
+                                </tr>
+                            }
+
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>str/patt 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Warden")
+                        {
+                            if (czlonek.Stat4Select)
+                            {
+                                <tr>
+                                    <td class="color-warden color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-warden color-stat-rank-select text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-warden color-stat-rank-select text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-warden">@czlonek.Nickname</td>
+                                    <td class="color-warden text-center">@czlonek.Stat4</td>
+                                    <td class="color-warden text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            if (czlonek.Stat4Select)
+                            {
+                                <tr>
+                                    <td class="color-rouge color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-rouge">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-rouge text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            if (czlonek.Stat4Select)
+                            {
+                                <tr>
+                                    <td class="color-champion color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-champion color-stat-rank-select text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-champion color-stat-rank-select text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-champion">@czlonek.Nickname</td>
+
+                                    <td class="color-champion text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-champion text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            if (czlonek.Stat4Select)
+                            {
+                                <tr>
+                                    <td class="color-scout color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-scout color-stat-rank-select text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-scout color-stat-rank-select text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-scout">@czlonek.Nickname</td>
+
+                                    <td class="color-scout text-center">@czlonek.Stat4</td>
+
+                                    <td class="color-scout text-right">@czlonek.Stat4Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>dex/patt 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Rouge")
+                        {
+                            if (czlonek.Stat5Select)
+                            {
+                                <tr>
+                                    <td class="color-rouge color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-center">@czlonek.Stat5</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-right">@czlonek.Stat5Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-rouge">@czlonek.Nickname</td>
+                                    <td class="color-rouge text-center">@czlonek.Stat5</td>
+                                    <td class="color-rouge text-right">@czlonek.Stat5Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            if (czlonek.Stat5Select)
+                            {
+                                <tr>
+                                    <td class="color-scout color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-scout color-stat-rank-select text-center">@czlonek.Stat5</td>
+
+                                    <td class="color-scout color-stat-rank-select text-right">@czlonek.Stat5Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-priest">@czlonek.Nickname</td>
+
+                                    <td class="color-priest text-center">@czlonek.Stat5</td>
+
+                                    <td class="color-priest text-right">@czlonek.Stat5Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>int/matt 284</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Mage")
+                        {
+                            if (czlonek.Stat6Select)
+                            {
+                                <tr>
+                                    <td class="color-mage color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-mage color-stat-rank-select text-center">@czlonek.Stat6</td>
+
+                                    <td class="color-mage color-stat-rank-select text-right">@czlonek.Stat6Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-mage">@czlonek.Nickname</td>
+                                    <td class="color-mage text-center">@czlonek.Stat6</td>
+                                    <td class="color-mage text-right">@czlonek.Stat6Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            if (czlonek.Stat6Select)
+                            {
+                                <tr>
+                                    <td class="color-warlock color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-warlock color-stat-rank-select text-center">@czlonek.Stat6</td>
+
+                                    <td class="color-warlock color-stat-rank-select text-right">@czlonek.Stat6Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-warlock">@czlonek.Nickname</td>
+
+                                    <td class="color-warlock text-center">@czlonek.Stat6</td>
+
+                                    <td class="color-warlock text-right">@czlonek.Stat6Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>int/matt</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Mage")
+                        {
+                            if (czlonek.Stat7Select)
+                            {
+                                <tr>
+                                    <td class="color-mage color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-mage color-stat-rank-select text-center">@czlonek.Stat7</td>
+
+                                    <td class="color-mage color-stat-rank-select text-right">@czlonek.Stat7Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-mage">@czlonek.Nickname</td>
+                                    <td class="color-mage text-center"> @czlonek.Stat7</td>
+                                    <td class="color-mage text-right">@czlonek.Stat7Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Warlock")
+                        {
+                            if (czlonek.Stat7Select)
+                            {
+                                <tr>
+                                    <td class="color-warlock color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-warlock color-stat-rank-select text-center">@czlonek.Stat7</td>
+
+                                    <td class="color-warlock color-stat-rank-select text-right">@czlonek.Stat7Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-warlock">@czlonek.Nickname</td>
+
+                                    <td class="color-warlock text-center">@czlonek.Stat7</td>
+
+                                    <td class="color-warlock text-right">@czlonek.Stat7Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>str/patt</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Warden")
+                        {
+                            if (czlonek.Stat8Select)
+                            {
+                                <tr>
+                                    <td class="color-warden color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-warden color-stat-rank-select text-center">@czlonek.Stat8</td>
+
+                                    <td class="color-warden color-stat-rank-select text-right">@czlonek.Stat8Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-warden">@czlonek.Nickname</td>
+                                    <td class="color-warden text-center">@czlonek.Stat8</td>
+                                    <td class="color-warden text-right">@czlonek.Stat8Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Rouge")
+                        {
+                            if (czlonek.Stat8Select)
+                            {
+                                <tr>
+                                    <td class="color-rouge color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-center">@czlonek.Stat8</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-right">@czlonek.Stat8Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-rouge">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge text-center">@czlonek.Stat8</td>
+
+                                    <td class="color-rouge text-right">@czlonek.Stat8Rank</td>
+                                </tr>
+                            }
+                        }
+                        else if (czlonek.Class == "Champion")
+                        {
+                            if (czlonek.Stat9Select)
+                            {
+                                <tr>
+                                    <td class="color-champion color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-champion color-stat-rank-select text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-champion color-stat-rank-select text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-champion">@czlonek.Nickname</td>
+
+                                    <td class="color-champion text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-champion text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            if (czlonek.Stat9Select)
+                            {
+                                <tr>
+                                    <td class="color-scout color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-scout color-stat-rank-select text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-scout color-stat-rank-select text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-scout">@czlonek.Nickname</td>
+
+                                    <td class="color-scout text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-scout text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>dex/patt</h1>
+            <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="text">Nick</th>
+                        <th data-type="number">Ilość</th>
+                        <th class="text-right" data-sorted="true" data-direction="DESC" data-type="number" data-decimal-separator="." data-thousand-separator=",">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var czlonek in ViewBag.People)
+                    {
+
+                        if (czlonek.Class == "Rouge")
+                        {
+                            if (czlonek.Stat9Select)
+                            {
+                                <tr>
+                                    <td class="color-rouge color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-rouge color-stat-rank-select text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-rouge">@czlonek.Nickname</td>
+                                    <td class="color-rouge text-center">@czlonek.Stat9</td>
+                                    <td class="color-rouge text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+
+                        }
+                        else if (czlonek.Class == "Scout")
+                        {
+                            if (czlonek.Stat9Select)
+                            {
+                                <tr>
+                                    <td class="color-scout color-stat-rank-select">@czlonek.Nickname</td>
+
+                                    <td class="color-scout color-stat-rank-select text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-scout color-stat-rank-select text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="color-scout">@czlonek.Nickname</td>
+
+                                    <td class="color-scout text-center">@czlonek.Stat9</td>
+
+                                    <td class="color-scout text-right">@czlonek.Stat9Rank</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h1>Sety</h1>
+<div class="jumbotron jumbotron-opacity">
+    <div class="row">
+        <div class="col">
+            <h1><img src="~/Img/leather-vest.svg" alt="Skóra" class="icon" /> Skórzane <img src="~/Img/leather-vest.svg" alt="Skóra" class="icon icon-mirror" /></h1>
+            <div class="table-wrapper fixed-scrollbar">
+                <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-type="text" data-sorted="true" data-direction="ASC">Nick</th>
+                            <th data-type="number">Hełm</th>
+                            <th data-type="number">Buty</th>
+                            <th data-type="number">Naramienniki</th>
+                            <th data-type="number">Klata</th>
+                            <th data-type="number">Broń</th>
+                            <th data-type="number">Tarcza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+
+                            if (czlonek.Class == "Rouge" || czlonek.Class == "Scout")
+                            {
+                                <tr>
+                                    <td>@czlonek.Nickname</td>
+
+                                    @if (czlonek.Set == true)
+                                    {
+                                        <td class=@czlonek.GlovesHd>@czlonek.Gloves</td>
+
+                                        <td class=@czlonek.BeltHd>@czlonek.Belt</td>
+
+                                        <td class=@czlonek.CloakHd>@czlonek.Cloak</td>
+
+                                        <td class=@czlonek.PantsHd>@czlonek.Pants</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="color-set-negative">@czlonek.Gloves</td>
+
+                                        <td class="color-set-negative">@czlonek.Belt</td>
+
+                                        <td class="color-set-negative">@czlonek.Cloak</td>
+
+                                        <td class="color-set-negative">@czlonek.Pants</td>
+                                    }
+                                    <td class=@czlonek.WeaponHd>@czlonek.Weapon</td>
+
+                                    <td class=@czlonek.ShieldHd>@czlonek.Shield</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h1><img src="~/Img/pointy-hat.svg" alt="Magiczne" class="icon" /> Magiczne <img src="~/Img/pointy-hat.svg" alt="Magiczne" class="icon icon-mirror" /></h1>
+            <div class="table-wrapper fixed-scrollbar">
+                <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-type="text" data-sorted="true" data-direction="ASC">Nick</th>
+                            <th data-type="number">Hełm</th>
+                            <th data-type="number">Buty</th>
+                            <th data-type="number">Naramienniki</th>
+                            <th data-type="number">Klata</th>
+                            <th data-type="number">Broń</th>
+                            <th data-type="number">Tarcza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+
+                            if (czlonek.Class == "Mage" || czlonek.Class == "Warlock")
+                            {
+                                <tr>
+                                    <td>@czlonek.Nickname</td>
+
+                                    @if (czlonek.Set == true)
+                                    {
+                                        <td class=@czlonek.GlovesHd>@czlonek.Gloves</td>
+
+                                        <td class=@czlonek.BeltHd>@czlonek.Belt</td>
+
+                                        <td class=@czlonek.CloakHd>@czlonek.Cloak</td>
+
+                                        <td class=@czlonek.PantsHd>@czlonek.Pants</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="color-set-negative">@czlonek.Gloves</td>
+
+                                        <td class="color-set-negative">@czlonek.Belt</td>
+
+                                        <td class="color-set-negative">@czlonek.Cloak</td>
+
+                                        <td class="color-set-negative">@czlonek.Pants</td>
+                                    }
+                                    <td class=@czlonek.WeaponHd>@czlonek.Weapon</td>
+
+                                    <td class=@czlonek.ShieldHd>@czlonek.Shield</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h1><img src="~/Img/chain-mail.svg" alt="Kolcze" class="icon" /> Kolcze <img src="~/Img/chain-mail.svg" alt="Kolcze" class="icon icon-mirror" /></h1>
+            <div class="table-wrapper fixed-scrollbar">
+                <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-type="text" data-sorted="true" data-direction="ASC">Nick</th>
+                            <th data-type="number">Hełm</th>
+                            <th data-type="number">Buty</th>
+                            <th data-type="number">Naramienniki</th>
+                            <th data-type="number">Klata</th>
+                            <th data-type="number">Broń</th>
+                            <th data-type="number">Tarcza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+
+                            if (czlonek.Class == "Warden" || czlonek.Class == "Champion")
+                            {
+                                <tr>
+                                    <td>@czlonek.Nickname</td>
+
+                                    @if (czlonek.Set == true)
+                                    {
+                                        <td class=@czlonek.GlovesHd>@czlonek.Gloves</td>
+
+                                        <td class=@czlonek.BeltHd>@czlonek.Belt</td>
+
+                                        <td class=@czlonek.CloakHd>@czlonek.Cloak</td>
+
+                                        <td class=@czlonek.PantsHd>@czlonek.Pants</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="color-set-negative">@czlonek.Gloves</td>
+
+                                        <td class="color-set-negative">@czlonek.Belt</td>
+
+                                        <td class="color-set-negative">@czlonek.Cloak</td>
+
+                                        <td class="color-set-negative">@czlonek.Pants</td>
+                                    }
+                                    <td class=@czlonek.WeaponHd>@czlonek.Weapon</td>
+
+                                    <td class=@czlonek.ShieldHd>@czlonek.Shield</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h1><img src="~/Img/caduceus.svg" alt="Leczykowe" class="icon" /> Leczykowe <img src="~/Img/caduceus.svg" alt="Leczykowe" class="icon icon-mirror" /></h1>
+            <div class="table-wrapper fixed-scrollbar">
+                <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-type="text" data-sorted="true" data-direction="ASC">Nick</th>
+                            <th data-type="number">Hełm</th>
+                            <th data-type="number">Buty</th>
+                            <th data-type="number">Naramienniki</th>
+                            <th data-type="number">Klata</th>
+                            <th data-type="number">Broń</th>
+                            <th data-type="number">Tarcza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+
+                            if (czlonek.Class == "Druid" || czlonek.Class == "Priest")
+                            {
+                                <tr>
+                                    <td>@czlonek.Nickname</td>
+
+                                    @if (czlonek.Set == true)
+                                    {
+                                        <td class=@czlonek.GlovesHd>@czlonek.Gloves</td>
+
+                                        <td class=@czlonek.BeltHd>@czlonek.Belt</td>
+
+                                        <td class=@czlonek.CloakHd>@czlonek.Cloak</td>
+
+                                        <td class=@czlonek.PantsHd>@czlonek.Pants</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="color-set-negative">@czlonek.Gloves</td>
+
+                                        <td class="color-set-negative">@czlonek.Belt</td>
+
+                                        <td class="color-set-negative">@czlonek.Cloak</td>
+
+                                        <td class="color-set-negative">@czlonek.Pants</td>
+                                    }
+                                    <td class=@czlonek.WeaponHd>@czlonek.Weapon</td>
+
+                                    <td class=@czlonek.ShieldHd>@czlonek.Shield</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h1><img src="~/Img/slashed-shield.svg" alt="Płytowe" class="icon" /> Płytowe <img src="~/Img/slashed-shield.svg" alt="Płytowe" class="icon icon-mirror" /></h1>
+            <div class="table-wrapper fixed-scrollbar">
+                <table class="table table-striped table-dark table-sortable table-max-width" data-sorting="true">
+                    <thead>
+                        <tr>
+                            <th data-type="text" data-sorted="true" data-direction="ASC">Nick</th>
+                            <th data-type="number">Hełm</th>
+                            <th data-type="number">Buty</th>
+                            <th data-type="number">Naramienniki</th>
+                            <th data-type="number">Klata</th>
+                            <th data-type="number">Broń</th>
+                            <th data-type="number">Tarcza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var czlonek in ViewBag.People)
+                        {
+
+                            if (czlonek.Class == "Knight")
+                            {
+                                <tr>
+                                    <td>@czlonek.Nickname</td>
+
+                                    @if (czlonek.Set == true)
+                                    {
+                                        <td class=@czlonek.GlovesHd>@czlonek.Gloves</td>
+
+                                        <td class=@czlonek.BeltHd>@czlonek.Belt</td>
+
+                                        <td class=@czlonek.CloakHd>@czlonek.Cloak</td>
+
+                                        <td class=@czlonek.PantsHd>@czlonek.Pants</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="color-set-negative">@czlonek.Gloves</td>
+
+                                        <td class="color-set-negative">@czlonek.Belt</td>
+
+                                        <td class="color-set-negative">@czlonek.Cloak</td>
+
+                                        <td class="color-set-negative">@czlonek.Pants</td>
+                                    }
+                                    <td class=@czlonek.WeaponHd>@czlonek.Weapon</td>
+
+                                    <td class=@czlonek.ShieldHd>@czlonek.Shield</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function ($) {
+            var scrollbar = $('<div id="fixed-scrollbar"><div></div></div>').appendTo($(document.body));
+            scrollbar.hide().css({
+                overflowX: 'auto',
+                position: 'fixed',
+                width: '100%',
+                bottom: 0
+            });
+            var fakecontent = scrollbar.find('div');
+
+            function top(e) {
+                return e.offset().top;
+            }
+
+            function bottom(e) {
+                return e.offset().top + e.height();
+            }
+
+            var active = $([]);
+            function find_active() {
+                scrollbar.show();
+                var active = $([]);
+                $('.fixed-scrollbar').each(function () {
+                    if (top($(this)) < top(scrollbar) && bottom($(this)) > bottom(scrollbar)) {
+                        fakecontent.width($(this).get(0).scrollWidth);
+                        fakecontent.height(1);
+                        active = $(this);
+                    }
+                });
+                fit(active);
+                return active;
+            }
+
+            function fit(active) {
+                if (!active.length) return scrollbar.hide();
+                scrollbar.css({ left: active.offset().left, width: active.width() });
+                fakecontent.width($(this).get(0).scrollWidth);
+                fakecontent.height(1);
+                delete lastScroll;
+            }
+
+            function onscroll() {
+                var oldactive = active;
+                active = find_active();
+                if (oldactive.not(active).length) {
+                    oldactive.unbind('scroll', update);
+                }
+                if (active.not(oldactive).length) {
+                    active.scroll(update);
+                }
+                update();
+            }
+
+            var lastScroll;
+            function scroll() {
+                if (!active.length) return;
+                if (scrollbar.scrollLeft() === lastScroll) return;
+                lastScroll = scrollbar.scrollLeft();
+                active.scrollLeft(lastScroll);
+            }
+
+            function update() {
+                if (!active.length) return;
+                if (active.scrollLeft() === lastScroll) return;
+                lastScroll = active.scrollLeft();
+                scrollbar.scrollLeft(lastScroll);
+            }
+
+            scrollbar.scroll(scroll);
+
+            onscroll();
+            $(window).scroll(onscroll);
+            $(window).resize(onscroll);
+        });
+
+        jQuery(function ($) {
+            $('.table-sortable').footable();
+        });
+    </script>
+
+
+
+
+}
