@@ -273,6 +273,7 @@ namespace Ignis_Web.Controllers
         public ActionResult Items()
         {
             List<Drop> listDrop = new List<Drop>();
+
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
             string QueryDrop = "SELECT DISTINCT \"Receiver\" FROM public.\"" + dungeon + "_Items\"";
@@ -282,11 +283,60 @@ namespace Ignis_Web.Controllers
                 {
                     while (reader.Read())
                     {
-                        listDrop.Add(new Drop( reader.GetString(0)));
+                        listDrop.Add(new Drop(reader.GetString(0), dungeon));
                     }
                 }
             }
-            ViewBag.listDrop = listDrop;
+
+            List<Drop> listPlate = new List<Drop>();
+            List<Drop> listChain = new List<Drop>();
+            List<Drop> listLeather = new List<Drop>();
+            List<Drop> listCloth = new List<Drop>();
+            List<Drop> listWeapon = new List<Drop>();
+            List<Drop> listHeal = new List<Drop>();
+
+            foreach (var person in listDrop)
+            {
+                System.Diagnostics.Debug.WriteLine("Pierwszy for \n");
+                foreach (var item in person.ItemList)
+                {
+                    System.Diagnostics.Debug.WriteLine("bylem tu 2\n: " + item.Type);
+                    if (item.Type == "Plytowe")
+                    {
+                        System.Diagnostics.Debug.WriteLine("bylem tu \n");
+                        listPlate.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                    else if (item.Type == "Kolcze")
+                    {
+                        listChain.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                    else if (item.Type == "Ubranie")
+                    {
+                        listCloth.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                    else if (item.Type == "Skorzane")
+                    {
+                        listLeather.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                    else if (item.Type == "Leczykowe")
+                    {
+                        listHeal.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                    else
+                    {
+                        listWeapon.Add(new Drop(person.Nickname, item.Name, dungeon));
+                    }
+                }
+            }
+
+
+            ViewBag.listPlate = listPlate;
+            ViewBag.listChain = listChain;
+            ViewBag.listLeather = listLeather;
+            ViewBag.listCloth = listCloth;
+            ViewBag.listWeapon = listWeapon;
+            ViewBag.listHeal = listHeal;
+
             return View();
         }
 

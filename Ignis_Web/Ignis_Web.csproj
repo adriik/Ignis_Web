@@ -356,6 +356,7 @@
     <Content Include="Views\FreqApp\Set.cshtml" />
     <Content Include="Views\SToES\Frequency.cshtml" />
     <Content Include="Views\General\Start.cshtml" />
+    <Content Include="Views\SToES\Items.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
