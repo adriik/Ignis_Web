@@ -217,12 +217,12 @@ namespace Ignis_Web.Controllers
                     item.Stat7Select = true;
                 }
 
-                if (PercentRank(percentRank7, item.Stat7Rank) > 0.75)
+                if (PercentRank(percentRank8, item.Stat8Rank) > 0.75)
                 {
                     item.Stat8Select = true;
                 }
 
-                if (PercentRank(percentRank7, item.Stat7Rank) > 0.75)
+                if (PercentRank(percentRank9, item.Stat9Rank) > 0.75)
                 {
                     item.Stat9Select = true;
                 }

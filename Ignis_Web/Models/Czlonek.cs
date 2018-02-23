@@ -150,11 +150,11 @@ namespace Ignis_Web.Models
                         Stat7Rank = Math.Round(reader.GetDouble(30),2);
                         Stat7Total += Stat7;
 
-                        Stat8 = reader.GetInt32(29);
+                        Stat8 = reader.GetInt32(31);
                         Stat8Rank = Math.Round(reader.GetDouble(32), 2);
                         Stat8Total += Stat8;
 
-                        Stat9 = reader.GetInt32(29);
+                        Stat9 = reader.GetInt32(33);
                         Stat9Rank = Math.Round(reader.GetDouble(34), 2);
                         Stat9Total += Stat9;
 
