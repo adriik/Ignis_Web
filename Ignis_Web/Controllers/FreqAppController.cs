@@ -2407,8 +2407,8 @@ namespace Ignis_Web.Controllers
                 string getTotal_Log_DexPatt = "Select \"WSP\" from  public.\"" + WSP + "\" Where \"WSP_Name\" = 'Log_dex/patt yellow'";
                 NpgsqlCommand Total_Log_DexPatt = new NpgsqlCommand(getTotal_Log_DexPatt, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_DexPatt.ExecuteScalar().ToString());
-
-                string getUser_DexPatt = "SELECT \"dex/patt yellow\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForDexPatt[i] + "'";
+                //
+                string getUser_DexPatt = "SELECT \"dex/patt yellow\" FROM public.\"" + dungeonName + "\" Where \"Nickname\" = '" + PeopleForDexPatt[i] + "'"; 
                 NpgsqlCommand user_DexPatt = new NpgsqlCommand(getUser_DexPatt, cn);
                 int user_DexPattNo = Convert.ToInt32(user_DexPatt.ExecuteScalar().ToString());
 
