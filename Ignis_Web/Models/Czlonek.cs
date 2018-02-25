@@ -163,12 +163,12 @@ namespace Ignis_Web.Models
                 }
             }
             cn.Close();
-            if (Gloves > 100) { GlovesHd = "color-hd";}
-            if (Pants > 100) { PantsHd = "color-hd"; }
-            if (Belt > 100) { BeltHd = "color-hd"; }
-            if (Cloak > 100) { CloakHd = "color-hd"; }
-            if (Weapon > 100) { WeaponHd = "color-hd"; }
-            if (Shield > 100) { ShieldHd = "color-hd"; }
+            if (Gloves > 100) { GlovesHd = "color-hd"; } else if(Set == true) { GlovesHd = "color-set-negative"; }
+            if (Pants > 100) { PantsHd = "color-hd"; } else if (Set == true) { PantsHd = "color-set-negative"; }
+            if (Belt > 100) { BeltHd = "color-hd"; } else if (Set == true) { BeltHd = "color-set-negative"; }
+            if (Cloak > 100) { CloakHd = "color-hd"; } else if (Set == true) { CloakHd = "color-set-negative"; }
+            if (Weapon > 100) { WeaponHd = "color-hd"; } else { WeaponHd = "color-set-negative"; }
+            if (Shield > 100) { ShieldHd = "color-hd"; } else { ShieldHd = "color-set-negative"; }
         }
     }
 }

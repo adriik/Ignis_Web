@@ -81,6 +81,11 @@ th, td {
 }
 
 .color-stat-rank-select {
+    background-color: rgba(154, 205, 50, 0.9);
+    color: black;
+}
+
+.color-stat-rank-select-smart {
     background-color: rgba(154, 205, 50, 0.2);
     color: black;
 }
