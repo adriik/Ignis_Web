@@ -15,6 +15,7 @@ namespace Ignis_Web.Controllers
         public ActionResult Frequency()
         {
             Clear();
+            TempData["Previous"] = this.Url.Action("Frequency", dungeon, null, this.Request.Url.Scheme);
             var lista = new List<Czlonek>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
@@ -273,6 +274,7 @@ namespace Ignis_Web.Controllers
         public ActionResult Summary()
         {
             Clear();
+            TempData["Previous"] = this.Url.Action("Summary", dungeon, null, this.Request.Url.Scheme);
             var lista = new List<Czlonek>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
@@ -529,6 +531,7 @@ namespace Ignis_Web.Controllers
 
             public ActionResult Items()
         {
+            TempData["Previous"] = this.Url.Action("Items", dungeon, null, this.Request.Url.Scheme);
             List<Drop> listDrop = new List<Drop>();
 
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);

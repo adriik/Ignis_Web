@@ -14,6 +14,15 @@ namespace Ignis_Web.Controllers
         // GET: Account
         public ActionResult Login()
         {
+            if (TempData["Previous"] == null)
+            {
+                TempData["Previous"] = this.Url.Action("Start", "General", null, this.Request.Url.Scheme);
+            }
+            else
+            {
+                TempData["Previous"] = TempData["Previous"];
+            }
+            
             return View();
         }
 
@@ -22,7 +31,7 @@ namespace Ignis_Web.Controllers
         {
             var username = uzytkownik.UserName;
             var password = uzytkownik.Password;
- 
+
             string DBPassword = null;
 
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
@@ -48,7 +57,7 @@ namespace Ignis_Web.Controllers
 
             }
             else
-            {              
+            {
                 TempData["Walidator"] = false;
                 return RedirectToAction("Login");
             }

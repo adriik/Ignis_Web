@@ -11,6 +11,7 @@ namespace Ignis_Web.Controllers
         // GET: General
         public ActionResult Start()
         {
+            TempData["Previous"] = this.Url.Action("Start", "General", null, this.Request.Url.Scheme);
             return View();
         }
     }

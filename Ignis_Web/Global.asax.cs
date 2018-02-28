@@ -22,6 +22,7 @@ namespace Ignis_Web
 
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-EN");
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EN");
+
         }
     }
 }
