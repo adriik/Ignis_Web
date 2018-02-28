@@ -1,0 +1,73 @@
+﻿@model Ignis_Web.Models.Wsp
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h1>@ViewBag.Title</h1>
+    <div class="jumbotron jumbotron-opacity">
+        <div class="form-horizontal">
+
+            @if (TempData["Walidator"] != null && (bool)TempData["Walidator"] == true)
+            {
+                @Html.ValidationSummary(false, "Poprawnie wprowadzone zmiany", new { @class = "bg-success text-center" })
+            }
+            else if (TempData["Walidator"] != null && (bool)TempData["Walidator"] == false)
+            {
+                @Html.ValidationSummary(false, "Nie udało się wprowadzić zmian", new { @class = "bg-danger text-center" })
+            }
+            <div class="form-group">
+                @Html.LabelFor(model => model.Boss1, htmlAttributes: new { @class = "control-label col-md-4 offset-md-4" })
+                <div class="col-md-4 offset-md-4">
+                    @Html.EditorFor(model => model.Boss1, new { htmlAttributes = new { @class = "form-control", @style = "display: initial;" } })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.Boss1, "", new { @class = "text-danger", @style = "display: initial;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Boss2, htmlAttributes: new { @class = "control-label col-md-4 offset-md-4" })
+                <div class="col-md-4 offset-md-4">
+                    @Html.EditorFor(model => model.Boss2, new { htmlAttributes = new { @class = "form-control", @style = "display: initial;" } })
+                    @Html.ValidationMessageFor(model => model.Boss2, "", new { @class = "text-danger", @style = "display: initial;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Boss3, htmlAttributes: new { @class = "control-label col-md-4 offset-md-4" })
+                <div class="col-md-4 offset-md-4">
+                    @Html.EditorFor(model => model.Boss3, new { htmlAttributes = new { @class = "form-control", @style = "display: initial;" } })
+                    @Html.ValidationMessageFor(model => model.Boss3, "", new { @class = "text-danger", @style = "display: initial;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Boss4, htmlAttributes: new { @class = "control-label col-md-4 offset-md-4" })
+                <div class="col-md-4 offset-md-4">
+                    @Html.EditorFor(model => model.Boss4, new { htmlAttributes = new { @class = "form-control", @style = "display: initial;" } })
+                    @Html.ValidationMessageFor(model => model.Boss4, "", new { @class = "text-danger", @style = "display: initial;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Boss5, htmlAttributes: new { @class = "control-label col-md-4 offset-md-4" })
+                <div class="col-md-4 offset-md-4">
+                    @Html.EditorFor(model => model.Boss5, new { htmlAttributes = new { @class = "form-control", @style = "width: 100%; display: initial;" } })
+                    @Html.ValidationMessageFor(model => model.Boss5, "", new { @class = "text-danger", @style = "display: initial;" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-default">Zapisz</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts
+{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

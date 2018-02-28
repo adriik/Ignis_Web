@@ -18,6 +18,7 @@ namespace Ignis_Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(ValidDouble), typeof(ValidDoubleValidator));
 
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-EN");
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EN");
