@@ -46,17 +46,33 @@
                         @Html.ActionLink("Świątynia Słońca Wiecznego Snu - 100LvL", "Summary", "SToES", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Raport
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("Frekwencja", "FreqAppka", "FreqApp", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Itemy", "AddItem", "AddItem", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Set", "Set", "FreqApp", null, new { @class = "dropdown-item" })
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+
+                @if (Session["user"] != null)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Raport
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @Html.ActionLink("Frekwencja", "FreqAppka", "FreqApp", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Itemy", "AddItem", "AddItem", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Set", "Set", "FreqApp", null, new { @class = "dropdown-item" })
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ustawienia
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @Html.ActionLink("IBP WSP", "IBP", "Settings", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("SToES WSP", "SToES", "Settings", null, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+
             </ul>
             @if (Session["user"] == null)
             {
