@@ -2464,5 +2464,48 @@ namespace Ignis_Web.Controllers
                 });
             }
         }
-    }
+
+        [HttpPost]
+        public ActionResult Set(SetReq secik)
+        {
+            var nicknames = secik.Nickname;
+            var setCollect = secik.collect;
+            //Instancje
+            var IBP_Dungeon = secik.checkIBP;
+            var SToES_Dungeon = secik.checkSToES;
+            string Dungeon = "";
+            //Sprawdzenie czy instancja zostala wybrana i jaka zostala wybrana.
+            if (IBP_Dungeon == false && SToES_Dungeon == false)
+            {
+                TempData["Dungeon"] = false;
+                return RedirectToAction("AddItem");
+            }
+            if (IBP_Dungeon == true)
+            {
+                Dungeon = "IBP";
+            }
+            if (SToES_Dungeon == true)
+            {
+                Dungeon = "SToES";
+            }
+
+            string checkSet = "";
+            if(setCollect == true)
+            {
+                checkSet = "true";
+            }
+            if(setCollect == false)
+            {
+                checkSet = "false";
+            }
+            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
+            cn.Open();
+            NpgsqlCommand updateSetCollection = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Set\" = '" + checkSet + "' Where \"Nickname\" ='" + nicknames + "' ");
+            updateSetCollection.Connection = cn;
+            updateSetCollection.ExecuteNonQuery();
+            cn.Close();
+            TempData["FreqSucc"] = false;
+            return RedirectToAction("Set", "FreqApp");
+        }
+        }
 }
