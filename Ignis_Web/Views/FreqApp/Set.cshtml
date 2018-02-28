@@ -1,6 +1,8 @@
 ﻿@model Ignis_Web.Models.SetReq
 
 @{
+    /**/
+
     ViewBag.Title = "Set";
 }
 
@@ -10,11 +12,50 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+<div class="jumbotron jumbotron-opacity">
+    @if (TempData["Dungeon"] != null)
+    {
+        @Html.ValidationSummary(false, "W której instancji zmienic zmienna setu?", new { @class = "bg-danger text-center" })
+    }
+    @if (TempData["FreqSucc"] != null)
+    {
+        @Html.ValidationSummary(false, "Zmienna setu została zmieniona.", new { @class = "bg-success text-center" })
+    }
     <div class="form-horizontal">
-        <h4>SetReq</h4>
+        <h4>Zbieranie Set-ów</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.Instancje, htmlAttributes: new { @class = "menu-label" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.IBP, htmlAttributes: new { @class = "menu-label" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.SToES, htmlAttributes: new { @class = "menu-label" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.checkIBP, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.checkIBP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.checkSToES, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.checkSToES, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <br />
         <div class="row">
             <div class="col-md-2">
                 @Html.LabelFor(model => model.Nick, htmlAttributes: new { @class = "menu-label" })
@@ -25,17 +66,17 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                @Html.DropDownListFor(model => model.username, ViewBag.ListaLudzi as IEnumerable<SelectListItem>, new
-        {
-            data_placeholder = "Select Options",
-            data_dropup_auto = "true",
-            data_size = "10",
-            data_live_search = "true",
-            title = "Wybierz gracza",
-            data_style = "btn-secondary",
-            @class = "selectpicker dropup"
-        })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.Nickname, ViewBag.ListaLudzi as IEnumerable<SelectListItem>, new
+                {
+                    data_placeholder = "Select Options",
+                    data_dropup_auto = "true",
+                    data_size = "10",
+                    data_live_search = "true",
+                    title = "Wybierz gracza",
+                    data_style = "btn-secondary",
+                    @class = "selectpicker dropup"
+                })
+                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-1">
                 <div class="checkbox">
@@ -48,11 +89,13 @@
             </div>
         </div>
     </div>
+</div>
 }
 
+
 <div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
