@@ -96,23 +96,23 @@ namespace Ignis_Web.Controllers
                         {
                             if (reader.GetString(0) == "Boss1_Multi")
                             {
-                                wspolczynnik.Boss1 = reader.GetDouble(1);
+                                wspolczynnik.Boss1 = Math.Round(reader.GetDouble(1), 2);
                             }
                             else if (reader.GetString(0) == "Boss2_Multi")
                             {
-                                wspolczynnik.Boss2 = reader.GetDouble(1);
+                                wspolczynnik.Boss2 = Math.Round(reader.GetDouble(1), 2);
                             }
                             else if (reader.GetString(0) == "Boss3_Multi")
                             {
-                                wspolczynnik.Boss3 = reader.GetDouble(1);
+                                wspolczynnik.Boss3 = Math.Round(reader.GetDouble(1), 2);
                             }
                             else if (reader.GetString(0) == "Boss4_Multi")
                             {
-                                wspolczynnik.Boss4 = reader.GetDouble(1);
+                                wspolczynnik.Boss4 = Math.Round(reader.GetDouble(1), 2);
                             }
                             else if (reader.GetString(0) == "Boss5_Multi")
                             {
-                                wspolczynnik.Boss5 = reader.GetDouble(1);
+                                wspolczynnik.Boss5 = Math.Round(reader.GetDouble(1), 2);
                             }
                         }
                     }

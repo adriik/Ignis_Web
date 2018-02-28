@@ -2457,6 +2457,7 @@ namespace Ignis_Web.Controllers
             }
             else
             {
+                TempData["Previous"] = Request.Url.ToString();
                 return RedirectToRoute(new
                 {
                     controller = "Account",
