@@ -42,12 +42,10 @@ namespace Ignis_Web.Controllers
 
             if (password == DBPassword)
             {
-                Session["user"] = username; 
-                return RedirectToRoute(new
-                {
-                    controller = "FreqApp",
-                    action = "FreqAppka",
-                });
+                Session["user"] = username;
+
+                return Redirect(TempData["Previous"].ToString());
+
             }
             else
             {              

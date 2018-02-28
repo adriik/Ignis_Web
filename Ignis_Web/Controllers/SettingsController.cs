@@ -16,14 +16,26 @@ namespace Ignis_Web.Controllers
         // GET: Settings
         public ActionResult IBP()
         {
-            Dungeon = "IBP";
-            ViewBag.Title = "Współczynniki " + Dungeon;
-            Wsp wspolczynnik = GetWsp(Dungeon);
-            if (wspolczynnik != null)
-                return View(wspolczynnik);
+            if (Session["user"] != null)
+            {
+                Dungeon = "IBP";
+                ViewBag.Title = "Współczynniki " + Dungeon;
+                Wsp wspolczynnik = GetWsp(Dungeon);
+                if (wspolczynnik != null)
+                    return View(wspolczynnik);
+                else
+                {
+                    return View();
+                }
+            }
             else
             {
-                return View();
+                TempData["Previous"] = Request.Url.ToString();
+                return RedirectToRoute(new
+                {
+                    controller = "Account",
+                    action = "Login",
+                });
             }
         }
 
@@ -37,14 +49,26 @@ namespace Ignis_Web.Controllers
 
         public ActionResult SToES()
         {
-            Dungeon = "SToES";
-            ViewBag.Title = "Współczynniki " + Dungeon;
-            Wsp wspolczynnik = GetWsp(Dungeon);
-            if (wspolczynnik != null)
-                return View(wspolczynnik);
+            if (Session["user"] != null)
+            {
+                Dungeon = "SToES";
+                ViewBag.Title = "Współczynniki " + Dungeon;
+                Wsp wspolczynnik = GetWsp(Dungeon);
+                if (wspolczynnik != null)
+                    return View(wspolczynnik);
+                else
+                {
+                    return View();
+                }
+            }
             else
             {
-                return View();
+                TempData["Previous"] = Request.Url.ToString();
+                return RedirectToRoute(new
+                {
+                    controller = "Account",
+                    action = "Login",
+                });
             }
         }
 
