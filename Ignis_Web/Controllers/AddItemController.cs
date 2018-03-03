@@ -110,6 +110,11 @@ namespace Ignis_Web.Controllers
                 TempData["ItemDura"] = false;
                 return RedirectToAction("AddItem");
             }
+            if (FirstItemDura <= 100)
+            {
+                TempData["ItemLD"] = false;
+                return RedirectToAction("AddItem");
+            }
             if (string.IsNullOrEmpty(FirstItemReceiver))
             {
                 TempData["ItemReceiver"] = false;
@@ -231,11 +236,22 @@ namespace Ignis_Web.Controllers
                     }
                     if (FirstItemCategory == "Bronie")
                     {
-                        cn.Open();
-                        NpgsqlCommand update_Item = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Weapon\" = " + FirstItemDura + " Where \"Nickname\" ='" + FirstItemReceiver + "' ");
-                        update_Item.Connection = cn;
-                        update_Item.ExecuteNonQuery();
-                        cn.Close();
+                        if (FirstItemName.Contains("Tarcza") || FirstItemName.Contains("Talizman"))
+                        {
+                            cn.Open();
+                            NpgsqlCommand update_Shield = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Shield\" = " + FirstItemDura + " Where \"Nickname\" ='" + FirstItemReceiver + "' ");
+                            update_Shield.Connection = cn;
+                            update_Shield.ExecuteNonQuery();
+                            cn.Close();
+                        }
+                        else
+                        {
+                            cn.Open();
+                            NpgsqlCommand update_Item = new NpgsqlCommand("UPDATE public.\"" + Dungeon + "\" SET \"Weapon\" = " + FirstItemDura + " Where \"Nickname\" ='" + FirstItemReceiver + "' ");
+                            update_Item.Connection = cn;
+                            update_Item.ExecuteNonQuery();
+                            cn.Close();
+                        }
                     }
                     TempData["FreqSucc"] = false;
                     return RedirectToAction("AddItem", "AddItem");

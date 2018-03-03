@@ -13,27 +13,31 @@
     <div class="jumbotron jumbotron-opacity">
         @if (TempData["Dungeon"] != null)
         {
-        @Html.ValidationSummary(false, "Z jakiej instancji został wydropiony ten item/stat?", new { @class = "bg-danger text-center" })
+            @Html.ValidationSummary(false, "Z jakiej instancji został wydropiony ten item/stat?", new { @class = "bg-danger text-center" })
         }
         @if (TempData["ItemType"] != null)
         {
-        @Html.ValidationSummary(false, "Proszę wybrać typ dropu.", new { @class = "bg-danger text-center" })
+            @Html.ValidationSummary(false, "Proszę wybrać typ dropu.", new { @class = "bg-danger text-center" })
         }
         @if (TempData["ItemName"] != null)
         {
-        @Html.ValidationSummary(false, "Proszę zaznaczyć co wypadło.", new { @class = "bg-danger text-center" })
+            @Html.ValidationSummary(false, "Proszę zaznaczyć co wypadło.", new { @class = "bg-danger text-center" })
         }
         @if (TempData["ItemDura"] != null)
         {
-        @Html.ValidationSummary(false, "Proszę wpisać durę itemu.", new { @class = "bg-danger text-center" })
+            @Html.ValidationSummary(false, "Proszę wpisać durę itemu.", new { @class = "bg-danger text-center" })
         }
         @if (TempData["ItemReceiver"] != null)
         {
-        @Html.ValidationSummary(false, "Proszę wybrać kto otrzymał item/stat.", new { @class = "bg-danger text-center" })
+            @Html.ValidationSummary(false, "Proszę wybrać kto otrzymał item/stat.", new { @class = "bg-danger text-center" })
+        }
+        @if (TempData["ItemLD"] != null)
+        {
+            @Html.ValidationSummary(false, "Itemów LD nie zapisujemy.", new { @class = "bg-danger text-center" })
         }
         @if (TempData["FreqSucc"] != null)
         {
-        @Html.ValidationSummary(false, "Drop został zapisany.", new { @class = "bg-success text-center" })
+            @Html.ValidationSummary(false, "Drop został zapisany.", new { @class = "bg-success text-center" })
         }
         <div class="form-horizontal">
             <h4>Item</h4>
@@ -115,7 +119,7 @@
                     @Html.ValidationMessageFor(model => model.Item_Drop1, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @Value = "0", @width = "50px" })
+                    @Html.TextBoxFor(model => model.Item_Dura1, new { @class = "txt_Dura", @Value = "0", @width = "50px", @type = "number" })
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
@@ -145,9 +149,9 @@
                 </div>
             </div>
         </div>
-        </div>
-        }
+    </div>
+}
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
