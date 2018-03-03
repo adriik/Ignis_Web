@@ -32,6 +32,12 @@ namespace Ignis_Web.Models
         public string Dura { get; set; }
         public string Receiver { get; set; }
 
+        public bool AllFull { get; set; }
+        public bool All1 { get; set; }
+        public bool All2 { get; set; }
+        public bool All3 { get; set; }
+        public bool All4 { get; set; }
+        public bool All5 { get; set; }
 
         public string FirstNickname { get; set; }
         public bool FirstFull { get; set; }
