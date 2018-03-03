@@ -86,6 +86,55 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.AllFull, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.AllFull, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.All1, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.All1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.All2, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.All2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.All3, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.All3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.All4, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.All4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.All5, new { htmlAttributes = new { @class = "checkbox-huge" } })
+                    @Html.ValidationMessageFor(model => model.All5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
