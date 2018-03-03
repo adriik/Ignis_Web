@@ -182,48 +182,48 @@ namespace Ignis_Web.Controllers
 
             foreach (var item in listSortByClass)
             {
-                if (PercentRank(percentRank1, item.Stat1Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank1.ToArray(), item.Stat1Rank) > 0.7)
                 {
                     item.Stat1Select = true;
                 }
 
-                if (PercentRank(percentRank2, item.Stat2Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank2.ToArray(), item.Stat2Rank) > 0.7)
                 {
                     item.Stat2Select = true;
                 }
 
-                if (PercentRank(percentRank3, item.Stat3Rank) > 0.6)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank3.ToArray(), item.Stat3Rank) > 0.6)
                 {
                     item.Stat3Select = true;
                 }
 
-                if (PercentRank(percentRank4, item.Stat4Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank4.ToArray(), item.Stat4Rank) > 0.75)
                 {
                     item.Stat4Select = true;
                 }
 
-                if (PercentRank(percentRank5, item.Stat5Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank5.ToArray(), item.Stat5Rank) > 0.75)
                 {
                     item.Stat5Select = true;
                 }
 
-                if (PercentRank(percentRank6, item.Stat6Rank) > 0.70)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank6.ToArray(), item.Stat6Rank) > 0.70)
                 {
                     item.Stat6Select = true;
 
                 }
 
-                if (PercentRank(percentRank7, item.Stat7Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank7.ToArray(), item.Stat7Rank) > 0.7)
                 {
                     item.Stat7Select = true;
                 }
 
-                if (PercentRank(percentRank8, item.Stat8Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank8.ToArray(), item.Stat8Rank) > 0.75)
                 {
                     item.Stat8Select = true;
                 }
 
-                if (PercentRank(percentRank9, item.Stat9Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank9.ToArray(), item.Stat9Rank) > 0.75)
                 {
                     item.Stat9Select = true;
                 }
@@ -404,7 +404,6 @@ namespace Ignis_Web.Controllers
 
             foreach (var item in listSortByClass)
             {
-                //System.Diagnostics.Debug.WriteLine("Klasa: " + item.Class);
                 if (item.Class == "Druid" || item.Class == "Knight" || item.Class == "Priest")
                 {
                     percentRank1.Add(item.Stat1Rank);
@@ -441,48 +440,49 @@ namespace Ignis_Web.Controllers
 
             foreach (var item in listSortByClass)
             {
-                if (PercentRank(percentRank1, item.Stat1Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank1.ToArray(), item.Stat1Rank) > 0.7)
                 {
                     item.Stat1Select = true;
                 }
 
-                if (PercentRank(percentRank2, item.Stat2Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank2.ToArray(), item.Stat2Rank) > 0.7)
                 {
                     item.Stat2Select = true;
                 }
 
-                if (PercentRank(percentRank3, item.Stat3Rank) > 0.6)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank3.ToArray(), item.Stat3Rank) > 0.7)
                 {
+
                     item.Stat3Select = true;
                 }
 
-                if (PercentRank(percentRank4, item.Stat4Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank4.ToArray(), item.Stat4Rank) > 0.75)
                 {
                     item.Stat4Select = true;
                 }
 
-                if (PercentRank(percentRank5, item.Stat5Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank5.ToArray(), item.Stat5Rank) > 0.75)
                 {
                     item.Stat5Select = true;
                 }
 
-                if (PercentRank(percentRank6, item.Stat6Rank) > 0.70)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank6.ToArray(), item.Stat6Rank) > 0.70)
                 {
                     item.Stat6Select = true;
 
                 }
 
-                if (PercentRank(percentRank7, item.Stat7Rank) > 0.7)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank7.ToArray(), item.Stat7Rank) > 0.7)
                 {
                     item.Stat7Select = true;
                 }
 
-                if (PercentRank(percentRank8, item.Stat8Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank8.ToArray(), item.Stat8Rank) > 0.75)
                 {
                     item.Stat8Select = true;
                 }
 
-                if (PercentRank(percentRank9, item.Stat9Rank) > 0.75)
+                if (MathNet.Numerics.ExcelFunctions.PercentRank(percentRank9.ToArray(), item.Stat9Rank) > 0.75)
                 {
                     item.Stat9Select = true;
                 }
@@ -583,6 +583,7 @@ namespace Ignis_Web.Controllers
                     {
                         listWeapon.Add(new Drop(person.Nickname, item.Name, dungeon));
                     }
+                    
                 }
             }
 
@@ -602,33 +603,6 @@ namespace Ignis_Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        private static double PercentRank(List<double> matrix, double value)
-        {
-            matrix.Sort();
-
-            for (int i = 0; i < matrix.Count; i++)
-                if (matrix[i] == value)
-                    return ((double)i) / (matrix.Count - 1);
-
-            // calculate value using linear interpolation
-            double x1, x2, y1, y2;
-
-            for (int i = 0; i < matrix.Count - 1; i++)
-            {
-                if (matrix[i] < value && value < matrix[i + 1])
-                {
-                    x1 = matrix[i];
-                    x2 = matrix[i + 1];
-                    y1 = PercentRank(matrix, x1);
-                    y2 = PercentRank(matrix, x2);
-
-                    return (((x2 - value) * y1 + (value - x1) * y2)) / (x2 - x1);
-                }
-            }
-
-            throw new Exception("Out of bounds");
         }
 
         private void Clear()
