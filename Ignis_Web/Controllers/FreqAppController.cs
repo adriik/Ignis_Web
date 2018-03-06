@@ -1380,7 +1380,7 @@ namespace Ignis_Web.Controllers
             Update_Total_StaPattred.ExecuteNonQuery();
 
             //Query to calculate Total str/patt red stats
-            string Total_StrPattred_Query = "SELECT \"str/patt red\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string Total_StrPattred_Query = "SELECT \"str/patt red\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StrPattred_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -1464,7 +1464,7 @@ namespace Ignis_Web.Controllers
             Update_Total_IntMatt.ExecuteNonQuery();
 
             //Query to calculate Total str/patt stats
-            string Total_StrPatt_Query = "SELECT \"str/patt yellow\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string Total_StrPatt_Query = "SELECT \"str/patt yellow\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StrPatt_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -1690,7 +1690,7 @@ namespace Ignis_Web.Controllers
             Update_Total_StaPattred_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for str/patt red stats
-            string Rank_StrPattred_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string Rank_StrPattred_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StrPattred_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -1770,7 +1770,7 @@ namespace Ignis_Web.Controllers
             Update_Total_IntMatt_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for str/patt stats
-            string Rank_StrPatt_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string Rank_StrPatt_Query = "SELECT \"Stat-Logarithm\" From public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StrPatt_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -2034,7 +2034,7 @@ namespace Ignis_Web.Controllers
             }
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string getPeopleForStrPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string getPeopleForStrPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStrPatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -2309,7 +2309,7 @@ namespace Ignis_Web.Controllers
             }
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
             cn.Open();
-            string getPeopleForStrPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
+            string getPeopleForStrPatt = "SELECT public.\"" + dungeonName + "\".\"Nickname\" FROM public.\"" + dungeonName + "\", public.\"People\" Where \"Class\" in ('Warden', 'Champion') AND public.\"People\".\"Nickname\" = public.\"" + dungeonName + "\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStrPatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
