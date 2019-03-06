@@ -11,6 +11,8 @@ namespace Ignis_Web.Controllers
 {
     public class AccountController : Controller
     {
+        private UzytkownikAccess uzytkownikAccess = new UzytkownikAccess();
+
         // GET: Account
         public ActionResult Login()
         {
@@ -29,32 +31,10 @@ namespace Ignis_Web.Controllers
         [HttpPost]
         public ActionResult Login(Uzytkownik uzytkownik)
         {
-            var username = uzytkownik.UserName;
-            var password = uzytkownik.Password;
-
-            string DBPassword = null;
-
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryPeople = "SELECT \"Password\" FROM public.\"Accounts\" WHERE \"Nickname\" ='" + username + "'";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
+            if (uzytkownikAccess.IsValid(uzytkownik))
             {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        DBPassword = reader.GetString(0);
-                    }
-                }
-            }
-            cn.Close();
-
-            if (password == DBPassword)
-            {
-                Session["user"] = username;
-
+                Session["user"] = uzytkownik.UserName;
                 return Redirect(TempData["Previous"].ToString());
-
             }
             else
             {

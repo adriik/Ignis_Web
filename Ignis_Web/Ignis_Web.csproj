@@ -173,13 +173,20 @@
     </Compile>
     <Compile Include="Models\Appka.cs" />
     <Compile Include="Models\Czlonek.cs" />
+    <Compile Include="Models\CzlonekAccess.cs" />
     <Compile Include="Models\Drop.cs" />
+    <Compile Include="Models\DropAccess.cs" />
+    <Compile Include="Models\FreqAccess.cs" />
     <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemAccess.cs" />
     <Compile Include="Models\NazwyDropu.cs" />
     <Compile Include="Models\SetReq.cs" />
+    <Compile Include="Models\SetReqAccess.cs" />
     <Compile Include="Models\Uzytkownik.cs" />
+    <Compile Include="Models\UzytkownikAccess.cs" />
     <Compile Include="Models\Wsp.cs" />
+    <Compile Include="Models\WspAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

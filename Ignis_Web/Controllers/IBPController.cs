@@ -11,36 +11,14 @@ namespace Ignis_Web.Controllers
 {
     public class IBPController : Controller
     {
+        CzlonekAccess czlonekAccess = new CzlonekAccess();
+        DropAccess dropAccess = new DropAccess();
         static string dungeon = "IBP";
         public ActionResult Frequency()
         {
             Clear();
             TempData["Previous"] = this.Url.Action("Frequency", dungeon, null, this.Request.Url.Scheme);
-            var lista = new List<Czlonek>();
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        lista.Add(new Czlonek(reader.GetString(0), dungeon));
-                    }
-                }
-            }
-            //List<Czlonek> lista2 = new List<Czlonek>(lista);
-            //lista2.Sort((emp1, emp2) => emp1.Stat1Rank.CompareTo(emp2.Stat1Rank));
-
-
-            //foreach (var item in lista2.Skip(Math.Max(0, lista.Count() - 3)))
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Uzytkownik: " + item.Nickname + "Rank: " + item.Stat1Rank);
-
-            //}
-            //lista.Sort((emp1, emp2) => emp1.Nickname.CompareTo(emp2.Nickname));
-            //lista.Sort((emp1, emp2) => emp1.Class.CompareTo(emp2.Class));
+            var lista = czlonekAccess.GetListaCzlonkow(dungeon);
 
             List<Czlonek>listSortByClass = new List<Czlonek>();
             
@@ -264,42 +242,14 @@ namespace Ignis_Web.Controllers
             ViewBag.ParameterValueList = listSortByClass.ToSelectList(x => x.Nickname, false);
             //ViewBag.LocationList = allLocations.ToSelectList(x => x.Key, x => x.Value, myLocations /* selectedValues */);
 
-
-            cn.Close();
-
             return View();
-
         }
 
         public ActionResult Summary()
         {
             Clear();
             TempData["Previous"] = this.Url.Action("Summary", dungeon, null, this.Request.Url.Scheme);
-            var lista = new List<Czlonek>();
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryPeople = "SELECT public.\"People\".\"Nickname\" FROM public.\"People\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryPeople, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        lista.Add(new Czlonek(reader.GetString(0), dungeon));
-                    }
-                }
-            }
-            //List<Czlonek> lista2 = new List<Czlonek>(lista);
-            //lista2.Sort((emp1, emp2) => emp1.Stat1Rank.CompareTo(emp2.Stat1Rank));
-
-
-            //foreach (var item in lista2.Skip(Math.Max(0, lista.Count() - 3)))
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Uzytkownik: " + item.Nickname + "Rank: " + item.Stat1Rank);
-
-            //}
-            //lista.Sort((emp1, emp2) => emp1.Nickname.CompareTo(emp2.Nickname));
-            //lista.Sort((emp1, emp2) => emp1.Class.CompareTo(emp2.Class));
+            var lista = czlonekAccess.GetListaCzlonkow(dungeon);
 
             List<Czlonek> listSortByClass = new List<Czlonek>();
 
@@ -523,30 +473,13 @@ namespace Ignis_Web.Controllers
             ViewBag.ParameterValueList = listSortByClass.ToSelectList(x => x.Nickname, false);
             //ViewBag.LocationList = allLocations.ToSelectList(x => x.Key, x => x.Value, myLocations /* selectedValues */);
 
-
-            cn.Close();
-
             return View();
         }
 
-            public ActionResult Items()
+        public ActionResult Items()
         {
             TempData["Previous"] = this.Url.Action("Items", dungeon, null, this.Request.Url.Scheme);
-            List<Drop> listDrop = new List<Drop>();
-
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryDrop = "SELECT DISTINCT \"Receiver\" FROM public.\"" + dungeon + "_Items\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryDrop, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        listDrop.Add(new Drop(reader.GetString(0), dungeon));
-                    }
-                }
-            }
+            List<Drop> listDrop = dropAccess.GetListaDrop(dungeon);
 
             List<Drop> listPlate = new List<Drop>();
             List<Drop> listChain = new List<Drop>();
@@ -597,13 +530,6 @@ namespace Ignis_Web.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         private void Clear()
         {
             Czlonek.TotalAll = 0;
@@ -639,55 +565,7 @@ namespace Ignis_Web.Controllers
 
         private void UpdateRank()
         {
-            NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["IgnisTabs"].ConnectionString);
-            cn.Open();
-            string QueryRank = "SELECT * FROM public.\"WSP_" + dungeon + "\"";
-            using (NpgsqlCommand command = new NpgsqlCommand(QueryRank, cn))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader.GetString(0) == "Log_sta/hp red")
-                        {
-                            Czlonek.Stat1TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_sta/wis red")
-                        {
-                            Czlonek.Stat2TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_sta/patt red")
-                        {
-                            Czlonek.Stat3TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_str/patt red")
-                        {
-                            Czlonek.Stat4TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_dex/patt red")
-                        {
-                            Czlonek.Stat5TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_int/matt red")
-                        {
-                            Czlonek.Stat6TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_int/matt yellow")
-                        {
-                            Czlonek.Stat7TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_str/patt yellow")
-                        {
-                            Czlonek.Stat8TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                        else if (reader.GetString(0) == "Log_dex/patt yellow")
-                        {
-                            Czlonek.Stat9TotalRank = Math.Round(reader.GetDouble(1), 2);
-                        }
-                    }
-                }
-            }
-            cn.Close();
+            czlonekAccess.SetRank(dungeon);
         }
     }
 }
